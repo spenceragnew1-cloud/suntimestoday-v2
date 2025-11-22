@@ -38,6 +38,20 @@ export default function Home() {
             Whether you&apos;re planning outdoor activities, photography sessions, or simply want to know when daylight begins and ends, 
             we offer accurate, location-specific sun time information updated daily.
           </p>
+          <div className="mt-8 space-y-4 text-base text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            <p>
+              Sunrise and sunset times mark when the sun appears and disappears on the horizon each day. 
+              These times change throughout the year based on your location&apos;s latitude and the Earth&apos;s tilt, 
+              with longer days in summer and shorter days in winter. People rely on this information for photography planning, 
+              scheduling outdoor runs and hikes, coordinating events, and understanding daylight patterns in their area.
+            </p>
+            <p>
+              Golden hour refers to the period shortly after sunrise or before sunset when the sun is low in the sky, 
+              creating warm, soft lighting ideal for photography. Civil twilight occurs when there&apos;s enough natural light 
+              for most activities, while nautical twilight provides dimmer light for navigation. Astronomical twilight marks 
+              the transition between night and day, important for stargazing and astronomical observations.
+            </p>
+          </div>
         </div>
 
         {/* Popular Cities Section */}
