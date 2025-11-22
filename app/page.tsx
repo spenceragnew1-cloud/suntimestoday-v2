@@ -2,6 +2,7 @@ import { getSunTimes } from "@/lib/sun";
 import { SunTimesTable } from "@/components/SunTimesTable";
 import { CityLinks } from "@/components/CityLinks";
 import { CitySearch } from "@/components/CitySearch";
+import { NearMeButton } from "@/components/NearMeButton";
 import { getTimezoneForCity } from "@/lib/timezone";
 import Link from "next/link";
 import citiesData from "@/data/cities.json";
@@ -42,6 +43,12 @@ export default function Home() {
           
           {/* City Search */}
           <CitySearch />
+          
+          {/* Near Me Button */}
+          <div className="mt-6">
+            <NearMeButton variant="primary" label="Sunrise/Sunset Near Me" />
+          </div>
+          
           <div className="mt-8 space-y-4 text-base text-gray-700 max-w-3xl mx-auto leading-relaxed">
             <p>
               Sunrise and sunset times mark when the sun appears and disappears on the horizon each day. 

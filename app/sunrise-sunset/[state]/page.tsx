@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import citiesData from "@/data/cities.json";
 import { createSlug } from "@/lib/slugify";
+import { NearMeButton } from "@/components/NearMeButton";
 import Link from "next/link";
 
 interface City {
@@ -127,6 +128,10 @@ export default async function StatePage({ params }: PageProps) {
         <h1 className="text-4xl font-bold mb-6 text-gray-900">
           Sunrise and Sunset Times in {stateName}
         </h1>
+
+        <div className="mb-4 text-center text-sm text-gray-600">
+          Or <NearMeButton variant="inline" label="use my location to find the closest city" />
+        </div>
 
         <div className="bg-white rounded-lg shadow-md p-8 mb-8">
           <p className="text-lg text-gray-700 leading-relaxed mb-6">

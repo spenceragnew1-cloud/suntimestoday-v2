@@ -56,6 +56,14 @@ urls.push({
   priority: '1.0'
 });
 
+// Near Me page
+urls.push({
+  loc: `${baseUrl}/sunrise-sunset/near-me`,
+  lastmod: today,
+  changefreq: 'weekly',
+  priority: '0.8'
+});
+
 // City pages from cities.json
 if (cities && Array.isArray(cities)) {
   cities.forEach(city => {
@@ -111,6 +119,7 @@ const stateCount = new Set(cities.map(c => c.region)).size;
 
 console.log(`✅ Generated sitemap.xml with ${urls.length} URLs`);
 console.log(`   - Homepage: 1`);
+console.log(`   - Near Me page: 1`);
 console.log(`   - City pages: ${cities.length}`);
 console.log(`   - State pages: ${stateCount}`);
 

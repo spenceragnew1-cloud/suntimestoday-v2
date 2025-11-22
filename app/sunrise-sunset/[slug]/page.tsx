@@ -5,6 +5,7 @@ import { SunTimesTable } from "@/components/SunTimesTable";
 import { getTimezoneForCity } from "@/lib/timezone";
 import { calculateDistance } from "@/lib/distance";
 import { createSlug } from "@/lib/slugify";
+import { NearMeButton } from "@/components/NearMeButton";
 import citiesData from "@/data/cities.json";
 import { formatInTimeZone } from "date-fns-tz";
 import { differenceInMinutes } from "date-fns";
@@ -251,7 +252,12 @@ export default async function CityPage({ params }: PageProps) {
           </div>
 
           <div className="bg-white rounded-lg shadow-md p-8 mb-8">
-            <h2 className="text-2xl font-semibold mb-6 text-gray-800">Related Cities</h2>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-semibold text-gray-800">Related Cities</h2>
+              <div className="text-sm text-gray-600">
+                Not your city? <NearMeButton variant="inline" label="Use my location" />
+              </div>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {relatedCities.map((relatedCity) => (
                 <Link
