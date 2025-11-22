@@ -4,6 +4,7 @@ import { getSunTimes } from "@/lib/sun";
 import { SunTimesTable } from "@/components/SunTimesTable";
 import { getTimezoneForCity } from "@/lib/timezone";
 import { calculateDistance } from "@/lib/distance";
+import { createSlug } from "@/lib/slugify";
 import citiesData from "@/data/cities.json";
 import { formatInTimeZone } from "date-fns-tz";
 import { differenceInMinutes } from "date-fns";
@@ -192,6 +193,14 @@ export default async function CityPage({ params }: PageProps) {
       />
       <div className="min-h-screen bg-gray-50 py-12 px-4">
         <main className="max-w-4xl mx-auto">
+          <div className="mb-4">
+            <Link
+              href={`/sunrise-sunset/${createSlug(city.region)}`}
+              className="text-blue-600 hover:text-blue-800 text-sm underline"
+            >
+              More sunrise and sunset times in {city.region}
+            </Link>
+          </div>
           <h1 className="text-4xl font-bold mb-8 text-gray-900">
             Sunrise and Sunset Times in {city.name}, {city.region}
           </h1>

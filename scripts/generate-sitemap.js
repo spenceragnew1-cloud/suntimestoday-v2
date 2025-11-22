@@ -1,8 +1,17 @@
 const fs = require('fs');
 const path = require('path');
+const slugify = require('slugify');
 
 const baseUrl = 'https://suntimestoday.com';
 const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
+
+function createSlug(text) {
+  return slugify(text, {
+    lower: true,
+    strict: true,
+    trim: true,
+  });
+}
 
 // Read cities data
 const citiesPath = path.join(__dirname, '../data/cities.json');
@@ -61,6 +70,26 @@ if (cities && Array.isArray(cities)) {
   });
 }
 
+// State hub pages
+if (cities && Array.isArray(cities)) {
+  const stateMap = new Map(); // state name -> state slug
+  
+  cities.forEach(city => {
+    if (city.region && !stateMap.has(city.region)) {
+      stateMap.set(city.region, createSlug(city.region));
+    }
+  });
+
+  stateMap.forEach((stateSlug, stateName) => {
+    urls.push({
+      loc: `${baseUrl}/sunrise-sunset/${stateSlug}`,
+      lastmod: today,
+      changefreq: 'daily',
+      priority: '0.7'
+    });
+  });
+}
+
 // Note: Q&A pages removed - this is a suntimestoday project, not Q&A site
 
 // Generate XML
@@ -78,7 +107,10 @@ ${urls.map(url => `  <url>
 const sitemapPath = path.join(__dirname, '../public/sitemap.xml');
 fs.writeFileSync(sitemapPath, xml, 'utf8');
 
+const stateCount = new Set(cities.map(c => c.region)).size;
+
 console.log(`✅ Generated sitemap.xml with ${urls.length} URLs`);
 console.log(`   - Homepage: 1`);
 console.log(`   - City pages: ${cities.length}`);
+console.log(`   - State pages: ${stateCount}`);
 
