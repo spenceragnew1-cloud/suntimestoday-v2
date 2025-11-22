@@ -1,6 +1,7 @@
 import { getSunTimes } from "@/lib/sun";
 import { SunTimesTable } from "@/components/SunTimesTable";
 import { CityLinks } from "@/components/CityLinks";
+import { getTimezoneForCity } from "@/lib/timezone";
 import citiesData from "@/data/cities.json";
 
 interface City {
@@ -18,6 +19,7 @@ export default function Home() {
   const defaultCity = cities[0];
   const today = new Date();
   const sunTimes = getSunTimes(defaultCity.lat, defaultCity.lng, today);
+  const timezone = getTimezoneForCity(defaultCity.region);
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
@@ -30,7 +32,7 @@ export default function Home() {
           <h2 className="text-2xl font-semibold mb-4 text-gray-800">
             Today&apos;s Sun Times in {defaultCity.name}, {defaultCity.region}
           </h2>
-          <SunTimesTable sunTimes={sunTimes} />
+          <SunTimesTable sunTimes={sunTimes} timezone={timezone} />
         </div>
 
         <CityLinks cities={cities} />

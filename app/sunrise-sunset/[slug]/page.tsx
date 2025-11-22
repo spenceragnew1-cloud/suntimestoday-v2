@@ -3,8 +3,10 @@ import { Metadata } from "next";
 import { getSunTimes } from "@/lib/sun";
 import { SunTimesTable } from "@/components/SunTimesTable";
 import { CityLinks } from "@/components/CityLinks";
+import { getTimezoneForCity } from "@/lib/timezone";
 import citiesData from "@/data/cities.json";
-import { format, differenceInMinutes } from "date-fns";
+import { formatInTimeZone } from "date-fns-tz";
+import { differenceInMinutes } from "date-fns";
 
 interface City {
   name: string;
@@ -72,6 +74,7 @@ export default async function CityPage({ params }: PageProps) {
 
   const today = new Date();
   const sunTimes = getSunTimes(city.lat, city.lng, today);
+  const timezone = getTimezoneForCity(city.region);
 
   // Calculate daylight remaining
   const now = new Date();
@@ -123,7 +126,7 @@ export default async function CityPage({ params }: PageProps) {
         name: `What time is sunrise in ${city.name}, ${city.region}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Today's sunrise in ${city.name}, ${city.region} is at ${format(sunTimes.sunrise, "h:mm a")}.`,
+          text: `Today's sunrise in ${city.name}, ${city.region} is at ${formatInTimeZone(sunTimes.sunrise, timezone, "h:mm a")}.`,
         },
       },
       {
@@ -131,7 +134,7 @@ export default async function CityPage({ params }: PageProps) {
         name: `What time is sunset in ${city.name}, ${city.region}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Today's sunset in ${city.name}, ${city.region} is at ${format(sunTimes.sunset, "h:mm a")}.`,
+          text: `Today's sunset in ${city.name}, ${city.region} is at ${formatInTimeZone(sunTimes.sunset, timezone, "h:mm a")}.`,
         },
       },
       {
@@ -139,7 +142,7 @@ export default async function CityPage({ params }: PageProps) {
         name: `What is the golden hour in ${city.name}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `The golden hour in ${city.name} starts at ${format(sunTimes.goldenHourStart, "h:mm a")} and ends at ${format(sunTimes.goldenHourEnd, "h:mm a")}. This is the best time for photography with warm, soft lighting.`,
+          text: `The golden hour in ${city.name} starts at ${formatInTimeZone(sunTimes.goldenHourStart, timezone, "h:mm a")} and ends at ${formatInTimeZone(sunTimes.goldenHourEnd, timezone, "h:mm a")}. This is the best time for photography with warm, soft lighting.`,
         },
       },
       {
@@ -155,7 +158,7 @@ export default async function CityPage({ params }: PageProps) {
         name: `When does civil twilight begin in ${city.name}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Civil twilight in ${city.name} begins at ${format(sunTimes.civilDawn, "h:mm a")} and ends at ${format(sunTimes.civilDusk, "h:mm a")}. During this time, there is enough light for most outdoor activities.`,
+          text: `Civil twilight in ${city.name} begins at ${formatInTimeZone(sunTimes.civilDawn, timezone, "h:mm a")} and ends at ${formatInTimeZone(sunTimes.civilDusk, timezone, "h:mm a")}. During this time, there is enough light for most outdoor activities.`,
         },
       },
       {
@@ -163,7 +166,7 @@ export default async function CityPage({ params }: PageProps) {
         name: `What is solar noon in ${city.name}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Solar noon in ${city.name} occurs at ${format(sunTimes.solarNoon, "h:mm a")}, when the sun reaches its highest point in the sky.`,
+          text: `Solar noon in ${city.name} occurs at ${formatInTimeZone(sunTimes.solarNoon, timezone, "h:mm a")}, when the sun reaches its highest point in the sky.`,
         },
       },
     ],
@@ -182,7 +185,7 @@ export default async function CityPage({ params }: PageProps) {
           </h1>
 
           <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-            <SunTimesTable sunTimes={sunTimes} />
+            <SunTimesTable sunTimes={sunTimes} timezone={timezone} />
             <p className="mt-4 text-lg font-medium text-gray-700">
               {daylightRemaining}
             </p>
@@ -196,17 +199,17 @@ export default async function CityPage({ params }: PageProps) {
               <p>
                 {city.name}, {city.region} experiences varying sunrise and sunset times throughout
                 the year due to its location at latitude {city.lat.toFixed(4)}° and longitude{" "}
-                {city.lng.toFixed(4)}°. Today, the sun rises at {format(sunTimes.sunrise, "h:mm a")}{" "}
-                and sets at {format(sunTimes.sunset, "h:mm a")}, providing{" "}
+                {city.lng.toFixed(4)}°. Today, the sun rises at {formatInTimeZone(sunTimes.sunrise, timezone, "h:mm a")}{" "}
+                and sets at {formatInTimeZone(sunTimes.sunset, timezone, "h:mm a")}, providing{" "}
                 {Math.floor(sunTimes.daylightDuration / 60)} hours and {sunTimes.daylightDuration % 60}{" "}
                 minutes of daylight.
               </p>
               <p>
                 The golden hour, ideal for photography and outdoor activities, occurs between{" "}
-                {format(sunTimes.goldenHourStart, "h:mm a")} and {format(sunTimes.goldenHourEnd, "h:mm a")}{" "}
+                {formatInTimeZone(sunTimes.goldenHourStart, timezone, "h:mm a")} and {formatInTimeZone(sunTimes.goldenHourEnd, timezone, "h:mm a")}{" "}
                 today. During this period, the sun is low in the sky, creating warm, soft lighting
-                conditions. Civil twilight begins at {format(sunTimes.civilDawn, "h:mm a")} and ends
-                at {format(sunTimes.civilDusk, "h:mm a")}, offering enough natural light for most
+                conditions. Civil twilight begins at {formatInTimeZone(sunTimes.civilDawn, timezone, "h:mm a")} and ends
+                at {formatInTimeZone(sunTimes.civilDusk, timezone, "h:mm a")}, offering enough natural light for most
                 activities without artificial lighting.
               </p>
               <p>
