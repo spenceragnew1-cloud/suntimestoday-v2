@@ -24,6 +24,9 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const dynamicParams = false;
+export const dynamic = 'force-static';
+
 export async function generateStaticParams() {
   return cities.map((city) => ({
     slug: city.slug,
@@ -193,11 +196,13 @@ export default async function CityPage({ params }: PageProps) {
             Sunrise and Sunset Times in {city.name}, {city.region}
           </h1>
 
-          <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+          <div className="bg-white rounded-lg shadow-md p-8 mb-8" style={{ minHeight: '400px' }}>
             <h2 className="text-2xl font-semibold mb-4 text-gray-800">
               Today&apos;s Sun Data
             </h2>
-            <SunTimesTable sunTimes={sunTimes} timezone={timezone} />
+            <div style={{ minHeight: '350px' }}>
+              <SunTimesTable sunTimes={sunTimes} timezone={timezone} />
+            </div>
             <p className="mt-4 text-sm text-gray-600 text-center">
               Data updated daily.
             </p>

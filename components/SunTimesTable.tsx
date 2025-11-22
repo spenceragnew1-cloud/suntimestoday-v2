@@ -9,7 +9,11 @@ interface SunTimesTableProps {
 export function SunTimesTable({ sunTimes, timezone }: SunTimesTableProps) {
   return (
     <div className="overflow-x-auto">
-      <table className="w-full border-collapse rounded-lg overflow-hidden border border-gray-300">
+      <table className="w-full border-collapse rounded-lg overflow-hidden border border-gray-300" style={{ minWidth: '100%', tableLayout: 'fixed' }}>
+        <colgroup>
+          <col style={{ width: '60%' }} />
+          <col style={{ width: '40%' }} />
+        </colgroup>
         <thead>
           <tr className="bg-gray-100">
             <th className="border border-gray-300 px-6 py-3 text-left font-semibold text-gray-800">Event</th>
