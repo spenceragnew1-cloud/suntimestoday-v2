@@ -187,25 +187,31 @@ export default async function CityPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <div className="min-h-screen bg-gray-50 py-8 px-4">
+      <div className="min-h-screen bg-gray-50 py-12 px-4">
         <main className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold mb-8 text-gray-900">
             Sunrise and Sunset Times in {city.name}, {city.region}
           </h1>
 
-          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+            <h2 className="text-2xl font-semibold mb-4 text-gray-800">
+              Today&apos;s Sun Data
+            </h2>
             <SunTimesTable sunTimes={sunTimes} timezone={timezone} />
+            <p className="mt-4 text-sm text-gray-600 text-center">
+              Data updated daily.
+            </p>
             <p className="mt-4 text-lg font-medium text-gray-700">
               {daylightRemaining}
             </p>
           </div>
 
-          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <div className="bg-white rounded-lg shadow-md p-8 mb-8">
             <h2 className="text-2xl font-semibold mb-4 text-gray-800">
               About Sun Times in {city.name}
             </h2>
-            <div className="prose max-w-none text-gray-700 space-y-4">
-              <p>
+            <div className="prose max-w-none text-gray-700 space-y-5 leading-relaxed">
+              <p className="text-base leading-7">
                 {city.name}, {city.region} experiences varying sunrise and sunset times throughout
                 the year due to its location at latitude {city.lat.toFixed(4)}° and longitude{" "}
                 {city.lng.toFixed(4)}°. Today, the sun rises at {formatInTimeZone(sunTimes.sunrise, timezone, "h:mm a")}{" "}
@@ -213,7 +219,7 @@ export default async function CityPage({ params }: PageProps) {
                 {Math.floor(sunTimes.daylightDuration / 60)} hours and {sunTimes.daylightDuration % 60}{" "}
                 minutes of daylight.
               </p>
-              <p>
+              <p className="text-base leading-7">
                 The golden hour, ideal for photography and outdoor activities, occurs between{" "}
                 {formatInTimeZone(sunTimes.goldenHourStart, timezone, "h:mm a")} and {formatInTimeZone(sunTimes.goldenHourEnd, timezone, "h:mm a")}{" "}
                 today. During this period, the sun is low in the sky, creating warm, soft lighting
@@ -221,7 +227,7 @@ export default async function CityPage({ params }: PageProps) {
                 at {formatInTimeZone(sunTimes.civilDusk, timezone, "h:mm a")}, offering enough natural light for most
                 activities without artificial lighting.
               </p>
-              <p>
+              <p className="text-base leading-7">
                 Understanding these sun times helps residents and visitors plan their day, whether
                 for outdoor recreation, photography, or simply knowing when to expect daylight.
                 The times change daily as the Earth orbits the sun, with longer days in summer and
@@ -230,21 +236,22 @@ export default async function CityPage({ params }: PageProps) {
             </div>
           </div>
 
-          <div className="mt-8">
-            <h2 className="text-xl font-semibold mb-4">Related Cities</h2>
-            <ul className="list-disc list-inside space-y-2">
+          <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+            <h2 className="text-2xl font-semibold mb-6 text-gray-800">Related Cities</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {relatedCities.map((relatedCity) => (
-                <li key={relatedCity.slug}>
-                  <Link
-                    href={`/sunrise-sunset/${relatedCity.slug}`}
-                    className="text-blue-600 hover:text-blue-800 underline"
-                    aria-label={`Sunrise and sunset times in ${relatedCity.name}, ${relatedCity.region}`}
-                  >
+                <Link
+                  key={relatedCity.slug}
+                  href={`/sunrise-sunset/${relatedCity.slug}`}
+                  className="block p-3 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-sm transition-all duration-200"
+                  aria-label={`Sunrise and sunset times in ${relatedCity.name}, ${relatedCity.region}`}
+                >
+                  <div className="font-medium text-blue-600 hover:text-blue-800">
                     {relatedCity.name}, {relatedCity.region}
-                  </Link>
-                </li>
+                  </div>
+                </Link>
               ))}
-            </ul>
+            </div>
           </div>
         </main>
       </div>
