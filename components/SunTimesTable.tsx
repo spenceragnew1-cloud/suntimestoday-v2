@@ -91,6 +91,7 @@ export function SunTimesTable({ sunTimes, timezone }: SunTimesTableProps) {
           </tr>
         </tbody>
       </table>
+      <p className="mt-2 text-xs text-gray-500 text-center">Updated daily</p>
     </div>
   );
 }

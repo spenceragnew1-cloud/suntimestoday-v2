@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run generate-sitemap && next build",
+    "build": "npm run update-last-updated && npm run generate-sitemap && next build",
     "start": "next start",
     "lint": "eslint",
-    "generate-sitemap": "node scripts/generate-sitemap.js"
+    "generate-sitemap": "node scripts/generate-sitemap.js",
+    "update-last-updated": "node scripts/update-last-updated.js"
   },
   "dependencies": {
     "date-fns": "^4.1.0",
