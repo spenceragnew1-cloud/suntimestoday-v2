@@ -1,6 +1,7 @@
 import { getSunTimes } from "@/lib/sun";
 import { SunTimesTable } from "@/components/SunTimesTable";
 import { CityLinks } from "@/components/CityLinks";
+import { CitySearch } from "@/components/CitySearch";
 import { getTimezoneForCity } from "@/lib/timezone";
 import Link from "next/link";
 import citiesData from "@/data/cities.json";
@@ -33,11 +34,14 @@ export default function Home() {
           <h1 className="text-5xl font-bold mb-6 text-gray-900">
             Sunrise and Sunset Times Across the United States
           </h1>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed mb-8">
             SunTimesToday provides daily sunrise, sunset, golden hour, and twilight data for cities across the U.S. 
             Whether you&apos;re planning outdoor activities, photography sessions, or simply want to know when daylight begins and ends, 
             we offer accurate, location-specific sun time information updated daily.
           </p>
+          
+          {/* City Search */}
+          <CitySearch />
           <div className="mt-8 space-y-4 text-base text-gray-700 max-w-3xl mx-auto leading-relaxed">
             <p>
               Sunrise and sunset times mark when the sun appears and disappears on the horizon each day. 
