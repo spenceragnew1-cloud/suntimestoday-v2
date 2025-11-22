@@ -22,36 +22,59 @@ export default function Home() {
   const sunTimes = getSunTimes(defaultCity.lat, defaultCity.lng, today);
   const timezone = getTimezoneForCity(defaultCity.region);
 
-  return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
-      <main className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-gray-900">
-          Sun Times Today
-        </h1>
+  // Select 12 major cities for Popular Cities section
+  const popularCities = cities.slice(0, 12);
 
-        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-800">
-            Today&apos;s Sun Times in {defaultCity.name}, {defaultCity.region}
-          </h2>
-          <SunTimesTable sunTimes={sunTimes} timezone={timezone} />
+  return (
+    <div className="min-h-screen bg-gray-50 py-12 px-4">
+      <main className="max-w-6xl mx-auto">
+        {/* Hero Section */}
+        <div className="text-center mb-12">
+          <h1 className="text-5xl font-bold mb-6 text-gray-900">
+            Sunrise and Sunset Times Across the United States
+          </h1>
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            SunTimesToday provides daily sunrise, sunset, golden hour, and twilight data for cities across the U.S. 
+            Whether you&apos;re planning outdoor activities, photography sessions, or simply want to know when daylight begins and ends, 
+            we offer accurate, location-specific sun time information updated daily.
+          </p>
         </div>
 
-        <CityLinks cities={cities} />
+        {/* Popular Cities Section */}
+        <section className="bg-white rounded-lg shadow-md p-8 mb-12">
+          <h2 className="text-3xl font-semibold mb-6 text-gray-800">
+            Popular Cities
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {popularCities.map((city) => (
+              <Link
+                key={city.slug}
+                href={`/sunrise-sunset/${city.slug}`}
+                className="block p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all duration-200"
+                aria-label={`Sunrise and sunset times in ${city.name}, ${city.region}`}
+              >
+                <div className="font-semibold text-gray-900 mb-1">{city.name}</div>
+                <div className="text-sm text-gray-600">{city.region}</div>
+              </Link>
+            ))}
+          </div>
+        </section>
 
-        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-800">
+        {/* Browse All Cities Section */}
+        <section className="bg-white rounded-lg shadow-md p-8 mb-12">
+          <h2 className="text-3xl font-semibold mb-6 text-gray-800">
             Browse All Cities
           </h2>
-          <details open className="mt-4">
-            <summary className="cursor-pointer text-lg font-medium text-gray-700 mb-4">
+          <details className="mt-4">
+            <summary className="cursor-pointer text-lg font-medium text-gray-700 mb-4 hover:text-blue-600 transition-colors">
               View all {cities.length} cities (A-Z)
             </summary>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-6 pt-6 border-t border-gray-200">
               {cities.map((city) => (
                 <Link
                   key={city.slug}
                   href={`/sunrise-sunset/${city.slug}`}
-                  className="text-blue-600 hover:text-blue-800 underline"
+                  className="text-blue-600 hover:text-blue-800 hover:underline transition-colors py-1"
                   aria-label={`Sunrise and sunset times in ${city.name}, ${city.region}`}
                 >
                   {city.name}, {city.region}
@@ -59,7 +82,28 @@ export default function Home() {
               ))}
             </div>
           </details>
-        </div>
+        </section>
+
+        {/* How It Works Section */}
+        <section className="bg-white rounded-lg shadow-md p-8 mb-12">
+          <h2 className="text-3xl font-semibold mb-6 text-gray-800">
+            How It Works
+          </h2>
+          <div className="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              Our sun time data is updated daily to ensure accuracy throughout the year. 
+              Each city page provides precise sunrise and sunset times, along with golden hour periods 
+              (the optimal time for photography with warm, soft lighting) and civil twilight times 
+              (when there&apos;s enough natural light for most outdoor activities).
+            </p>
+            <p>
+              This tool is especially valuable for photographers seeking the perfect lighting conditions, 
+              outdoor enthusiasts planning activities around daylight hours, and anyone who wants to make 
+              the most of their day. All times are calculated based on your city&apos;s exact geographic coordinates 
+              and adjusted for your local timezone.
+            </p>
+          </div>
+        </section>
 
       </main>
     </div>
