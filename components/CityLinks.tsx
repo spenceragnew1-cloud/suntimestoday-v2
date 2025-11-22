@@ -26,6 +26,7 @@ export function CityLinks({ cities, currentSlug }: CityLinksProps) {
             <Link
               href={`/sunrise-sunset/${city.slug}`}
               className="text-blue-600 hover:text-blue-800 underline"
+              aria-label={`Sunrise and sunset times in ${city.name}, ${city.region}`}
             >
               {city.name}, {city.region}
             </Link>

@@ -2,6 +2,7 @@ import { getSunTimes } from "@/lib/sun";
 import { SunTimesTable } from "@/components/SunTimesTable";
 import { CityLinks } from "@/components/CityLinks";
 import { getTimezoneForCity } from "@/lib/timezone";
+import Link from "next/link";
 import citiesData from "@/data/cities.json";
 
 interface City {
@@ -36,6 +37,30 @@ export default function Home() {
         </div>
 
         <CityLinks cities={cities} />
+
+        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <h2 className="text-2xl font-semibold mb-4 text-gray-800">
+            Browse All Cities
+          </h2>
+          <details open className="mt-4">
+            <summary className="cursor-pointer text-lg font-medium text-gray-700 mb-4">
+              View all {cities.length} cities (A-Z)
+            </summary>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-4">
+              {cities.map((city) => (
+                <Link
+                  key={city.slug}
+                  href={`/sunrise-sunset/${city.slug}`}
+                  className="text-blue-600 hover:text-blue-800 underline"
+                  aria-label={`Sunrise and sunset times in ${city.name}, ${city.region}`}
+                >
+                  {city.name}, {city.region}
+                </Link>
+              ))}
+            </div>
+          </details>
+        </div>
+
       </main>
     </div>
   );

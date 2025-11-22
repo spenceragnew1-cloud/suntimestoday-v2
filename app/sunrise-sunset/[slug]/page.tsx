@@ -2,11 +2,12 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { getSunTimes } from "@/lib/sun";
 import { SunTimesTable } from "@/components/SunTimesTable";
-import { CityLinks } from "@/components/CityLinks";
 import { getTimezoneForCity } from "@/lib/timezone";
+import { calculateDistance } from "@/lib/distance";
 import citiesData from "@/data/cities.json";
 import { formatInTimeZone } from "date-fns-tz";
 import { differenceInMinutes } from "date-fns";
+import Link from "next/link";
 
 interface City {
   name: string;
@@ -93,28 +94,36 @@ export default async function CityPage({ params }: PageProps) {
     daylightRemaining = `Sunset has passed. Next sunrise in ${Math.floor(minutesUntil / 60)}h ${minutesUntil % 60}m`;
   }
 
-  // Get related cities - prioritize same state first
+  // Get related cities - prioritize same state first, then nearest by distance
   const sameStateCities = cities.filter(
     (c) => c.slug !== slug && c.region === city.region
   );
   
   let relatedCities: City[] = [];
   
-  // First, try to get 5 cities from the same state
-  if (sameStateCities.length >= 5) {
-    relatedCities = sameStateCities.slice(0, 5);
+  // First, get same-state cities (up to 8)
+  if (sameStateCities.length >= 8) {
+    relatedCities = sameStateCities.slice(0, 8);
   } else {
-    // Use all same-state cities, then fill with other cities
     relatedCities = [...sameStateCities];
-    const additional = cities
+    
+    // Then add nearest cities by distance
+    const otherCities = cities
       .filter(
         (c) =>
           c.slug !== slug &&
           c.region !== city.region &&
           !relatedCities.some((rc) => rc.slug === c.slug)
       )
-      .slice(0, 5 - relatedCities.length);
-    relatedCities.push(...additional);
+      .map((c) => ({
+        ...c,
+        distance: calculateDistance(city.lat, city.lng, c.lat, c.lng),
+      }))
+      .sort((a, b) => a.distance - b.distance)
+      .slice(0, 12 - relatedCities.length)
+      .map(({ distance, ...c }) => c);
+    
+    relatedCities.push(...otherCities);
   }
 
   const faqJsonLd = {
@@ -221,7 +230,22 @@ export default async function CityPage({ params }: PageProps) {
             </div>
           </div>
 
-          <CityLinks cities={relatedCities} currentSlug={slug} />
+          <div className="mt-8">
+            <h2 className="text-xl font-semibold mb-4">Related Cities</h2>
+            <ul className="list-disc list-inside space-y-2">
+              {relatedCities.map((relatedCity) => (
+                <li key={relatedCity.slug}>
+                  <Link
+                    href={`/sunrise-sunset/${relatedCity.slug}`}
+                    className="text-blue-600 hover:text-blue-800 underline"
+                    aria-label={`Sunrise and sunset times in ${relatedCity.name}, ${relatedCity.region}`}
+                  >
+                    {relatedCity.name}, {relatedCity.region}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </main>
       </div>
     </>
