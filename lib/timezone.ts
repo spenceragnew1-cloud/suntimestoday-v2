@@ -52,8 +52,72 @@ const stateToTimezone: Record<string, string> = {
   "Wyoming": "America/Denver",
 };
 
-export function getTimezoneForCity(region: string): string {
-  // Return timezone for the state, defaulting to America/New_York if not found
-  return stateToTimezone[region] || "America/New_York";
+// Basic country to timezone mapping for global cities
+const countryToTimezone: Record<string, string> = {
+  "United Kingdom": "Europe/London",
+  "France": "Europe/Paris",
+  "Germany": "Europe/Berlin",
+  "Italy": "Europe/Rome",
+  "Spain": "Europe/Madrid",
+  "Netherlands": "Europe/Amsterdam",
+  "Belgium": "Europe/Brussels",
+  "Switzerland": "Europe/Zurich",
+  "Austria": "Europe/Vienna",
+  "Sweden": "Europe/Stockholm",
+  "Norway": "Europe/Oslo",
+  "Denmark": "Europe/Copenhagen",
+  "Finland": "Europe/Helsinki",
+  "Poland": "Europe/Warsaw",
+  "Czech Republic": "Europe/Prague",
+  "Greece": "Europe/Athens",
+  "Portugal": "Europe/Lisbon",
+  "Ireland": "Europe/Dublin",
+  "Romania": "Europe/Bucharest",
+  "Hungary": "Europe/Budapest",
+  "Russia": "Europe/Moscow",
+  "Turkey": "Europe/Istanbul",
+  "Japan": "Asia/Tokyo",
+  "China": "Asia/Shanghai",
+  "India": "Asia/Kolkata",
+  "South Korea": "Asia/Seoul",
+  "Thailand": "Asia/Bangkok",
+  "Singapore": "Asia/Singapore",
+  "Malaysia": "Asia/Kuala_Lumpur",
+  "Indonesia": "Asia/Jakarta",
+  "Philippines": "Asia/Manila",
+  "Vietnam": "Asia/Ho_Chi_Minh",
+  "Australia": "Australia/Sydney",
+  "New Zealand": "Pacific/Auckland",
+  "Canada": "America/Toronto",
+  "Mexico": "America/Mexico_City",
+  "Brazil": "America/Sao_Paulo",
+  "Argentina": "America/Buenos_Aires",
+  "Chile": "America/Santiago",
+  "Colombia": "America/Bogota",
+  "Peru": "America/Lima",
+  "South Africa": "Africa/Johannesburg",
+  "Egypt": "Africa/Cairo",
+  "Morocco": "Africa/Casablanca",
+  "United Arab Emirates": "Asia/Dubai",
+  "Saudi Arabia": "Asia/Riyadh",
+  "Israel": "Asia/Jerusalem",
+  "Lebanon": "Asia/Beirut",
+  "Jordan": "Asia/Amman",
+};
+
+export function getTimezoneForCity(region: string, country?: string): string {
+  // First try US state mapping
+  if (stateToTimezone[region]) {
+    return stateToTimezone[region];
+  }
+  
+  // Then try country mapping for global cities
+  if (country && countryToTimezone[country]) {
+    return countryToTimezone[country];
+  }
+  
+  // Default fallback - use UTC but ensure it's a valid timezone
+  // For unknown regions/countries, we'll use a safe default
+  return "Etc/UTC";
 }
 

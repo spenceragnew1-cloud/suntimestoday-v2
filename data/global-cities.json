@@ -1,0 +1,2954 @@
+[
+  {
+    "city": "London",
+    "country": "United Kingdom",
+    "admin1": "England",
+    "lat": 51.5074,
+    "lng": -0.1278,
+    "slug": "london-uk"
+  },
+  {
+    "city": "Manchester",
+    "country": "United Kingdom",
+    "admin1": "England",
+    "lat": 53.4808,
+    "lng": -2.2426,
+    "slug": "manchester-uk"
+  },
+  {
+    "city": "Birmingham",
+    "country": "United Kingdom",
+    "admin1": "England",
+    "lat": 52.4862,
+    "lng": -1.8904,
+    "slug": "birmingham-uk"
+  },
+  {
+    "city": "Glasgow",
+    "country": "United Kingdom",
+    "admin1": "Scotland",
+    "lat": 55.8642,
+    "lng": -4.2518,
+    "slug": "glasgow-uk"
+  },
+  {
+    "city": "Edinburgh",
+    "country": "United Kingdom",
+    "admin1": "Scotland",
+    "lat": 55.9533,
+    "lng": -3.1883,
+    "slug": "edinburgh-uk"
+  },
+  {
+    "city": "Liverpool",
+    "country": "United Kingdom",
+    "admin1": "England",
+    "lat": 53.4084,
+    "lng": -2.9916,
+    "slug": "liverpool-uk"
+  },
+  {
+    "city": "Leeds",
+    "country": "United Kingdom",
+    "admin1": "England",
+    "lat": 53.8008,
+    "lng": -1.5491,
+    "slug": "leeds-uk"
+  },
+  {
+    "city": "Bristol",
+    "country": "United Kingdom",
+    "admin1": "England",
+    "lat": 51.4545,
+    "lng": -2.5879,
+    "slug": "bristol-uk"
+  },
+  {
+    "city": "Paris",
+    "country": "France",
+    "admin1": "Île-de-France",
+    "lat": 48.8566,
+    "lng": 2.3522,
+    "slug": "paris-fr"
+  },
+  {
+    "city": "Lyon",
+    "country": "France",
+    "admin1": "Auvergne-Rhône-Alpes",
+    "lat": 45.764,
+    "lng": 4.8357,
+    "slug": "lyon-fr"
+  },
+  {
+    "city": "Marseille",
+    "country": "France",
+    "admin1": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.2965,
+    "lng": 5.3698,
+    "slug": "marseille-fr"
+  },
+  {
+    "city": "Toulouse",
+    "country": "France",
+    "admin1": "Occitanie",
+    "lat": 43.6047,
+    "lng": 1.4442,
+    "slug": "toulouse-fr"
+  },
+  {
+    "city": "Nice",
+    "country": "France",
+    "admin1": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.7102,
+    "lng": 7.262,
+    "slug": "nice-fr"
+  },
+  {
+    "city": "Nantes",
+    "country": "France",
+    "admin1": "Pays de la Loire",
+    "lat": 47.2184,
+    "lng": -1.5536,
+    "slug": "nantes-fr"
+  },
+  {
+    "city": "Strasbourg",
+    "country": "France",
+    "admin1": "Grand Est",
+    "lat": 48.5734,
+    "lng": 7.7521,
+    "slug": "strasbourg-fr"
+  },
+  {
+    "city": "Montpellier",
+    "country": "France",
+    "admin1": "Occitanie",
+    "lat": 43.6108,
+    "lng": 3.8767,
+    "slug": "montpellier-fr"
+  },
+  {
+    "city": "Bordeaux",
+    "country": "France",
+    "admin1": "Nouvelle-Aquitaine",
+    "lat": 44.8378,
+    "lng": -0.5792,
+    "slug": "bordeaux-fr"
+  },
+  {
+    "city": "Lille",
+    "country": "France",
+    "admin1": "Hauts-de-France",
+    "lat": 50.6292,
+    "lng": 3.0573,
+    "slug": "lille-fr"
+  },
+  {
+    "city": "Berlin",
+    "country": "Germany",
+    "admin1": "Berlin",
+    "lat": 52.52,
+    "lng": 13.405,
+    "slug": "berlin-de"
+  },
+  {
+    "city": "Munich",
+    "country": "Germany",
+    "admin1": "Bavaria",
+    "lat": 48.1351,
+    "lng": 11.582,
+    "slug": "munich-de"
+  },
+  {
+    "city": "Hamburg",
+    "country": "Germany",
+    "admin1": "Hamburg",
+    "lat": 53.5511,
+    "lng": 9.9937,
+    "slug": "hamburg-de"
+  },
+  {
+    "city": "Cologne",
+    "country": "Germany",
+    "admin1": "North Rhine-Westphalia",
+    "lat": 50.9375,
+    "lng": 6.9603,
+    "slug": "cologne-de"
+  },
+  {
+    "city": "Frankfurt",
+    "country": "Germany",
+    "admin1": "Hesse",
+    "lat": 50.1109,
+    "lng": 8.6821,
+    "slug": "frankfurt-de"
+  },
+  {
+    "city": "Stuttgart",
+    "country": "Germany",
+    "admin1": "Baden-Württemberg",
+    "lat": 48.7758,
+    "lng": 9.1829,
+    "slug": "stuttgart-de"
+  },
+  {
+    "city": "Düsseldorf",
+    "country": "Germany",
+    "admin1": "North Rhine-Westphalia",
+    "lat": 51.2277,
+    "lng": 6.7735,
+    "slug": "dusseldorf-de"
+  },
+  {
+    "city": "Dortmund",
+    "country": "Germany",
+    "admin1": "North Rhine-Westphalia",
+    "lat": 51.5136,
+    "lng": 7.4653,
+    "slug": "dortmund-de"
+  },
+  {
+    "city": "Essen",
+    "country": "Germany",
+    "admin1": "North Rhine-Westphalia",
+    "lat": 51.4556,
+    "lng": 7.0116,
+    "slug": "essen-de"
+  },
+  {
+    "city": "Leipzig",
+    "country": "Germany",
+    "admin1": "Saxony",
+    "lat": 51.3397,
+    "lng": 12.3731,
+    "slug": "leipzig-de"
+  },
+  {
+    "city": "Rome",
+    "country": "Italy",
+    "admin1": "Lazio",
+    "lat": 41.9028,
+    "lng": 12.4964,
+    "slug": "rome-it"
+  },
+  {
+    "city": "Milan",
+    "country": "Italy",
+    "admin1": "Lombardy",
+    "lat": 45.4642,
+    "lng": 9.19,
+    "slug": "milan-it"
+  },
+  {
+    "city": "Naples",
+    "country": "Italy",
+    "admin1": "Campania",
+    "lat": 40.8518,
+    "lng": 14.2681,
+    "slug": "naples-it"
+  },
+  {
+    "city": "Turin",
+    "country": "Italy",
+    "admin1": "Piedmont",
+    "lat": 45.0703,
+    "lng": 7.6869,
+    "slug": "turin-it"
+  },
+  {
+    "city": "Palermo",
+    "country": "Italy",
+    "admin1": "Sicily",
+    "lat": 38.1157,
+    "lng": 13.3613,
+    "slug": "palermo-it"
+  },
+  {
+    "city": "Genoa",
+    "country": "Italy",
+    "admin1": "Liguria",
+    "lat": 44.4056,
+    "lng": 8.9463,
+    "slug": "genoa-it"
+  },
+  {
+    "city": "Bologna",
+    "country": "Italy",
+    "admin1": "Emilia-Romagna",
+    "lat": 44.4949,
+    "lng": 11.3426,
+    "slug": "bologna-it"
+  },
+  {
+    "city": "Florence",
+    "country": "Italy",
+    "admin1": "Tuscany",
+    "lat": 43.7696,
+    "lng": 11.2558,
+    "slug": "florence-it"
+  },
+  {
+    "city": "Venice",
+    "country": "Italy",
+    "admin1": "Veneto",
+    "lat": 45.4408,
+    "lng": 12.3155,
+    "slug": "venice-it"
+  },
+  {
+    "city": "Verona",
+    "country": "Italy",
+    "admin1": "Veneto",
+    "lat": 45.4384,
+    "lng": 10.9916,
+    "slug": "verona-it"
+  },
+  {
+    "city": "Madrid",
+    "country": "Spain",
+    "admin1": "Madrid",
+    "lat": 40.4168,
+    "lng": -3.7038,
+    "slug": "madrid-es"
+  },
+  {
+    "city": "Barcelona",
+    "country": "Spain",
+    "admin1": "Catalonia",
+    "lat": 41.3851,
+    "lng": 2.1734,
+    "slug": "barcelona-es"
+  },
+  {
+    "city": "Valencia",
+    "country": "Spain",
+    "admin1": "Valencia",
+    "lat": 39.4699,
+    "lng": -0.3763,
+    "slug": "valencia-es"
+  },
+  {
+    "city": "Seville",
+    "country": "Spain",
+    "admin1": "Andalusia",
+    "lat": 37.3891,
+    "lng": -5.9845,
+    "slug": "seville-es"
+  },
+  {
+    "city": "Zaragoza",
+    "country": "Spain",
+    "admin1": "Aragon",
+    "lat": 41.6488,
+    "lng": -0.8891,
+    "slug": "zaragoza-es"
+  },
+  {
+    "city": "Málaga",
+    "country": "Spain",
+    "admin1": "Andalusia",
+    "lat": 36.7213,
+    "lng": -4.4214,
+    "slug": "malaga-es"
+  },
+  {
+    "city": "Murcia",
+    "country": "Spain",
+    "admin1": "Murcia",
+    "lat": 37.9922,
+    "lng": -1.1307,
+    "slug": "murcia-es"
+  },
+  {
+    "city": "Palma",
+    "country": "Spain",
+    "admin1": "Balearic Islands",
+    "lat": 39.5696,
+    "lng": 2.6502,
+    "slug": "palma-es"
+  },
+  {
+    "city": "Las Palmas",
+    "country": "Spain",
+    "admin1": "Canary Islands",
+    "lat": 28.1248,
+    "lng": -15.43,
+    "slug": "las-palmas-es"
+  },
+  {
+    "city": "Bilbao",
+    "country": "Spain",
+    "admin1": "Basque Country",
+    "lat": 43.2627,
+    "lng": -2.9253,
+    "slug": "bilbao-es"
+  },
+  {
+    "city": "Tokyo",
+    "country": "Japan",
+    "admin1": "Tokyo",
+    "lat": 35.6762,
+    "lng": 139.6503,
+    "slug": "tokyo-jp"
+  },
+  {
+    "city": "Yokohama",
+    "country": "Japan",
+    "admin1": "Kanagawa",
+    "lat": 35.4437,
+    "lng": 139.638,
+    "slug": "yokohama-jp"
+  },
+  {
+    "city": "Osaka",
+    "country": "Japan",
+    "admin1": "Osaka",
+    "lat": 34.6937,
+    "lng": 135.5023,
+    "slug": "osaka-jp"
+  },
+  {
+    "city": "Nagoya",
+    "country": "Japan",
+    "admin1": "Aichi",
+    "lat": 35.1815,
+    "lng": 136.9066,
+    "slug": "nagoya-jp"
+  },
+  {
+    "city": "Sapporo",
+    "country": "Japan",
+    "admin1": "Hokkaido",
+    "lat": 43.0642,
+    "lng": 141.3469,
+    "slug": "sapporo-jp"
+  },
+  {
+    "city": "Fukuoka",
+    "country": "Japan",
+    "admin1": "Fukuoka",
+    "lat": 33.5904,
+    "lng": 130.4017,
+    "slug": "fukuoka-jp"
+  },
+  {
+    "city": "Kobe",
+    "country": "Japan",
+    "admin1": "Hyogo",
+    "lat": 34.6901,
+    "lng": 135.1956,
+    "slug": "kobe-jp"
+  },
+  {
+    "city": "Kyoto",
+    "country": "Japan",
+    "admin1": "Kyoto",
+    "lat": 35.0116,
+    "lng": 135.7681,
+    "slug": "kyoto-jp"
+  },
+  {
+    "city": "Sendai",
+    "country": "Japan",
+    "admin1": "Miyagi",
+    "lat": 38.2682,
+    "lng": 140.8694,
+    "slug": "sendai-jp"
+  },
+  {
+    "city": "Hiroshima",
+    "country": "Japan",
+    "admin1": "Hiroshima",
+    "lat": 34.3853,
+    "lng": 132.4553,
+    "slug": "hiroshima-jp"
+  },
+  {
+    "city": "Beijing",
+    "country": "China",
+    "admin1": "Beijing",
+    "lat": 39.9042,
+    "lng": 116.4074,
+    "slug": "beijing-cn"
+  },
+  {
+    "city": "Shanghai",
+    "country": "China",
+    "admin1": "Shanghai",
+    "lat": 31.2304,
+    "lng": 121.4737,
+    "slug": "shanghai-cn"
+  },
+  {
+    "city": "Guangzhou",
+    "country": "China",
+    "admin1": "Guangdong",
+    "lat": 23.1291,
+    "lng": 113.2644,
+    "slug": "guangzhou-cn"
+  },
+  {
+    "city": "Shenzhen",
+    "country": "China",
+    "admin1": "Guangdong",
+    "lat": 22.5431,
+    "lng": 114.0579,
+    "slug": "shenzhen-cn"
+  },
+  {
+    "city": "Chengdu",
+    "country": "China",
+    "admin1": "Sichuan",
+    "lat": 30.6624,
+    "lng": 104.0633,
+    "slug": "chengdu-cn"
+  },
+  {
+    "city": "Hangzhou",
+    "country": "China",
+    "admin1": "Zhejiang",
+    "lat": 30.2741,
+    "lng": 120.1551,
+    "slug": "hangzhou-cn"
+  },
+  {
+    "city": "Wuhan",
+    "country": "China",
+    "admin1": "Hubei",
+    "lat": 30.5928,
+    "lng": 114.3055,
+    "slug": "wuhan-cn"
+  },
+  {
+    "city": "Xi'an",
+    "country": "China",
+    "admin1": "Shaanxi",
+    "lat": 34.3416,
+    "lng": 108.9398,
+    "slug": "xian-cn"
+  },
+  {
+    "city": "Nanjing",
+    "country": "China",
+    "admin1": "Jiangsu",
+    "lat": 32.0603,
+    "lng": 118.7969,
+    "slug": "nanjing-cn"
+  },
+  {
+    "city": "Tianjin",
+    "country": "China",
+    "admin1": "Tianjin",
+    "lat": 39.3434,
+    "lng": 117.3616,
+    "slug": "tianjin-cn"
+  },
+  {
+    "city": "Mumbai",
+    "country": "India",
+    "admin1": "Maharashtra",
+    "lat": 19.076,
+    "lng": 72.8777,
+    "slug": "mumbai-in"
+  },
+  {
+    "city": "Delhi",
+    "country": "India",
+    "admin1": "Delhi",
+    "lat": 28.6139,
+    "lng": 77.209,
+    "slug": "delhi-in"
+  },
+  {
+    "city": "Bangalore",
+    "country": "India",
+    "admin1": "Karnataka",
+    "lat": 12.9716,
+    "lng": 77.5946,
+    "slug": "bangalore-in"
+  },
+  {
+    "city": "Hyderabad",
+    "country": "India",
+    "admin1": "Telangana",
+    "lat": 17.385,
+    "lng": 78.4867,
+    "slug": "hyderabad-in"
+  },
+  {
+    "city": "Chennai",
+    "country": "India",
+    "admin1": "Tamil Nadu",
+    "lat": 13.0827,
+    "lng": 80.2707,
+    "slug": "chennai-in"
+  },
+  {
+    "city": "Kolkata",
+    "country": "India",
+    "admin1": "West Bengal",
+    "lat": 22.5726,
+    "lng": 88.3639,
+    "slug": "kolkata-in"
+  },
+  {
+    "city": "Pune",
+    "country": "India",
+    "admin1": "Maharashtra",
+    "lat": 18.5204,
+    "lng": 73.8567,
+    "slug": "pune-in"
+  },
+  {
+    "city": "Ahmedabad",
+    "country": "India",
+    "admin1": "Gujarat",
+    "lat": 23.0225,
+    "lng": 72.5714,
+    "slug": "ahmedabad-in"
+  },
+  {
+    "city": "Jaipur",
+    "country": "India",
+    "admin1": "Rajasthan",
+    "lat": 26.9124,
+    "lng": 75.7873,
+    "slug": "jaipur-in"
+  },
+  {
+    "city": "Surat",
+    "country": "India",
+    "admin1": "Gujarat",
+    "lat": 21.1702,
+    "lng": 72.8311,
+    "slug": "surat-in"
+  },
+  {
+    "city": "Sydney",
+    "country": "Australia",
+    "admin1": "New South Wales",
+    "lat": -33.8688,
+    "lng": 151.2093,
+    "slug": "sydney-au"
+  },
+  {
+    "city": "Melbourne",
+    "country": "Australia",
+    "admin1": "Victoria",
+    "lat": -37.8136,
+    "lng": 144.9631,
+    "slug": "melbourne-au"
+  },
+  {
+    "city": "Brisbane",
+    "country": "Australia",
+    "admin1": "Queensland",
+    "lat": -27.4698,
+    "lng": 153.0251,
+    "slug": "brisbane-au"
+  },
+  {
+    "city": "Perth",
+    "country": "Australia",
+    "admin1": "Western Australia",
+    "lat": -31.9505,
+    "lng": 115.8605,
+    "slug": "perth-au"
+  },
+  {
+    "city": "Adelaide",
+    "country": "Australia",
+    "admin1": "South Australia",
+    "lat": -34.9285,
+    "lng": 138.6007,
+    "slug": "adelaide-au"
+  },
+  {
+    "city": "Gold Coast",
+    "country": "Australia",
+    "admin1": "Queensland",
+    "lat": -28.0167,
+    "lng": 153.4,
+    "slug": "gold-coast-au"
+  },
+  {
+    "city": "Newcastle",
+    "country": "Australia",
+    "admin1": "New South Wales",
+    "lat": -32.9283,
+    "lng": 151.7817,
+    "slug": "newcastle-au"
+  },
+  {
+    "city": "Canberra",
+    "country": "Australia",
+    "admin1": "Australian Capital Territory",
+    "lat": -35.2809,
+    "lng": 149.13,
+    "slug": "canberra-au"
+  },
+  {
+    "city": "Sunshine Coast",
+    "country": "Australia",
+    "admin1": "Queensland",
+    "lat": -26.65,
+    "lng": 153.0667,
+    "slug": "sunshine-coast-au"
+  },
+  {
+    "city": "Wollongong",
+    "country": "Australia",
+    "admin1": "New South Wales",
+    "lat": -34.4278,
+    "lng": 150.8931,
+    "slug": "wollongong-au"
+  },
+  {
+    "city": "Toronto",
+    "country": "Canada",
+    "admin1": "Ontario",
+    "lat": 43.6532,
+    "lng": -79.3832,
+    "slug": "toronto-ca"
+  },
+  {
+    "city": "Vancouver",
+    "country": "Canada",
+    "admin1": "British Columbia",
+    "lat": 49.2827,
+    "lng": -123.1207,
+    "slug": "vancouver-ca"
+  },
+  {
+    "city": "Montreal",
+    "country": "Canada",
+    "admin1": "Quebec",
+    "lat": 45.5017,
+    "lng": -73.5673,
+    "slug": "montreal-ca"
+  },
+  {
+    "city": "Calgary",
+    "country": "Canada",
+    "admin1": "Alberta",
+    "lat": 51.0447,
+    "lng": -114.0719,
+    "slug": "calgary-ca"
+  },
+  {
+    "city": "Ottawa",
+    "country": "Canada",
+    "admin1": "Ontario",
+    "lat": 45.4215,
+    "lng": -75.6972,
+    "slug": "ottawa-ca"
+  },
+  {
+    "city": "Edmonton",
+    "country": "Canada",
+    "admin1": "Alberta",
+    "lat": 53.5461,
+    "lng": -113.4938,
+    "slug": "edmonton-ca"
+  },
+  {
+    "city": "Winnipeg",
+    "country": "Canada",
+    "admin1": "Manitoba",
+    "lat": 49.8951,
+    "lng": -97.1384,
+    "slug": "winnipeg-ca"
+  },
+  {
+    "city": "Quebec City",
+    "country": "Canada",
+    "admin1": "Quebec",
+    "lat": 46.8139,
+    "lng": -71.208,
+    "slug": "quebec-city-ca"
+  },
+  {
+    "city": "Hamilton",
+    "country": "Canada",
+    "admin1": "Ontario",
+    "lat": 43.2557,
+    "lng": -79.8711,
+    "slug": "hamilton-ca"
+  },
+  {
+    "city": "Kitchener",
+    "country": "Canada",
+    "admin1": "Ontario",
+    "lat": 43.4516,
+    "lng": -80.4925,
+    "slug": "kitchener-ca"
+  },
+  {
+    "city": "São Paulo",
+    "country": "Brazil",
+    "admin1": "São Paulo",
+    "lat": -23.5505,
+    "lng": -46.6333,
+    "slug": "sao-paulo-br"
+  },
+  {
+    "city": "Rio de Janeiro",
+    "country": "Brazil",
+    "admin1": "Rio de Janeiro",
+    "lat": -22.9068,
+    "lng": -43.1729,
+    "slug": "rio-de-janeiro-br"
+  },
+  {
+    "city": "Brasília",
+    "country": "Brazil",
+    "admin1": "Distrito Federal",
+    "lat": -15.7942,
+    "lng": -47.8822,
+    "slug": "brasilia-br"
+  },
+  {
+    "city": "Salvador",
+    "country": "Brazil",
+    "admin1": "Bahia",
+    "lat": -12.9714,
+    "lng": -38.5014,
+    "slug": "salvador-br"
+  },
+  {
+    "city": "Fortaleza",
+    "country": "Brazil",
+    "admin1": "Ceará",
+    "lat": -3.7172,
+    "lng": -38.5433,
+    "slug": "fortaleza-br"
+  },
+  {
+    "city": "Belo Horizonte",
+    "country": "Brazil",
+    "admin1": "Minas Gerais",
+    "lat": -19.9167,
+    "lng": -43.9345,
+    "slug": "belo-horizonte-br"
+  },
+  {
+    "city": "Manaus",
+    "country": "Brazil",
+    "admin1": "Amazonas",
+    "lat": -3.119,
+    "lng": -60.0217,
+    "slug": "manaus-br"
+  },
+  {
+    "city": "Curitiba",
+    "country": "Brazil",
+    "admin1": "Paraná",
+    "lat": -25.4284,
+    "lng": -49.2733,
+    "slug": "curitiba-br"
+  },
+  {
+    "city": "Recife",
+    "country": "Brazil",
+    "admin1": "Pernambuco",
+    "lat": -8.0476,
+    "lng": -34.877,
+    "slug": "recife-br"
+  },
+  {
+    "city": "Porto Alegre",
+    "country": "Brazil",
+    "admin1": "Rio Grande do Sul",
+    "lat": -30.0346,
+    "lng": -51.2177,
+    "slug": "porto-alegre-br"
+  },
+  {
+    "city": "Mexico City",
+    "country": "Mexico",
+    "admin1": "Mexico City",
+    "lat": 19.4326,
+    "lng": -99.1332,
+    "slug": "mexico-city-mx"
+  },
+  {
+    "city": "Guadalajara",
+    "country": "Mexico",
+    "admin1": "Jalisco",
+    "lat": 20.6597,
+    "lng": -103.3496,
+    "slug": "guadalajara-mx"
+  },
+  {
+    "city": "Monterrey",
+    "country": "Mexico",
+    "admin1": "Nuevo León",
+    "lat": 25.6866,
+    "lng": -100.3161,
+    "slug": "monterrey-mx"
+  },
+  {
+    "city": "Puebla",
+    "country": "Mexico",
+    "admin1": "Puebla",
+    "lat": 19.0414,
+    "lng": -98.2063,
+    "slug": "puebla-mx"
+  },
+  {
+    "city": "Tijuana",
+    "country": "Mexico",
+    "admin1": "Baja California",
+    "lat": 32.5149,
+    "lng": -117.0382,
+    "slug": "tijuana-mx"
+  },
+  {
+    "city": "León",
+    "country": "Mexico",
+    "admin1": "Guanajuato",
+    "lat": 21.125,
+    "lng": -101.686,
+    "slug": "leon-mx"
+  },
+  {
+    "city": "Juárez",
+    "country": "Mexico",
+    "admin1": "Chihuahua",
+    "lat": 31.6904,
+    "lng": -106.4246,
+    "slug": "juarez-mx"
+  },
+  {
+    "city": "Torreón",
+    "country": "Mexico",
+    "admin1": "Coahuila",
+    "lat": 25.5428,
+    "lng": -103.4064,
+    "slug": "torreon-mx"
+  },
+  {
+    "city": "Querétaro",
+    "country": "Mexico",
+    "admin1": "Querétaro",
+    "lat": 20.5888,
+    "lng": -100.3899,
+    "slug": "queretaro-mx"
+  },
+  {
+    "city": "San Luis Potosí",
+    "country": "Mexico",
+    "admin1": "San Luis Potosí",
+    "lat": 22.1565,
+    "lng": -100.9855,
+    "slug": "san-luis-potosi-mx"
+  },
+  {
+    "city": "Buenos Aires",
+    "country": "Argentina",
+    "admin1": "Buenos Aires",
+    "lat": -34.6037,
+    "lng": -58.3816,
+    "slug": "buenos-aires-ar"
+  },
+  {
+    "city": "Córdoba",
+    "country": "Argentina",
+    "admin1": "Córdoba",
+    "lat": -31.4201,
+    "lng": -64.1888,
+    "slug": "cordoba-ar"
+  },
+  {
+    "city": "Rosario",
+    "country": "Argentina",
+    "admin1": "Santa Fe",
+    "lat": -32.9442,
+    "lng": -60.6505,
+    "slug": "rosario-ar"
+  },
+  {
+    "city": "Mendoza",
+    "country": "Argentina",
+    "admin1": "Mendoza",
+    "lat": -32.8895,
+    "lng": -68.8458,
+    "slug": "mendoza-ar"
+  },
+  {
+    "city": "Tucumán",
+    "country": "Argentina",
+    "admin1": "Tucumán",
+    "lat": -26.8083,
+    "lng": -65.2176,
+    "slug": "tucuman-ar"
+  },
+  {
+    "city": "La Plata",
+    "country": "Argentina",
+    "admin1": "Buenos Aires",
+    "lat": -34.9215,
+    "lng": -57.9545,
+    "slug": "la-plata-ar"
+  },
+  {
+    "city": "Mar del Plata",
+    "country": "Argentina",
+    "admin1": "Buenos Aires",
+    "lat": -38.0055,
+    "lng": -57.5426,
+    "slug": "mar-del-plata-ar"
+  },
+  {
+    "city": "Salta",
+    "country": "Argentina",
+    "admin1": "Salta",
+    "lat": -24.7859,
+    "lng": -65.4117,
+    "slug": "salta-ar"
+  },
+  {
+    "city": "Santa Fe",
+    "country": "Argentina",
+    "admin1": "Santa Fe",
+    "lat": -31.6333,
+    "lng": -60.7,
+    "slug": "santa-fe-ar"
+  },
+  {
+    "city": "San Juan",
+    "country": "Argentina",
+    "admin1": "San Juan",
+    "lat": -31.5375,
+    "lng": -68.5364,
+    "slug": "san-juan-ar"
+  },
+  {
+    "city": "Seoul",
+    "country": "South Korea",
+    "admin1": "Seoul",
+    "lat": 37.5665,
+    "lng": 126.978,
+    "slug": "seoul-kr"
+  },
+  {
+    "city": "Busan",
+    "country": "South Korea",
+    "admin1": "Busan",
+    "lat": 35.1796,
+    "lng": 129.0756,
+    "slug": "busan-kr"
+  },
+  {
+    "city": "Incheon",
+    "country": "South Korea",
+    "admin1": "Incheon",
+    "lat": 37.4563,
+    "lng": 126.7052,
+    "slug": "incheon-kr"
+  },
+  {
+    "city": "Daegu",
+    "country": "South Korea",
+    "admin1": "Daegu",
+    "lat": 35.8714,
+    "lng": 128.6014,
+    "slug": "daegu-kr"
+  },
+  {
+    "city": "Daejeon",
+    "country": "South Korea",
+    "admin1": "Daejeon",
+    "lat": 36.3504,
+    "lng": 127.3845,
+    "slug": "daejeon-kr"
+  },
+  {
+    "city": "Gwangju",
+    "country": "South Korea",
+    "admin1": "Gwangju",
+    "lat": 35.1595,
+    "lng": 126.8526,
+    "slug": "gwangju-kr"
+  },
+  {
+    "city": "Ulsan",
+    "country": "South Korea",
+    "admin1": "Ulsan",
+    "lat": 35.5384,
+    "lng": 129.3114,
+    "slug": "ulsan-kr"
+  },
+  {
+    "city": "Suwon",
+    "country": "South Korea",
+    "admin1": "Gyeonggi",
+    "lat": 37.2636,
+    "lng": 127.0286,
+    "slug": "suwon-kr"
+  },
+  {
+    "city": "Changwon",
+    "country": "South Korea",
+    "admin1": "South Gyeongsang",
+    "lat": 35.2279,
+    "lng": 128.6819,
+    "slug": "changwon-kr"
+  },
+  {
+    "city": "Goyang",
+    "country": "South Korea",
+    "admin1": "Gyeonggi",
+    "lat": 37.6564,
+    "lng": 126.835,
+    "slug": "goyang-kr"
+  },
+  {
+    "city": "Bangkok",
+    "country": "Thailand",
+    "admin1": "Bangkok",
+    "lat": 13.7563,
+    "lng": 100.5018,
+    "slug": "bangkok-th"
+  },
+  {
+    "city": "Chiang Mai",
+    "country": "Thailand",
+    "admin1": "Chiang Mai",
+    "lat": 18.7883,
+    "lng": 98.9853,
+    "slug": "chiang-mai-th"
+  },
+  {
+    "city": "Pattaya",
+    "country": "Thailand",
+    "admin1": "Chonburi",
+    "lat": 12.9236,
+    "lng": 100.8825,
+    "slug": "pattaya-th"
+  },
+  {
+    "city": "Phuket",
+    "country": "Thailand",
+    "admin1": "Phuket",
+    "lat": 7.8804,
+    "lng": 98.3923,
+    "slug": "phuket-th"
+  },
+  {
+    "city": "Hat Yai",
+    "country": "Thailand",
+    "admin1": "Songkhla",
+    "lat": 7.0084,
+    "lng": 100.4768,
+    "slug": "hat-yai-th"
+  },
+  {
+    "city": "Nakhon Ratchasima",
+    "country": "Thailand",
+    "admin1": "Nakhon Ratchasima",
+    "lat": 14.9715,
+    "lng": 102.1016,
+    "slug": "nakhon-ratchasima-th"
+  },
+  {
+    "city": "Udon Thani",
+    "country": "Thailand",
+    "admin1": "Udon Thani",
+    "lat": 17.415,
+    "lng": 102.789,
+    "slug": "udon-thani-th"
+  },
+  {
+    "city": "Khon Kaen",
+    "country": "Thailand",
+    "admin1": "Khon Kaen",
+    "lat": 16.4322,
+    "lng": 102.8236,
+    "slug": "khon-kaen-th"
+  },
+  {
+    "city": "Chiang Rai",
+    "country": "Thailand",
+    "admin1": "Chiang Rai",
+    "lat": 19.9105,
+    "lng": 99.8406,
+    "slug": "chiang-rai-th"
+  },
+  {
+    "city": "Surat Thani",
+    "country": "Thailand",
+    "admin1": "Surat Thani",
+    "lat": 9.1396,
+    "lng": 99.3307,
+    "slug": "surat-thani-th"
+  },
+  {
+    "city": "Singapore",
+    "country": "Singapore",
+    "admin1": "Singapore",
+    "lat": 1.3521,
+    "lng": 103.8198,
+    "slug": "singapore-sg"
+  },
+  {
+    "city": "Kuala Lumpur",
+    "country": "Malaysia",
+    "admin1": "Kuala Lumpur",
+    "lat": 3.139,
+    "lng": 101.6869,
+    "slug": "kuala-lumpur-my"
+  },
+  {
+    "city": "George Town",
+    "country": "Malaysia",
+    "admin1": "Penang",
+    "lat": 5.4149,
+    "lng": 100.3298,
+    "slug": "george-town-my"
+  },
+  {
+    "city": "Johor Bahru",
+    "country": "Malaysia",
+    "admin1": "Johor",
+    "lat": 1.4927,
+    "lng": 103.7414,
+    "slug": "johor-bahru-my"
+  },
+  {
+    "city": "Ipoh",
+    "country": "Malaysia",
+    "admin1": "Perak",
+    "lat": 4.5975,
+    "lng": 101.0901,
+    "slug": "ipoh-my"
+  },
+  {
+    "city": "Kuching",
+    "country": "Malaysia",
+    "admin1": "Sarawak",
+    "lat": 1.5497,
+    "lng": 110.3639,
+    "slug": "kuching-my"
+  },
+  {
+    "city": "Kota Kinabalu",
+    "country": "Malaysia",
+    "admin1": "Sabah",
+    "lat": 5.9804,
+    "lng": 116.0735,
+    "slug": "kota-kinabalu-my"
+  },
+  {
+    "city": "Shah Alam",
+    "country": "Malaysia",
+    "admin1": "Selangor",
+    "lat": 3.0738,
+    "lng": 101.5183,
+    "slug": "shah-alam-my"
+  },
+  {
+    "city": "Malacca",
+    "country": "Malaysia",
+    "admin1": "Malacca",
+    "lat": 2.1896,
+    "lng": 102.2501,
+    "slug": "malacca-my"
+  },
+  {
+    "city": "Alor Setar",
+    "country": "Malaysia",
+    "admin1": "Kedah",
+    "lat": 6.1254,
+    "lng": 100.3673,
+    "slug": "alor-setar-my"
+  },
+  {
+    "city": "Miri",
+    "country": "Malaysia",
+    "admin1": "Sarawak",
+    "lat": 4.3995,
+    "lng": 113.9914,
+    "slug": "miri-my"
+  },
+  {
+    "city": "Jakarta",
+    "country": "Indonesia",
+    "admin1": "Jakarta",
+    "lat": -6.2088,
+    "lng": 106.8456,
+    "slug": "jakarta-id"
+  },
+  {
+    "city": "Surabaya",
+    "country": "Indonesia",
+    "admin1": "East Java",
+    "lat": -7.2575,
+    "lng": 112.7521,
+    "slug": "surabaya-id"
+  },
+  {
+    "city": "Bandung",
+    "country": "Indonesia",
+    "admin1": "West Java",
+    "lat": -6.9175,
+    "lng": 107.6191,
+    "slug": "bandung-id"
+  },
+  {
+    "city": "Medan",
+    "country": "Indonesia",
+    "admin1": "North Sumatra",
+    "lat": 3.5952,
+    "lng": 98.6722,
+    "slug": "medan-id"
+  },
+  {
+    "city": "Semarang",
+    "country": "Indonesia",
+    "admin1": "Central Java",
+    "lat": -6.9667,
+    "lng": 110.4167,
+    "slug": "semarang-id"
+  },
+  {
+    "city": "Makassar",
+    "country": "Indonesia",
+    "admin1": "South Sulawesi",
+    "lat": -5.1477,
+    "lng": 119.4327,
+    "slug": "makassar-id"
+  },
+  {
+    "city": "Palembang",
+    "country": "Indonesia",
+    "admin1": "South Sumatra",
+    "lat": -2.9761,
+    "lng": 104.7754,
+    "slug": "palembang-id"
+  },
+  {
+    "city": "Denpasar",
+    "country": "Indonesia",
+    "admin1": "Bali",
+    "lat": -8.6705,
+    "lng": 115.2126,
+    "slug": "denpasar-id"
+  },
+  {
+    "city": "Batam",
+    "country": "Indonesia",
+    "admin1": "Riau Islands",
+    "lat": 1.0456,
+    "lng": 104.0305,
+    "slug": "batam-id"
+  },
+  {
+    "city": "Padang",
+    "country": "Indonesia",
+    "admin1": "West Sumatra",
+    "lat": -0.9492,
+    "lng": 100.3543,
+    "slug": "padang-id"
+  },
+  {
+    "city": "Manila",
+    "country": "Philippines",
+    "admin1": "Metro Manila",
+    "lat": 14.5995,
+    "lng": 120.9842,
+    "slug": "manila-ph"
+  },
+  {
+    "city": "Quezon City",
+    "country": "Philippines",
+    "admin1": "Metro Manila",
+    "lat": 14.676,
+    "lng": 121.0437,
+    "slug": "quezon-city-ph"
+  },
+  {
+    "city": "Caloocan",
+    "country": "Philippines",
+    "admin1": "Metro Manila",
+    "lat": 14.6546,
+    "lng": 120.9842,
+    "slug": "caloocan-ph"
+  },
+  {
+    "city": "Davao",
+    "country": "Philippines",
+    "admin1": "Davao del Sur",
+    "lat": 7.1907,
+    "lng": 125.4553,
+    "slug": "davao-ph"
+  },
+  {
+    "city": "Cebu City",
+    "country": "Philippines",
+    "admin1": "Cebu",
+    "lat": 10.3157,
+    "lng": 123.8854,
+    "slug": "cebu-city-ph"
+  },
+  {
+    "city": "Zamboanga",
+    "country": "Philippines",
+    "admin1": "Zamboanga del Sur",
+    "lat": 6.9214,
+    "lng": 122.079,
+    "slug": "zamboanga-ph"
+  },
+  {
+    "city": "Antipolo",
+    "country": "Philippines",
+    "admin1": "Rizal",
+    "lat": 14.5886,
+    "lng": 121.1753,
+    "slug": "antipolo-ph"
+  },
+  {
+    "city": "Pasig",
+    "country": "Philippines",
+    "admin1": "Metro Manila",
+    "lat": 14.5764,
+    "lng": 121.0851,
+    "slug": "pasig-ph"
+  },
+  {
+    "city": "Cagayan de Oro",
+    "country": "Philippines",
+    "admin1": "Misamis Oriental",
+    "lat": 8.4542,
+    "lng": 124.6319,
+    "slug": "cagayan-de-oro-ph"
+  },
+  {
+    "city": "Valenzuela",
+    "country": "Philippines",
+    "admin1": "Metro Manila",
+    "lat": 14.7,
+    "lng": 120.9833,
+    "slug": "valenzuela-ph"
+  },
+  {
+    "city": "Ho Chi Minh City",
+    "country": "Vietnam",
+    "admin1": "Ho Chi Minh",
+    "lat": 10.8231,
+    "lng": 106.6297,
+    "slug": "ho-chi-minh-city-vn"
+  },
+  {
+    "city": "Hanoi",
+    "country": "Vietnam",
+    "admin1": "Hanoi",
+    "lat": 21.0285,
+    "lng": 105.8542,
+    "slug": "hanoi-vn"
+  },
+  {
+    "city": "Da Nang",
+    "country": "Vietnam",
+    "admin1": "Da Nang",
+    "lat": 16.0544,
+    "lng": 108.2022,
+    "slug": "da-nang-vn"
+  },
+  {
+    "city": "Haiphong",
+    "country": "Vietnam",
+    "admin1": "Haiphong",
+    "lat": 20.8449,
+    "lng": 106.6881,
+    "slug": "haiphong-vn"
+  },
+  {
+    "city": "Can Tho",
+    "country": "Vietnam",
+    "admin1": "Can Tho",
+    "lat": 10.0452,
+    "lng": 105.7469,
+    "slug": "can-tho-vn"
+  },
+  {
+    "city": "Hue",
+    "country": "Vietnam",
+    "admin1": "Thua Thien Hue",
+    "lat": 16.4637,
+    "lng": 107.5909,
+    "slug": "hue-vn"
+  },
+  {
+    "city": "Nha Trang",
+    "country": "Vietnam",
+    "admin1": "Khanh Hoa",
+    "lat": 12.2388,
+    "lng": 109.1967,
+    "slug": "nha-trang-vn"
+  },
+  {
+    "city": "Vung Tau",
+    "country": "Vietnam",
+    "admin1": "Ba Ria-Vung Tau",
+    "lat": 10.346,
+    "lng": 107.0843,
+    "slug": "vung-tau-vn"
+  },
+  {
+    "city": "Quy Nhon",
+    "country": "Vietnam",
+    "admin1": "Binh Dinh",
+    "lat": 13.782,
+    "lng": 109.2197,
+    "slug": "quy-nhon-vn"
+  },
+  {
+    "city": "Phan Thiet",
+    "country": "Vietnam",
+    "admin1": "Binh Thuan",
+    "lat": 10.9376,
+    "lng": 108.147,
+    "slug": "phan-thiet-vn"
+  },
+  {
+    "city": "Moscow",
+    "country": "Russia",
+    "admin1": "Moscow",
+    "lat": 55.7558,
+    "lng": 37.6173,
+    "slug": "moscow-ru"
+  },
+  {
+    "city": "Saint Petersburg",
+    "country": "Russia",
+    "admin1": "Saint Petersburg",
+    "lat": 59.9343,
+    "lng": 30.3351,
+    "slug": "saint-petersburg-ru"
+  },
+  {
+    "city": "Novosibirsk",
+    "country": "Russia",
+    "admin1": "Novosibirsk Oblast",
+    "lat": 55.0084,
+    "lng": 82.9357,
+    "slug": "novosibirsk-ru"
+  },
+  {
+    "city": "Yekaterinburg",
+    "country": "Russia",
+    "admin1": "Sverdlovsk Oblast",
+    "lat": 56.8431,
+    "lng": 60.6454,
+    "slug": "yekaterinburg-ru"
+  },
+  {
+    "city": "Kazan",
+    "country": "Russia",
+    "admin1": "Tatarstan",
+    "lat": 55.8304,
+    "lng": 49.0661,
+    "slug": "kazan-ru"
+  },
+  {
+    "city": "Nizhny Novgorod",
+    "country": "Russia",
+    "admin1": "Nizhny Novgorod Oblast",
+    "lat": 56.2965,
+    "lng": 43.9361,
+    "slug": "nizhny-novgorod-ru"
+  },
+  {
+    "city": "Chelyabinsk",
+    "country": "Russia",
+    "admin1": "Chelyabinsk Oblast",
+    "lat": 55.1644,
+    "lng": 61.4368,
+    "slug": "chelyabinsk-ru"
+  },
+  {
+    "city": "Samara",
+    "country": "Russia",
+    "admin1": "Samara Oblast",
+    "lat": 53.2001,
+    "lng": 50.15,
+    "slug": "samara-ru"
+  },
+  {
+    "city": "Omsk",
+    "country": "Russia",
+    "admin1": "Omsk Oblast",
+    "lat": 54.9885,
+    "lng": 73.3242,
+    "slug": "omsk-ru"
+  },
+  {
+    "city": "Rostov-on-Don",
+    "country": "Russia",
+    "admin1": "Rostov Oblast",
+    "lat": 47.2357,
+    "lng": 39.7015,
+    "slug": "rostov-on-don-ru"
+  },
+  {
+    "city": "Istanbul",
+    "country": "Turkey",
+    "admin1": "Istanbul",
+    "lat": 41.0082,
+    "lng": 28.9784,
+    "slug": "istanbul-tr"
+  },
+  {
+    "city": "Ankara",
+    "country": "Turkey",
+    "admin1": "Ankara",
+    "lat": 39.9334,
+    "lng": 32.8597,
+    "slug": "ankara-tr"
+  },
+  {
+    "city": "Izmir",
+    "country": "Turkey",
+    "admin1": "Izmir",
+    "lat": 38.4237,
+    "lng": 27.1428,
+    "slug": "izmir-tr"
+  },
+  {
+    "city": "Bursa",
+    "country": "Turkey",
+    "admin1": "Bursa",
+    "lat": 40.1826,
+    "lng": 29.0665,
+    "slug": "bursa-tr"
+  },
+  {
+    "city": "Antalya",
+    "country": "Turkey",
+    "admin1": "Antalya",
+    "lat": 36.8969,
+    "lng": 30.7133,
+    "slug": "antalya-tr"
+  },
+  {
+    "city": "Adana",
+    "country": "Turkey",
+    "admin1": "Adana",
+    "lat": 36.9914,
+    "lng": 35.3308,
+    "slug": "adana-tr"
+  },
+  {
+    "city": "Gaziantep",
+    "country": "Turkey",
+    "admin1": "Gaziantep",
+    "lat": 37.0662,
+    "lng": 37.3833,
+    "slug": "gaziantep-tr"
+  },
+  {
+    "city": "Konya",
+    "country": "Turkey",
+    "admin1": "Konya",
+    "lat": 37.8746,
+    "lng": 32.4932,
+    "slug": "konya-tr"
+  },
+  {
+    "city": "Mersin",
+    "country": "Turkey",
+    "admin1": "Mersin",
+    "lat": 36.8,
+    "lng": 34.6333,
+    "slug": "mersin-tr"
+  },
+  {
+    "city": "Diyarbakir",
+    "country": "Turkey",
+    "admin1": "Diyarbakir",
+    "lat": 37.9144,
+    "lng": 40.2306,
+    "slug": "diyarbakir-tr"
+  },
+  {
+    "city": "Amsterdam",
+    "country": "Netherlands",
+    "admin1": "North Holland",
+    "lat": 52.3676,
+    "lng": 4.9041,
+    "slug": "amsterdam-nl"
+  },
+  {
+    "city": "Rotterdam",
+    "country": "Netherlands",
+    "admin1": "South Holland",
+    "lat": 51.9244,
+    "lng": 4.4777,
+    "slug": "rotterdam-nl"
+  },
+  {
+    "city": "The Hague",
+    "country": "Netherlands",
+    "admin1": "South Holland",
+    "lat": 52.0705,
+    "lng": 4.3007,
+    "slug": "the-hague-nl"
+  },
+  {
+    "city": "Utrecht",
+    "country": "Netherlands",
+    "admin1": "Utrecht",
+    "lat": 52.0907,
+    "lng": 5.1214,
+    "slug": "utrecht-nl"
+  },
+  {
+    "city": "Eindhoven",
+    "country": "Netherlands",
+    "admin1": "North Brabant",
+    "lat": 51.4416,
+    "lng": 5.4697,
+    "slug": "eindhoven-nl"
+  },
+  {
+    "city": "Groningen",
+    "country": "Netherlands",
+    "admin1": "Groningen",
+    "lat": 53.2194,
+    "lng": 6.5665,
+    "slug": "groningen-nl"
+  },
+  {
+    "city": "Tilburg",
+    "country": "Netherlands",
+    "admin1": "North Brabant",
+    "lat": 51.5653,
+    "lng": 5.0913,
+    "slug": "tilburg-nl"
+  },
+  {
+    "city": "Almere",
+    "country": "Netherlands",
+    "admin1": "Flevoland",
+    "lat": 52.3508,
+    "lng": 5.2647,
+    "slug": "almere-nl"
+  },
+  {
+    "city": "Breda",
+    "country": "Netherlands",
+    "admin1": "North Brabant",
+    "lat": 51.5719,
+    "lng": 4.7683,
+    "slug": "breda-nl"
+  },
+  {
+    "city": "Nijmegen",
+    "country": "Netherlands",
+    "admin1": "Gelderland",
+    "lat": 51.8426,
+    "lng": 5.8597,
+    "slug": "nijmegen-nl"
+  },
+  {
+    "city": "Brussels",
+    "country": "Belgium",
+    "admin1": "Brussels",
+    "lat": 50.8503,
+    "lng": 4.3517,
+    "slug": "brussels-be"
+  },
+  {
+    "city": "Antwerp",
+    "country": "Belgium",
+    "admin1": "Antwerp",
+    "lat": 51.2194,
+    "lng": 4.4025,
+    "slug": "antwerp-be"
+  },
+  {
+    "city": "Ghent",
+    "country": "Belgium",
+    "admin1": "East Flanders",
+    "lat": 51.0543,
+    "lng": 3.7174,
+    "slug": "ghent-be"
+  },
+  {
+    "city": "Charleroi",
+    "country": "Belgium",
+    "admin1": "Hainaut",
+    "lat": 50.4108,
+    "lng": 4.4446,
+    "slug": "charleroi-be"
+  },
+  {
+    "city": "Liège",
+    "country": "Belgium",
+    "admin1": "Liège",
+    "lat": 50.6326,
+    "lng": 5.5797,
+    "slug": "liege-be"
+  },
+  {
+    "city": "Bruges",
+    "country": "Belgium",
+    "admin1": "West Flanders",
+    "lat": 51.2093,
+    "lng": 3.2247,
+    "slug": "bruges-be"
+  },
+  {
+    "city": "Namur",
+    "country": "Belgium",
+    "admin1": "Namur",
+    "lat": 50.4674,
+    "lng": 4.8719,
+    "slug": "namur-be"
+  },
+  {
+    "city": "Leuven",
+    "country": "Belgium",
+    "admin1": "Flemish Brabant",
+    "lat": 50.8798,
+    "lng": 4.7005,
+    "slug": "leuven-be"
+  },
+  {
+    "city": "Mons",
+    "country": "Belgium",
+    "admin1": "Hainaut",
+    "lat": 50.4542,
+    "lng": 3.9567,
+    "slug": "mons-be"
+  },
+  {
+    "city": "Aalst",
+    "country": "Belgium",
+    "admin1": "East Flanders",
+    "lat": 50.9378,
+    "lng": 4.0409,
+    "slug": "aalst-be"
+  },
+  {
+    "city": "Zurich",
+    "country": "Switzerland",
+    "admin1": "Zurich",
+    "lat": 47.3769,
+    "lng": 8.5417,
+    "slug": "zurich-ch"
+  },
+  {
+    "city": "Geneva",
+    "country": "Switzerland",
+    "admin1": "Geneva",
+    "lat": 46.2044,
+    "lng": 6.1432,
+    "slug": "geneva-ch"
+  },
+  {
+    "city": "Basel",
+    "country": "Switzerland",
+    "admin1": "Basel-Stadt",
+    "lat": 47.5596,
+    "lng": 7.5886,
+    "slug": "basel-ch"
+  },
+  {
+    "city": "Bern",
+    "country": "Switzerland",
+    "admin1": "Bern",
+    "lat": 46.9481,
+    "lng": 7.4474,
+    "slug": "bern-ch"
+  },
+  {
+    "city": "Lausanne",
+    "country": "Switzerland",
+    "admin1": "Vaud",
+    "lat": 46.5197,
+    "lng": 6.6323,
+    "slug": "lausanne-ch"
+  },
+  {
+    "city": "Winterthur",
+    "country": "Switzerland",
+    "admin1": "Zurich",
+    "lat": 47.5,
+    "lng": 8.75,
+    "slug": "winterthur-ch"
+  },
+  {
+    "city": "Lucerne",
+    "country": "Switzerland",
+    "admin1": "Lucerne",
+    "lat": 47.0502,
+    "lng": 8.3093,
+    "slug": "lucerne-ch"
+  },
+  {
+    "city": "St. Gallen",
+    "country": "Switzerland",
+    "admin1": "St. Gallen",
+    "lat": 47.4245,
+    "lng": 9.3767,
+    "slug": "st-gallen-ch"
+  },
+  {
+    "city": "Lugano",
+    "country": "Switzerland",
+    "admin1": "Ticino",
+    "lat": 46.0037,
+    "lng": 8.9511,
+    "slug": "lugano-ch"
+  },
+  {
+    "city": "Biel",
+    "country": "Switzerland",
+    "admin1": "Bern",
+    "lat": 47.14,
+    "lng": 7.2467,
+    "slug": "biel-ch"
+  },
+  {
+    "city": "Vienna",
+    "country": "Austria",
+    "admin1": "Vienna",
+    "lat": 48.2082,
+    "lng": 16.3738,
+    "slug": "vienna-at"
+  },
+  {
+    "city": "Graz",
+    "country": "Austria",
+    "admin1": "Styria",
+    "lat": 47.0707,
+    "lng": 15.4395,
+    "slug": "graz-at"
+  },
+  {
+    "city": "Linz",
+    "country": "Austria",
+    "admin1": "Upper Austria",
+    "lat": 48.3069,
+    "lng": 14.2858,
+    "slug": "linz-at"
+  },
+  {
+    "city": "Salzburg",
+    "country": "Austria",
+    "admin1": "Salzburg",
+    "lat": 47.8095,
+    "lng": 13.055,
+    "slug": "salzburg-at"
+  },
+  {
+    "city": "Innsbruck",
+    "country": "Austria",
+    "admin1": "Tyrol",
+    "lat": 47.2692,
+    "lng": 11.4041,
+    "slug": "innsbruck-at"
+  },
+  {
+    "city": "Klagenfurt",
+    "country": "Austria",
+    "admin1": "Carinthia",
+    "lat": 46.6247,
+    "lng": 14.3053,
+    "slug": "klagenfurt-at"
+  },
+  {
+    "city": "Villach",
+    "country": "Austria",
+    "admin1": "Carinthia",
+    "lat": 46.6103,
+    "lng": 13.8558,
+    "slug": "villach-at"
+  },
+  {
+    "city": "Wels",
+    "country": "Austria",
+    "admin1": "Upper Austria",
+    "lat": 48.1575,
+    "lng": 14.0219,
+    "slug": "wels-at"
+  },
+  {
+    "city": "Sankt Pölten",
+    "country": "Austria",
+    "admin1": "Lower Austria",
+    "lat": 48.2048,
+    "lng": 15.6256,
+    "slug": "sankt-polten-at"
+  },
+  {
+    "city": "Dornbirn",
+    "country": "Austria",
+    "admin1": "Vorarlberg",
+    "lat": 47.4125,
+    "lng": 9.7442,
+    "slug": "dornbirn-at"
+  },
+  {
+    "city": "Stockholm",
+    "country": "Sweden",
+    "admin1": "Stockholm",
+    "lat": 59.3293,
+    "lng": 18.0686,
+    "slug": "stockholm-se"
+  },
+  {
+    "city": "Gothenburg",
+    "country": "Sweden",
+    "admin1": "Västra Götaland",
+    "lat": 57.7089,
+    "lng": 11.9746,
+    "slug": "gothenburg-se"
+  },
+  {
+    "city": "Malmö",
+    "country": "Sweden",
+    "admin1": "Skåne",
+    "lat": 55.6059,
+    "lng": 13.0007,
+    "slug": "malmo-se"
+  },
+  {
+    "city": "Uppsala",
+    "country": "Sweden",
+    "admin1": "Uppsala",
+    "lat": 59.8586,
+    "lng": 17.6389,
+    "slug": "uppsala-se"
+  },
+  {
+    "city": "Västerås",
+    "country": "Sweden",
+    "admin1": "Västmanland",
+    "lat": 59.6099,
+    "lng": 16.5448,
+    "slug": "vasteras-se"
+  },
+  {
+    "city": "Örebro",
+    "country": "Sweden",
+    "admin1": "Örebro",
+    "lat": 59.2741,
+    "lng": 15.2066,
+    "slug": "orebro-se"
+  },
+  {
+    "city": "Linköping",
+    "country": "Sweden",
+    "admin1": "Östergötland",
+    "lat": 58.4108,
+    "lng": 15.6214,
+    "slug": "linkoping-se"
+  },
+  {
+    "city": "Helsingborg",
+    "country": "Sweden",
+    "admin1": "Skåne",
+    "lat": 56.0467,
+    "lng": 12.6945,
+    "slug": "helsingborg-se"
+  },
+  {
+    "city": "Jönköping",
+    "country": "Sweden",
+    "admin1": "Jönköping",
+    "lat": 57.7814,
+    "lng": 14.1562,
+    "slug": "jonkoping-se"
+  },
+  {
+    "city": "Norrköping",
+    "country": "Sweden",
+    "admin1": "Östergötland",
+    "lat": 58.5942,
+    "lng": 16.1826,
+    "slug": "norrkoping-se"
+  },
+  {
+    "city": "Oslo",
+    "country": "Norway",
+    "admin1": "Oslo",
+    "lat": 59.9139,
+    "lng": 10.7522,
+    "slug": "oslo-no"
+  },
+  {
+    "city": "Bergen",
+    "country": "Norway",
+    "admin1": "Vestland",
+    "lat": 60.3913,
+    "lng": 5.3221,
+    "slug": "bergen-no"
+  },
+  {
+    "city": "Trondheim",
+    "country": "Norway",
+    "admin1": "Trøndelag",
+    "lat": 63.4305,
+    "lng": 10.3951,
+    "slug": "trondheim-no"
+  },
+  {
+    "city": "Stavanger",
+    "country": "Norway",
+    "admin1": "Rogaland",
+    "lat": 58.97,
+    "lng": 5.7331,
+    "slug": "stavanger-no"
+  },
+  {
+    "city": "Bærum",
+    "country": "Norway",
+    "admin1": "Viken",
+    "lat": 59.9236,
+    "lng": 10.5,
+    "slug": "baerum-no"
+  },
+  {
+    "city": "Kristiansand",
+    "country": "Norway",
+    "admin1": "Agder",
+    "lat": 58.1467,
+    "lng": 7.9956,
+    "slug": "kristiansand-no"
+  },
+  {
+    "city": "Fredrikstad",
+    "country": "Norway",
+    "admin1": "Viken",
+    "lat": 59.2181,
+    "lng": 10.9298,
+    "slug": "fredrikstad-no"
+  },
+  {
+    "city": "Sandnes",
+    "country": "Norway",
+    "admin1": "Rogaland",
+    "lat": 58.852,
+    "lng": 5.7353,
+    "slug": "sandnes-no"
+  },
+  {
+    "city": "Tromsø",
+    "country": "Norway",
+    "admin1": "Troms og Finnmark",
+    "lat": 69.6492,
+    "lng": 18.9553,
+    "slug": "tromso-no"
+  },
+  {
+    "city": "Sarpsborg",
+    "country": "Norway",
+    "admin1": "Viken",
+    "lat": 59.2833,
+    "lng": 11.1167,
+    "slug": "sarpsborg-no"
+  },
+  {
+    "city": "Copenhagen",
+    "country": "Denmark",
+    "admin1": "Capital Region",
+    "lat": 55.6761,
+    "lng": 12.5683,
+    "slug": "copenhagen-dk"
+  },
+  {
+    "city": "Aarhus",
+    "country": "Denmark",
+    "admin1": "Central Denmark",
+    "lat": 56.1629,
+    "lng": 10.2039,
+    "slug": "aarhus-dk"
+  },
+  {
+    "city": "Odense",
+    "country": "Denmark",
+    "admin1": "South Denmark",
+    "lat": 55.4038,
+    "lng": 10.4024,
+    "slug": "odense-dk"
+  },
+  {
+    "city": "Aalborg",
+    "country": "Denmark",
+    "admin1": "North Denmark",
+    "lat": 57.0488,
+    "lng": 9.9217,
+    "slug": "aalborg-dk"
+  },
+  {
+    "city": "Esbjerg",
+    "country": "Denmark",
+    "admin1": "South Denmark",
+    "lat": 55.4869,
+    "lng": 8.4513,
+    "slug": "esbjerg-dk"
+  },
+  {
+    "city": "Randers",
+    "country": "Denmark",
+    "admin1": "Central Denmark",
+    "lat": 56.46,
+    "lng": 10.0364,
+    "slug": "randers-dk"
+  },
+  {
+    "city": "Kolding",
+    "country": "Denmark",
+    "admin1": "South Denmark",
+    "lat": 55.4904,
+    "lng": 9.4721,
+    "slug": "kolding-dk"
+  },
+  {
+    "city": "Horsens",
+    "country": "Denmark",
+    "admin1": "Central Denmark",
+    "lat": 55.8607,
+    "lng": 9.85,
+    "slug": "horsens-dk"
+  },
+  {
+    "city": "Vejle",
+    "country": "Denmark",
+    "admin1": "South Denmark",
+    "lat": 55.7093,
+    "lng": 9.5357,
+    "slug": "vejle-dk"
+  },
+  {
+    "city": "Roskilde",
+    "country": "Denmark",
+    "admin1": "Zealand",
+    "lat": 55.6415,
+    "lng": 12.0803,
+    "slug": "roskilde-dk"
+  },
+  {
+    "city": "Helsinki",
+    "country": "Finland",
+    "admin1": "Uusimaa",
+    "lat": 60.1699,
+    "lng": 24.9384,
+    "slug": "helsinki-fi"
+  },
+  {
+    "city": "Espoo",
+    "country": "Finland",
+    "admin1": "Uusimaa",
+    "lat": 60.2052,
+    "lng": 24.6522,
+    "slug": "espoo-fi"
+  },
+  {
+    "city": "Tampere",
+    "country": "Finland",
+    "admin1": "Pirkanmaa",
+    "lat": 61.4978,
+    "lng": 23.761,
+    "slug": "tampere-fi"
+  },
+  {
+    "city": "Vantaa",
+    "country": "Finland",
+    "admin1": "Uusimaa",
+    "lat": 60.2934,
+    "lng": 25.0378,
+    "slug": "vantaa-fi"
+  },
+  {
+    "city": "Oulu",
+    "country": "Finland",
+    "admin1": "North Ostrobothnia",
+    "lat": 65.0121,
+    "lng": 25.4651,
+    "slug": "oulu-fi"
+  },
+  {
+    "city": "Turku",
+    "country": "Finland",
+    "admin1": "Southwest Finland",
+    "lat": 60.4518,
+    "lng": 22.2666,
+    "slug": "turku-fi"
+  },
+  {
+    "city": "Jyväskylä",
+    "country": "Finland",
+    "admin1": "Central Finland",
+    "lat": 62.2415,
+    "lng": 25.7209,
+    "slug": "jyvaskyla-fi"
+  },
+  {
+    "city": "Lahti",
+    "country": "Finland",
+    "admin1": "Päijät-Häme",
+    "lat": 60.9827,
+    "lng": 25.6612,
+    "slug": "lahti-fi"
+  },
+  {
+    "city": "Kuopio",
+    "country": "Finland",
+    "admin1": "North Savonia",
+    "lat": 61.4991,
+    "lng": 27.6781,
+    "slug": "kuopio-fi"
+  },
+  {
+    "city": "Pori",
+    "country": "Finland",
+    "admin1": "Satakunta",
+    "lat": 61.4851,
+    "lng": 21.7974,
+    "slug": "pori-fi"
+  },
+  {
+    "city": "Warsaw",
+    "country": "Poland",
+    "admin1": "Masovian",
+    "lat": 52.2297,
+    "lng": 21.0122,
+    "slug": "warsaw-pl"
+  },
+  {
+    "city": "Kraków",
+    "country": "Poland",
+    "admin1": "Lesser Poland",
+    "lat": 50.0647,
+    "lng": 19.945,
+    "slug": "krakow-pl"
+  },
+  {
+    "city": "Łódź",
+    "country": "Poland",
+    "admin1": "Łódź",
+    "lat": 51.7592,
+    "lng": 19.456,
+    "slug": "lodz-pl"
+  },
+  {
+    "city": "Wrocław",
+    "country": "Poland",
+    "admin1": "Lower Silesian",
+    "lat": 51.1079,
+    "lng": 17.0385,
+    "slug": "wroclaw-pl"
+  },
+  {
+    "city": "Poznań",
+    "country": "Poland",
+    "admin1": "Greater Poland",
+    "lat": 52.4064,
+    "lng": 16.9252,
+    "slug": "poznan-pl"
+  },
+  {
+    "city": "Gdańsk",
+    "country": "Poland",
+    "admin1": "Pomeranian",
+    "lat": 54.352,
+    "lng": 18.6466,
+    "slug": "gdansk-pl"
+  },
+  {
+    "city": "Szczecin",
+    "country": "Poland",
+    "admin1": "West Pomeranian",
+    "lat": 53.4285,
+    "lng": 14.5528,
+    "slug": "szczecin-pl"
+  },
+  {
+    "city": "Bydgoszcz",
+    "country": "Poland",
+    "admin1": "Kuyavian-Pomeranian",
+    "lat": 53.1235,
+    "lng": 18.0084,
+    "slug": "bydgoszcz-pl"
+  },
+  {
+    "city": "Lublin",
+    "country": "Poland",
+    "admin1": "Lublin",
+    "lat": 51.2465,
+    "lng": 22.5684,
+    "slug": "lublin-pl"
+  },
+  {
+    "city": "Katowice",
+    "country": "Poland",
+    "admin1": "Silesian",
+    "lat": 50.2649,
+    "lng": 19.0238,
+    "slug": "katowice-pl"
+  },
+  {
+    "city": "Cape Town",
+    "country": "South Africa",
+    "admin1": "Western Cape",
+    "lat": -33.9249,
+    "lng": 18.4241,
+    "slug": "cape-town-za"
+  },
+  {
+    "city": "Johannesburg",
+    "country": "South Africa",
+    "admin1": "Gauteng",
+    "lat": -26.2041,
+    "lng": 28.0473,
+    "slug": "johannesburg-za"
+  },
+  {
+    "city": "Durban",
+    "country": "South Africa",
+    "admin1": "KwaZulu-Natal",
+    "lat": -29.8587,
+    "lng": 31.0218,
+    "slug": "durban-za"
+  },
+  {
+    "city": "Pretoria",
+    "country": "South Africa",
+    "admin1": "Gauteng",
+    "lat": -25.7479,
+    "lng": 28.2293,
+    "slug": "pretoria-za"
+  },
+  {
+    "city": "Port Elizabeth",
+    "country": "South Africa",
+    "admin1": "Eastern Cape",
+    "lat": -33.9608,
+    "lng": 25.6022,
+    "slug": "port-elizabeth-za"
+  },
+  {
+    "city": "Cairo",
+    "country": "Egypt",
+    "admin1": "Cairo",
+    "lat": 30.0444,
+    "lng": 31.2357,
+    "slug": "cairo-eg"
+  },
+  {
+    "city": "Alexandria",
+    "country": "Egypt",
+    "admin1": "Alexandria",
+    "lat": 31.2001,
+    "lng": 29.9187,
+    "slug": "alexandria-eg"
+  },
+  {
+    "city": "Giza",
+    "country": "Egypt",
+    "admin1": "Giza",
+    "lat": 30.0131,
+    "lng": 31.2089,
+    "slug": "giza-eg"
+  },
+  {
+    "city": "Shubra El Kheima",
+    "country": "Egypt",
+    "admin1": "Qalyubia",
+    "lat": 30.1286,
+    "lng": 31.2422,
+    "slug": "shubra-el-kheima-eg"
+  },
+  {
+    "city": "Port Said",
+    "country": "Egypt",
+    "admin1": "Port Said",
+    "lat": 31.2653,
+    "lng": 32.3019,
+    "slug": "port-said-eg"
+  },
+  {
+    "city": "Dubai",
+    "country": "United Arab Emirates",
+    "admin1": "Dubai",
+    "lat": 25.2048,
+    "lng": 55.2708,
+    "slug": "dubai-ae"
+  },
+  {
+    "city": "Abu Dhabi",
+    "country": "United Arab Emirates",
+    "admin1": "Abu Dhabi",
+    "lat": 24.4539,
+    "lng": 54.3773,
+    "slug": "abu-dhabi-ae"
+  },
+  {
+    "city": "Sharjah",
+    "country": "United Arab Emirates",
+    "admin1": "Sharjah",
+    "lat": 25.3573,
+    "lng": 55.4033,
+    "slug": "sharjah-ae"
+  },
+  {
+    "city": "Al Ain",
+    "country": "United Arab Emirates",
+    "admin1": "Abu Dhabi",
+    "lat": 24.2075,
+    "lng": 55.7447,
+    "slug": "al-ain-ae"
+  },
+  {
+    "city": "Ajman",
+    "country": "United Arab Emirates",
+    "admin1": "Ajman",
+    "lat": 25.4052,
+    "lng": 55.5136,
+    "slug": "ajman-ae"
+  },
+  {
+    "city": "Tel Aviv",
+    "country": "Israel",
+    "admin1": "Tel Aviv",
+    "lat": 32.0853,
+    "lng": 34.7818,
+    "slug": "tel-aviv-il"
+  },
+  {
+    "city": "Jerusalem",
+    "country": "Israel",
+    "admin1": "Jerusalem",
+    "lat": 31.7683,
+    "lng": 35.2137,
+    "slug": "jerusalem-il"
+  },
+  {
+    "city": "Haifa",
+    "country": "Israel",
+    "admin1": "Haifa",
+    "lat": 32.794,
+    "lng": 34.9896,
+    "slug": "haifa-il"
+  },
+  {
+    "city": "Rishon LeZion",
+    "country": "Israel",
+    "admin1": "Central",
+    "lat": 31.973,
+    "lng": 34.7925,
+    "slug": "rishon-lezion-il"
+  },
+  {
+    "city": "Petah Tikva",
+    "country": "Israel",
+    "admin1": "Central",
+    "lat": 32.0889,
+    "lng": 34.8564,
+    "slug": "petah-tikva-il"
+  },
+  {
+    "city": "Auckland",
+    "country": "New Zealand",
+    "admin1": "Auckland",
+    "lat": -36.8485,
+    "lng": 174.7633,
+    "slug": "auckland-nz"
+  },
+  {
+    "city": "Wellington",
+    "country": "New Zealand",
+    "admin1": "Wellington",
+    "lat": -41.2865,
+    "lng": 174.7762,
+    "slug": "wellington-nz"
+  },
+  {
+    "city": "Christchurch",
+    "country": "New Zealand",
+    "admin1": "Canterbury",
+    "lat": -43.5321,
+    "lng": 172.6362,
+    "slug": "christchurch-nz"
+  },
+  {
+    "city": "Hamilton",
+    "country": "New Zealand",
+    "admin1": "Waikato",
+    "lat": -37.787,
+    "lng": 175.2793,
+    "slug": "hamilton-nz"
+  },
+  {
+    "city": "Tauranga",
+    "country": "New Zealand",
+    "admin1": "Bay of Plenty",
+    "lat": -37.6878,
+    "lng": 176.1651,
+    "slug": "tauranga-nz"
+  },
+  {
+    "city": "Santiago",
+    "country": "Chile",
+    "admin1": "Santiago Metropolitan",
+    "lat": -33.4489,
+    "lng": -70.6693,
+    "slug": "santiago-cl"
+  },
+  {
+    "city": "Valparaíso",
+    "country": "Chile",
+    "admin1": "Valparaíso",
+    "lat": -33.0472,
+    "lng": -71.6127,
+    "slug": "valparaiso-cl"
+  },
+  {
+    "city": "Concepción",
+    "country": "Chile",
+    "admin1": "Biobío",
+    "lat": -36.8201,
+    "lng": -73.0444,
+    "slug": "concepcion-cl"
+  },
+  {
+    "city": "La Serena",
+    "country": "Chile",
+    "admin1": "Coquimbo",
+    "lat": -29.9027,
+    "lng": -71.2519,
+    "slug": "la-serena-cl"
+  },
+  {
+    "city": "Antofagasta",
+    "country": "Chile",
+    "admin1": "Antofagasta",
+    "lat": -23.6509,
+    "lng": -70.3975,
+    "slug": "antofagasta-cl"
+  },
+  {
+    "city": "Bogotá",
+    "country": "Colombia",
+    "admin1": "Cundinamarca",
+    "lat": 4.711,
+    "lng": -74.0721,
+    "slug": "bogota-co"
+  },
+  {
+    "city": "Medellín",
+    "country": "Colombia",
+    "admin1": "Antioquia",
+    "lat": 6.2476,
+    "lng": -75.5658,
+    "slug": "medellin-co"
+  },
+  {
+    "city": "Cali",
+    "country": "Colombia",
+    "admin1": "Valle del Cauca",
+    "lat": 3.4516,
+    "lng": -76.532,
+    "slug": "cali-co"
+  },
+  {
+    "city": "Barranquilla",
+    "country": "Colombia",
+    "admin1": "Atlántico",
+    "lat": 10.9639,
+    "lng": -74.7964,
+    "slug": "barranquilla-co"
+  },
+  {
+    "city": "Cartagena",
+    "country": "Colombia",
+    "admin1": "Bolívar",
+    "lat": 10.391,
+    "lng": -75.4794,
+    "slug": "cartagena-co"
+  },
+  {
+    "city": "Lima",
+    "country": "Peru",
+    "admin1": "Lima",
+    "lat": -12.0464,
+    "lng": -77.0428,
+    "slug": "lima-pe"
+  },
+  {
+    "city": "Arequipa",
+    "country": "Peru",
+    "admin1": "Arequipa",
+    "lat": -16.409,
+    "lng": -71.5375,
+    "slug": "arequipa-pe"
+  },
+  {
+    "city": "Trujillo",
+    "country": "Peru",
+    "admin1": "La Libertad",
+    "lat": -8.1116,
+    "lng": -79.0288,
+    "slug": "trujillo-pe"
+  },
+  {
+    "city": "Chiclayo",
+    "country": "Peru",
+    "admin1": "Lambayeque",
+    "lat": -6.7714,
+    "lng": -79.8409,
+    "slug": "chiclayo-pe"
+  },
+  {
+    "city": "Piura",
+    "country": "Peru",
+    "admin1": "Piura",
+    "lat": -5.1945,
+    "lng": -80.6328,
+    "slug": "piura-pe"
+  },
+  {
+    "city": "Lisbon",
+    "country": "Portugal",
+    "admin1": "Lisbon",
+    "lat": 38.7223,
+    "lng": -9.1393,
+    "slug": "lisbon-pt"
+  },
+  {
+    "city": "Porto",
+    "country": "Portugal",
+    "admin1": "Porto",
+    "lat": 41.1579,
+    "lng": -8.6291,
+    "slug": "porto-pt"
+  },
+  {
+    "city": "Amadora",
+    "country": "Portugal",
+    "admin1": "Lisbon",
+    "lat": 38.7538,
+    "lng": -9.2308,
+    "slug": "amadora-pt"
+  },
+  {
+    "city": "Braga",
+    "country": "Portugal",
+    "admin1": "Braga",
+    "lat": 41.5454,
+    "lng": -8.4265,
+    "slug": "braga-pt"
+  },
+  {
+    "city": "Funchal",
+    "country": "Portugal",
+    "admin1": "Madeira",
+    "lat": 32.6669,
+    "lng": -16.9241,
+    "slug": "funchal-pt"
+  },
+  {
+    "city": "Athens",
+    "country": "Greece",
+    "admin1": "Attica",
+    "lat": 37.9838,
+    "lng": 23.7275,
+    "slug": "athens-gr"
+  },
+  {
+    "city": "Thessaloniki",
+    "country": "Greece",
+    "admin1": "Central Macedonia",
+    "lat": 40.6401,
+    "lng": 22.9444,
+    "slug": "thessaloniki-gr"
+  },
+  {
+    "city": "Patras",
+    "country": "Greece",
+    "admin1": "Western Greece",
+    "lat": 38.2466,
+    "lng": 21.7346,
+    "slug": "patras-gr"
+  },
+  {
+    "city": "Heraklion",
+    "country": "Greece",
+    "admin1": "Crete",
+    "lat": 35.3081,
+    "lng": 25.0772,
+    "slug": "heraklion-gr"
+  },
+  {
+    "city": "Larissa",
+    "country": "Greece",
+    "admin1": "Thessaly",
+    "lat": 39.639,
+    "lng": 22.4191,
+    "slug": "larissa-gr"
+  },
+  {
+    "city": "Dublin",
+    "country": "Ireland",
+    "admin1": "Leinster",
+    "lat": 53.3498,
+    "lng": -6.2603,
+    "slug": "dublin-ie"
+  },
+  {
+    "city": "Cork",
+    "country": "Ireland",
+    "admin1": "Munster",
+    "lat": 51.8985,
+    "lng": -8.4756,
+    "slug": "cork-ie"
+  },
+  {
+    "city": "Limerick",
+    "country": "Ireland",
+    "admin1": "Munster",
+    "lat": 52.6639,
+    "lng": -8.6267,
+    "slug": "limerick-ie"
+  },
+  {
+    "city": "Galway",
+    "country": "Ireland",
+    "admin1": "Connacht",
+    "lat": 53.2707,
+    "lng": -9.0568,
+    "slug": "galway-ie"
+  },
+  {
+    "city": "Waterford",
+    "country": "Ireland",
+    "admin1": "Munster",
+    "lat": 52.2593,
+    "lng": -7.1101,
+    "slug": "waterford-ie"
+  },
+  {
+    "city": "Bucharest",
+    "country": "Romania",
+    "admin1": "Bucharest",
+    "lat": 44.4268,
+    "lng": 26.1025,
+    "slug": "bucharest-ro"
+  },
+  {
+    "city": "Cluj-Napoca",
+    "country": "Romania",
+    "admin1": "Cluj",
+    "lat": 46.7712,
+    "lng": 23.6236,
+    "slug": "cluj-napoca-ro"
+  },
+  {
+    "city": "Timișoara",
+    "country": "Romania",
+    "admin1": "Timiș",
+    "lat": 45.7489,
+    "lng": 21.2087,
+    "slug": "timisoara-ro"
+  },
+  {
+    "city": "Iași",
+    "country": "Romania",
+    "admin1": "Iași",
+    "lat": 47.1585,
+    "lng": 27.6014,
+    "slug": "iasi-ro"
+  },
+  {
+    "city": "Constanța",
+    "country": "Romania",
+    "admin1": "Constanța",
+    "lat": 44.1598,
+    "lng": 28.6348,
+    "slug": "constanta-ro"
+  },
+  {
+    "city": "Budapest",
+    "country": "Hungary",
+    "admin1": "Budapest",
+    "lat": 47.4979,
+    "lng": 19.0402,
+    "slug": "budapest-hu"
+  },
+  {
+    "city": "Debrecen",
+    "country": "Hungary",
+    "admin1": "Hajdú-Bihar",
+    "lat": 47.5316,
+    "lng": 21.6273,
+    "slug": "debrecen-hu"
+  },
+  {
+    "city": "Szeged",
+    "country": "Hungary",
+    "admin1": "Csongrád-Csanád",
+    "lat": 46.253,
+    "lng": 20.1414,
+    "slug": "szeged-hu"
+  },
+  {
+    "city": "Miskolc",
+    "country": "Hungary",
+    "admin1": "Borsod-Abaúj-Zemplén",
+    "lat": 48.1034,
+    "lng": 20.7784,
+    "slug": "miskolc-hu"
+  },
+  {
+    "city": "Pécs",
+    "country": "Hungary",
+    "admin1": "Baranya",
+    "lat": 46.0727,
+    "lng": 18.2328,
+    "slug": "pecs-hu"
+  },
+  {
+    "city": "Prague",
+    "country": "Czech Republic",
+    "admin1": "Prague",
+    "lat": 50.0755,
+    "lng": 14.4378,
+    "slug": "prague-cz"
+  },
+  {
+    "city": "Brno",
+    "country": "Czech Republic",
+    "admin1": "South Moravian",
+    "lat": 49.1951,
+    "lng": 16.6068,
+    "slug": "brno-cz"
+  },
+  {
+    "city": "Ostrava",
+    "country": "Czech Republic",
+    "admin1": "Moravian-Silesian",
+    "lat": 49.8209,
+    "lng": 18.2625,
+    "slug": "ostrava-cz"
+  },
+  {
+    "city": "Plzeň",
+    "country": "Czech Republic",
+    "admin1": "Plzeň",
+    "lat": 49.7475,
+    "lng": 13.3776,
+    "slug": "plzen-cz"
+  },
+  {
+    "city": "Liberec",
+    "country": "Czech Republic",
+    "admin1": "Liberec",
+    "lat": 50.7671,
+    "lng": 15.0566,
+    "slug": "liberec-cz"
+  }
+]

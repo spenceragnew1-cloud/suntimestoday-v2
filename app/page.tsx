@@ -1,7 +1,7 @@
 import { getSunTimes } from "@/lib/sun";
 import { SunTimesTable } from "@/components/SunTimesTable";
 import { CityLinks } from "@/components/CityLinks";
-import { CitySearch } from "@/components/CitySearch";
+import { CitySearchAutocomplete } from "@/components/CitySearchAutocomplete";
 import { NearMeButton } from "@/components/NearMeButton";
 import { getTimezoneForCity } from "@/lib/timezone";
 import Link from "next/link";
@@ -42,7 +42,7 @@ export default function Home() {
           </p>
           
           {/* City Search */}
-          <CitySearch />
+          <CitySearchAutocomplete />
           
           {/* Near Me Button */}
           <div className="mt-6">

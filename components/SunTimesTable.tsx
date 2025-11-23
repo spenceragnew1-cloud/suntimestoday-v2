@@ -6,6 +6,17 @@ interface SunTimesTableProps {
   timezone: string;
 }
 
+const isValidDate = (date: Date): boolean => !isNaN(date.getTime());
+
+const safeFormatTime = (date: Date, tz: string, format: string): string => {
+  if (!isValidDate(date)) return "N/A";
+  try {
+    return formatInTimeZone(date, tz, format);
+  } catch {
+    return "N/A";
+  }
+};
+
 export function SunTimesTable({ sunTimes, timezone }: SunTimesTableProps) {
   return (
     <div className="overflow-x-auto">
@@ -24,67 +35,67 @@ export function SunTimesTable({ sunTimes, timezone }: SunTimesTableProps) {
           <tr className="bg-white">
             <td className="border border-gray-300 px-6 py-3 font-medium text-gray-900">Sunrise</td>
             <td className="border border-gray-300 px-6 py-3 text-gray-700">
-              {formatInTimeZone(sunTimes.sunrise, timezone, "h:mm a")}
+              {safeFormatTime(sunTimes.sunrise, timezone, "h:mm a")}
             </td>
           </tr>
           <tr className="bg-gray-50">
             <td className="border border-gray-300 px-6 py-3 font-medium text-gray-900">Solar Noon</td>
             <td className="border border-gray-300 px-6 py-3 text-gray-700">
-              {formatInTimeZone(sunTimes.solarNoon, timezone, "h:mm a")}
+              {safeFormatTime(sunTimes.solarNoon, timezone, "h:mm a")}
             </td>
           </tr>
           <tr className="bg-white">
             <td className="border border-gray-300 px-6 py-3 font-medium text-gray-900">Sunset</td>
             <td className="border border-gray-300 px-6 py-3 text-gray-700">
-              {formatInTimeZone(sunTimes.sunset, timezone, "h:mm a")}
+              {safeFormatTime(sunTimes.sunset, timezone, "h:mm a")}
             </td>
           </tr>
           <tr className="bg-gray-50">
             <td className="border border-gray-300 px-6 py-3 font-medium text-gray-900">Golden Hour Start</td>
             <td className="border border-gray-300 px-6 py-3 text-gray-700">
-              {formatInTimeZone(sunTimes.goldenHourStart, timezone, "h:mm a")}
+              {safeFormatTime(sunTimes.goldenHourStart, timezone, "h:mm a")}
             </td>
           </tr>
           <tr className="bg-white">
             <td className="border border-gray-300 px-6 py-3 font-medium text-gray-900">Golden Hour End</td>
             <td className="border border-gray-300 px-6 py-3 text-gray-700">
-              {formatInTimeZone(sunTimes.goldenHourEnd, timezone, "h:mm a")}
+              {safeFormatTime(sunTimes.goldenHourEnd, timezone, "h:mm a")}
             </td>
           </tr>
           <tr className="bg-gray-50">
             <td className="border border-gray-300 px-6 py-3 font-medium text-gray-900">Civil Dawn</td>
             <td className="border border-gray-300 px-6 py-3 text-gray-700">
-              {formatInTimeZone(sunTimes.civilDawn, timezone, "h:mm a")}
+              {safeFormatTime(sunTimes.civilDawn, timezone, "h:mm a")}
             </td>
           </tr>
           <tr className="bg-white">
             <td className="border border-gray-300 px-6 py-3 font-medium text-gray-900">Civil Dusk</td>
             <td className="border border-gray-300 px-6 py-3 text-gray-700">
-              {formatInTimeZone(sunTimes.civilDusk, timezone, "h:mm a")}
+              {safeFormatTime(sunTimes.civilDusk, timezone, "h:mm a")}
             </td>
           </tr>
           <tr className="bg-gray-50">
             <td className="border border-gray-300 px-6 py-3 font-medium text-gray-900">Nautical Dawn</td>
             <td className="border border-gray-300 px-6 py-3 text-gray-700">
-              {formatInTimeZone(sunTimes.nauticalDawn, timezone, "h:mm a")}
+              {safeFormatTime(sunTimes.nauticalDawn, timezone, "h:mm a")}
             </td>
           </tr>
           <tr className="bg-white">
             <td className="border border-gray-300 px-6 py-3 font-medium text-gray-900">Nautical Dusk</td>
             <td className="border border-gray-300 px-6 py-3 text-gray-700">
-              {formatInTimeZone(sunTimes.nauticalDusk, timezone, "h:mm a")}
+              {safeFormatTime(sunTimes.nauticalDusk, timezone, "h:mm a")}
             </td>
           </tr>
           <tr className="bg-gray-50">
             <td className="border border-gray-300 px-6 py-3 font-medium text-gray-900">Astronomical Dawn</td>
             <td className="border border-gray-300 px-6 py-3 text-gray-700">
-              {formatInTimeZone(sunTimes.astronomicalDawn, timezone, "h:mm a")}
+              {safeFormatTime(sunTimes.astronomicalDawn, timezone, "h:mm a")}
             </td>
           </tr>
           <tr className="bg-white">
             <td className="border border-gray-300 px-6 py-3 font-medium text-gray-900">Astronomical Dusk</td>
             <td className="border border-gray-300 px-6 py-3 text-gray-700">
-              {formatInTimeZone(sunTimes.astronomicalDusk, timezone, "h:mm a")}
+              {safeFormatTime(sunTimes.astronomicalDusk, timezone, "h:mm a")}
             </td>
           </tr>
           <tr className="bg-gray-50">

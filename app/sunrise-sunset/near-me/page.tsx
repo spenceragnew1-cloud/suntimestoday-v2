@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { CitySearch } from "@/components/CitySearch";
+import { CitySearchAutocomplete } from "@/components/CitySearchAutocomplete";
 import { NearMeButton } from "@/components/NearMeButton";
 
 export const metadata: Metadata = {
@@ -44,7 +44,7 @@ export default function NearMePage() {
             <h2 className="text-2xl font-semibold mb-4 text-gray-800 text-center">
               Or Search for a City
             </h2>
-            <CitySearch />
+            <CitySearchAutocomplete />
           </div>
         </div>
 

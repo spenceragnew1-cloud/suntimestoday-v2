@@ -7,9 +7,28 @@ import { calculateDistance } from "@/lib/distance";
 import { createSlug } from "@/lib/slugify";
 import { NearMeButton } from "@/components/NearMeButton";
 import citiesData from "@/data/cities.json";
+import globalCitiesData from "@/data/global-cities.json";
 import { formatInTimeZone } from "date-fns-tz";
 import { differenceInMinutes } from "date-fns";
 import Link from "next/link";
+
+interface USCity {
+  name: string;
+  region: string;
+  country: string;
+  lat: number;
+  lng: number;
+  slug: string;
+}
+
+interface GlobalCity {
+  city: string;
+  country: string;
+  admin1?: string;
+  lat: number;
+  lng: number;
+  slug: string;
+}
 
 interface City {
   name: string;
@@ -20,7 +39,21 @@ interface City {
   slug: string;
 }
 
-const cities: City[] = citiesData as City[];
+const usCities: USCity[] = citiesData as USCity[];
+const globalCities: GlobalCity[] = globalCitiesData as GlobalCity[];
+
+// Normalize global cities to match US city structure
+const normalizedGlobalCities: City[] = globalCities.map((gc) => ({
+  name: gc.city,
+  region: gc.admin1 || gc.country,
+  country: gc.country,
+  lat: Number(gc.lat),
+  lng: Number(gc.lng),
+  slug: gc.slug,
+}));
+
+// Combine all cities
+const cities: City[] = [...usCities, ...normalizedGlobalCities];
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -45,8 +78,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
+  const today = new Date();
+  const sunTimes = getSunTimes(city.lat, city.lng, today);
+  const timezone = getTimezoneForCity(city.region, city.country);
+  const isValidDate = (date: Date): boolean => !isNaN(date.getTime());
+  const hasValidSunTimes = isValidDate(sunTimes.sunrise) && isValidDate(sunTimes.sunset);
+
   const title = `Sunrise and Sunset Times in ${city.name}, ${city.region} | SunTimesToday`;
-  const description = `Get accurate sunrise and sunset times for ${city.name}, ${city.region}, ${city.country}. Includes golden hour, twilight times, and day length information.`;
+  const description = hasValidSunTimes
+    ? `Get accurate sunrise and sunset times for ${city.name}, ${city.region}, ${city.country}. Includes golden hour, twilight times, and day length information.`
+    : `Sunrise and sunset times for ${city.name}, ${city.region}, ${city.country}.`;
   const url = `https://suntimestoday.com/sunrise-sunset/${slug}`;
 
   return {
@@ -80,23 +121,50 @@ export default async function CityPage({ params }: PageProps) {
 
   const today = new Date();
   const sunTimes = getSunTimes(city.lat, city.lng, today);
-  const timezone = getTimezoneForCity(city.region);
+  const timezone = getTimezoneForCity(city.region, city.country);
 
-  // Calculate daylight remaining
+  // Validate sun times (handle polar regions where sun may not rise/set)
+  const isValidDate = (date: Date): boolean => !isNaN(date.getTime());
+  
+  // Check if we have valid sun times
+  const hasValidSunTimes = isValidDate(sunTimes.sunrise) && isValidDate(sunTimes.sunset);
+  
+  if (!hasValidSunTimes) {
+    // For polar regions, show a message instead of times
+    return (
+      <div className="min-h-screen bg-gray-50 py-12 px-4">
+        <main className="max-w-4xl mx-auto">
+          <h1 className="text-4xl font-bold mb-8 text-gray-900">
+            Sunrise and Sunset Times in {city.name}, {city.region}
+          </h1>
+          <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+            <p className="text-lg text-gray-700">
+              Due to this location&apos;s extreme latitude, the sun may not rise or set on certain dates. 
+              Please check back during different times of the year for accurate sun times.
+            </p>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  // Calculate daylight remaining (only if we have valid sun times)
   const now = new Date();
   let daylightRemaining = "";
-  if (now < sunTimes.sunrise) {
-    const minutesUntil = differenceInMinutes(sunTimes.sunrise, now);
-    daylightRemaining = `Sunrise in ${Math.floor(minutesUntil / 60)}h ${minutesUntil % 60}m`;
-  } else if (now < sunTimes.sunset) {
-    const minutesRemaining = differenceInMinutes(sunTimes.sunset, now);
-    daylightRemaining = `${Math.floor(minutesRemaining / 60)}h ${minutesRemaining % 60}m of daylight remaining today`;
-  } else {
-    const minutesUntil = differenceInMinutes(
-      new Date(today.getTime() + 24 * 60 * 60 * 1000),
-      now
-    );
-    daylightRemaining = `Sunset has passed. Next sunrise in ${Math.floor(minutesUntil / 60)}h ${minutesUntil % 60}m`;
+  if (hasValidSunTimes) {
+    if (now < sunTimes.sunrise) {
+      const minutesUntil = differenceInMinutes(sunTimes.sunrise, now);
+      daylightRemaining = `Sunrise in ${Math.floor(minutesUntil / 60)}h ${minutesUntil % 60}m`;
+    } else if (now < sunTimes.sunset) {
+      const minutesRemaining = differenceInMinutes(sunTimes.sunset, now);
+      daylightRemaining = `${Math.floor(minutesRemaining / 60)}h ${minutesRemaining % 60}m of daylight remaining today`;
+    } else {
+      const minutesUntil = differenceInMinutes(
+        new Date(today.getTime() + 24 * 60 * 60 * 1000),
+        now
+      );
+      daylightRemaining = `Sunset has passed. Next sunrise in ${Math.floor(minutesUntil / 60)}h ${minutesUntil % 60}m`;
+    }
   }
 
   // Get related cities - prioritize same state first, then nearest by distance
@@ -131,6 +199,16 @@ export default async function CityPage({ params }: PageProps) {
     relatedCities.push(...otherCities);
   }
 
+  // Helper to safely format dates
+  const safeFormatTime = (date: Date, tz: string, format: string): string => {
+    if (!isValidDate(date)) return "N/A";
+    try {
+      return formatInTimeZone(date, tz, format);
+    } catch {
+      return "N/A";
+    }
+  };
+
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -140,7 +218,9 @@ export default async function CityPage({ params }: PageProps) {
         name: `What time is sunrise in ${city.name}, ${city.region}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Today's sunrise in ${city.name}, ${city.region} is at ${formatInTimeZone(sunTimes.sunrise, timezone, "h:mm a")}.`,
+          text: hasValidSunTimes
+            ? `Today's sunrise in ${city.name}, ${city.region} is at ${safeFormatTime(sunTimes.sunrise, timezone, "h:mm a")}.`
+            : `Sunrise times for ${city.name}, ${city.region} vary throughout the year.`,
         },
       },
       {
@@ -148,7 +228,9 @@ export default async function CityPage({ params }: PageProps) {
         name: `What time is sunset in ${city.name}, ${city.region}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Today's sunset in ${city.name}, ${city.region} is at ${formatInTimeZone(sunTimes.sunset, timezone, "h:mm a")}.`,
+          text: hasValidSunTimes
+            ? `Today's sunset in ${city.name}, ${city.region} is at ${safeFormatTime(sunTimes.sunset, timezone, "h:mm a")}.`
+            : `Sunset times for ${city.name}, ${city.region} vary throughout the year.`,
         },
       },
       {
@@ -156,7 +238,9 @@ export default async function CityPage({ params }: PageProps) {
         name: `What is the golden hour in ${city.name}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `The golden hour in ${city.name} starts at ${formatInTimeZone(sunTimes.goldenHourStart, timezone, "h:mm a")} and ends at ${formatInTimeZone(sunTimes.goldenHourEnd, timezone, "h:mm a")}. This is the best time for photography with warm, soft lighting.`,
+          text: hasValidSunTimes
+            ? `The golden hour in ${city.name} starts at ${safeFormatTime(sunTimes.goldenHourStart, timezone, "h:mm a")} and ends at ${safeFormatTime(sunTimes.goldenHourEnd, timezone, "h:mm a")}. This is the best time for photography with warm, soft lighting.`
+            : `Golden hour times for ${city.name} vary throughout the year based on sunrise and sunset.`,
         },
       },
       {
@@ -164,7 +248,9 @@ export default async function CityPage({ params }: PageProps) {
         name: `How long is the day in ${city.name} today?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Today's day length in ${city.name} is ${Math.floor(sunTimes.daylightDuration / 60)} hours and ${sunTimes.daylightDuration % 60} minutes.`,
+          text: hasValidSunTimes
+            ? `Today's day length in ${city.name} is ${Math.floor(sunTimes.daylightDuration / 60)} hours and ${sunTimes.daylightDuration % 60} minutes.`
+            : `Day length in ${city.name} varies throughout the year.`,
         },
       },
       {
@@ -172,7 +258,9 @@ export default async function CityPage({ params }: PageProps) {
         name: `When does civil twilight begin in ${city.name}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Civil twilight in ${city.name} begins at ${formatInTimeZone(sunTimes.civilDawn, timezone, "h:mm a")} and ends at ${formatInTimeZone(sunTimes.civilDusk, timezone, "h:mm a")}. During this time, there is enough light for most outdoor activities.`,
+          text: hasValidSunTimes
+            ? `Civil twilight in ${city.name} begins at ${safeFormatTime(sunTimes.civilDawn, timezone, "h:mm a")} and ends at ${safeFormatTime(sunTimes.civilDusk, timezone, "h:mm a")}. During this time, there is enough light for most outdoor activities.`
+            : `Civil twilight times for ${city.name} vary throughout the year.`,
         },
       },
       {
@@ -180,7 +268,9 @@ export default async function CityPage({ params }: PageProps) {
         name: `What is solar noon in ${city.name}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Solar noon in ${city.name} occurs at ${formatInTimeZone(sunTimes.solarNoon, timezone, "h:mm a")}, when the sun reaches its highest point in the sky.`,
+          text: isValidDate(sunTimes.solarNoon)
+            ? `Solar noon in ${city.name} occurs at ${safeFormatTime(sunTimes.solarNoon, timezone, "h:mm a")}, when the sun reaches its highest point in the sky.`
+            : `Solar noon times for ${city.name} vary throughout the year.`,
         },
       },
     ],
@@ -229,17 +319,17 @@ export default async function CityPage({ params }: PageProps) {
               <p className="text-base leading-7">
                 {city.name}, {city.region} experiences varying sunrise and sunset times throughout
                 the year due to its location at latitude {city.lat.toFixed(4)}° and longitude{" "}
-                {city.lng.toFixed(4)}°. Today, the sun rises at {formatInTimeZone(sunTimes.sunrise, timezone, "h:mm a")}{" "}
-                and sets at {formatInTimeZone(sunTimes.sunset, timezone, "h:mm a")}, providing{" "}
+                {city.lng.toFixed(4)}°. Today, the sun rises at {isValidDate(sunTimes.sunrise) ? formatInTimeZone(sunTimes.sunrise, timezone, "h:mm a") : "N/A"}{" "}
+                and sets at {isValidDate(sunTimes.sunset) ? formatInTimeZone(sunTimes.sunset, timezone, "h:mm a") : "N/A"}, providing{" "}
                 {Math.floor(sunTimes.daylightDuration / 60)} hours and {sunTimes.daylightDuration % 60}{" "}
                 minutes of daylight.
               </p>
               <p className="text-base leading-7">
                 The golden hour, ideal for photography and outdoor activities, occurs between{" "}
-                {formatInTimeZone(sunTimes.goldenHourStart, timezone, "h:mm a")} and {formatInTimeZone(sunTimes.goldenHourEnd, timezone, "h:mm a")}{" "}
+                {isValidDate(sunTimes.goldenHourStart) ? formatInTimeZone(sunTimes.goldenHourStart, timezone, "h:mm a") : "N/A"} and {isValidDate(sunTimes.goldenHourEnd) ? formatInTimeZone(sunTimes.goldenHourEnd, timezone, "h:mm a") : "N/A"}{" "}
                 today. During this period, the sun is low in the sky, creating warm, soft lighting
-                conditions. Civil twilight begins at {formatInTimeZone(sunTimes.civilDawn, timezone, "h:mm a")} and ends
-                at {formatInTimeZone(sunTimes.civilDusk, timezone, "h:mm a")}, offering enough natural light for most
+                conditions. Civil twilight begins at {isValidDate(sunTimes.civilDawn) ? formatInTimeZone(sunTimes.civilDawn, timezone, "h:mm a") : "N/A"} and ends
+                at {isValidDate(sunTimes.civilDusk) ? formatInTimeZone(sunTimes.civilDusk, timezone, "h:mm a") : "N/A"}, offering enough natural light for most
                 activities without artificial lighting.
               </p>
               <p className="text-base leading-7">
