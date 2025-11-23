@@ -239,7 +239,7 @@ export default async function CityPage({ params }: PageProps) {
         acceptedAnswer: {
           "@type": "Answer",
           text: hasValidSunTimes
-            ? `The golden hour in ${city.name} starts at ${safeFormatTime(sunTimes.goldenHourStart, timezone, "h:mm a")} and ends at ${safeFormatTime(sunTimes.goldenHourEnd, timezone, "h:mm a")}. This is the best time for photography with warm, soft lighting.`
+            ? `The golden hour in ${city.name} occurs in two periods: morning from ${safeFormatTime(sunTimes.morningGoldenHourStart, timezone, "h:mm a")} to ${safeFormatTime(sunTimes.morningGoldenHourEnd, timezone, "h:mm a")}, and evening from ${safeFormatTime(sunTimes.eveningGoldenHourStart, timezone, "h:mm a")} to ${safeFormatTime(sunTimes.eveningGoldenHourEnd, timezone, "h:mm a")}. This is the best time for photography with warm, soft lighting.`
             : `Golden hour times for ${city.name} vary throughout the year based on sunrise and sunset.`,
         },
       },
@@ -325,10 +325,11 @@ export default async function CityPage({ params }: PageProps) {
                 minutes of daylight.
               </p>
               <p className="text-base leading-7">
-                The golden hour, ideal for photography and outdoor activities, occurs between{" "}
-                {isValidDate(sunTimes.goldenHourStart) ? formatInTimeZone(sunTimes.goldenHourStart, timezone, "h:mm a") : "N/A"} and {isValidDate(sunTimes.goldenHourEnd) ? formatInTimeZone(sunTimes.goldenHourEnd, timezone, "h:mm a") : "N/A"}{" "}
-                today. During this period, the sun is low in the sky, creating warm, soft lighting
-                conditions. Civil twilight begins at {isValidDate(sunTimes.civilDawn) ? formatInTimeZone(sunTimes.civilDawn, timezone, "h:mm a") : "N/A"} and ends
+                The golden hour, ideal for photography and outdoor activities, occurs in two periods today: 
+                morning from {isValidDate(sunTimes.morningGoldenHourStart) ? formatInTimeZone(sunTimes.morningGoldenHourStart, timezone, "h:mm a") : "N/A"} to {isValidDate(sunTimes.morningGoldenHourEnd) ? formatInTimeZone(sunTimes.morningGoldenHourEnd, timezone, "h:mm a") : "N/A"}, 
+                and evening from {isValidDate(sunTimes.eveningGoldenHourStart) ? formatInTimeZone(sunTimes.eveningGoldenHourStart, timezone, "h:mm a") : "N/A"} to {isValidDate(sunTimes.eveningGoldenHourEnd) ? formatInTimeZone(sunTimes.eveningGoldenHourEnd, timezone, "h:mm a") : "N/A"}. 
+                During these periods, the sun is low in the sky, creating warm, soft lighting conditions. 
+                Civil twilight begins at {isValidDate(sunTimes.civilDawn) ? formatInTimeZone(sunTimes.civilDawn, timezone, "h:mm a") : "N/A"} and ends
                 at {isValidDate(sunTimes.civilDusk) ? formatInTimeZone(sunTimes.civilDusk, timezone, "h:mm a") : "N/A"}, offering enough natural light for most
                 activities without artificial lighting.
               </p>

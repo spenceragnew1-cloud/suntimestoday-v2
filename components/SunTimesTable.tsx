@@ -51,15 +51,15 @@ export function SunTimesTable({ sunTimes, timezone }: SunTimesTableProps) {
             </td>
           </tr>
           <tr className="bg-gray-50">
-            <td className="border border-gray-300 px-6 py-3 font-medium text-gray-900">Golden Hour Start</td>
+            <td className="border border-gray-300 px-6 py-3 font-medium text-gray-900">Morning Golden Hour</td>
             <td className="border border-gray-300 px-6 py-3 text-gray-700">
-              {safeFormatTime(sunTimes.goldenHourStart, timezone, "h:mm a")}
+              {safeFormatTime(sunTimes.morningGoldenHourStart, timezone, "h:mm a")} - {safeFormatTime(sunTimes.morningGoldenHourEnd, timezone, "h:mm a")}
             </td>
           </tr>
           <tr className="bg-white">
-            <td className="border border-gray-300 px-6 py-3 font-medium text-gray-900">Golden Hour End</td>
+            <td className="border border-gray-300 px-6 py-3 font-medium text-gray-900">Evening Golden Hour</td>
             <td className="border border-gray-300 px-6 py-3 text-gray-700">
-              {safeFormatTime(sunTimes.goldenHourEnd, timezone, "h:mm a")}
+              {safeFormatTime(sunTimes.eveningGoldenHourStart, timezone, "h:mm a")} - {safeFormatTime(sunTimes.eveningGoldenHourEnd, timezone, "h:mm a")}
             </td>
           </tr>
           <tr className="bg-gray-50">

@@ -6,6 +6,7 @@ import { NearMeButton } from "@/components/NearMeButton";
 import { getTimezoneForCity } from "@/lib/timezone";
 import Link from "next/link";
 import citiesData from "@/data/cities.json";
+import globalCitiesData from "@/data/global-cities.json";
 
 interface City {
   name: string;
@@ -16,16 +17,26 @@ interface City {
   slug: string;
 }
 
-const cities: City[] = citiesData as City[];
+const usCities: City[] = citiesData as City[];
+const globalCities = globalCitiesData as any[];
+const totalCities = usCities.length + globalCities.length;
 
 export default function Home() {
-  const defaultCity = cities[0];
+  const defaultCity = usCities[0];
   const today = new Date();
   const sunTimes = getSunTimes(defaultCity.lat, defaultCity.lng, today);
   const timezone = getTimezoneForCity(defaultCity.region);
 
-  // Select 12 major cities for Popular Cities section
-  const popularCities = cities.slice(0, 12);
+  // Select 12 major cities for Popular Cities section (mix of US and global)
+  const popularCities = [
+    ...usCities.slice(0, 8),
+    ...globalCities.slice(0, 4).map((gc: any) => ({
+      name: gc.city,
+      region: gc.admin1 || gc.country,
+      country: gc.country,
+      slug: gc.slug,
+    })),
+  ];
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
@@ -33,12 +44,12 @@ export default function Home() {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold mb-6 text-gray-900">
-            Sunrise and Sunset Times Across the United States
+            Sunrise and Sunset Times Worldwide
           </h1>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed mb-8">
-            SunTimesToday provides daily sunrise, sunset, golden hour, and twilight data for cities across the U.S. 
+            SunTimesToday provides daily sunrise, sunset, golden hour, and twilight data for cities across the world. 
             Whether you&apos;re planning outdoor activities, photography sessions, or simply want to know when daylight begins and ends, 
-            we offer accurate, location-specific sun time information updated daily.
+            we offer accurate, location-specific sun time information updated daily. Search for any city worldwide using the search bar below.
           </p>
           
           {/* City Search */}
@@ -92,10 +103,10 @@ export default function Home() {
           </h2>
           <details className="mt-4">
             <summary className="cursor-pointer text-lg font-medium text-gray-700 mb-4 hover:text-blue-600 transition-colors">
-              View all {cities.length} cities (A-Z)
+              View all {totalCities} cities (A-Z)
             </summary>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-6 pt-6 border-t border-gray-200">
-              {cities.map((city) => (
+              {usCities.map((city) => (
                 <Link
                   key={city.slug}
                   href={`/sunrise-sunset/${city.slug}`}
@@ -103,6 +114,16 @@ export default function Home() {
                   aria-label={`Sunrise and sunset times in ${city.name}, ${city.region}`}
                 >
                   {city.name}, {city.region}
+                </Link>
+              ))}
+              {globalCities.map((city: any) => (
+                <Link
+                  key={city.slug}
+                  href={`/sunrise-sunset/${city.slug}`}
+                  className="text-blue-600 hover:text-blue-800 hover:underline transition-colors py-1"
+                  aria-label={`Sunrise and sunset times in ${city.city}, ${city.country}`}
+                >
+                  {city.city}, {city.admin1 || city.country}
                 </Link>
               ))}
             </div>
