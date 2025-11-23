@@ -38,7 +38,8 @@ export const dynamicParams = true;
 
 // Rebuild each month page periodically after first request (ISR with 24-hour revalidation)
 // Using ISR instead of full static generation to reduce build log size (only ~300 pages prebuilt)
-export const revalidate = 60 * 60 * 24; // 24 hours
+// 86400 seconds = 24 hours
+export const revalidate = 86400;
 
 /**
  * Generate static params for only top US cities × all months
