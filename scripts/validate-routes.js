@@ -196,8 +196,61 @@ if (!Array.isArray(usCities)) {
   }
 }
 
-// 4. Print totals and expected sitemap count
-console.log('4️⃣ Summary and sitemap count...');
+// 4. Validate hub content files
+console.log('4️⃣ Validating hub content files...');
+const stateHubsContent = loadJsonFile('state-hubs-content.json');
+const countryHubsContent = loadJsonFile('country-hubs-content.json');
+
+if (!stateHubsContent || !Array.isArray(stateHubsContent)) {
+  console.error('❌ ERROR: data/state-hubs-content.json not found or invalid');
+  hasErrors = true;
+} else {
+  // Calculate unique states from US cities
+  const uniqueStates = new Set();
+  if (Array.isArray(usCities)) {
+    usCities.forEach(city => {
+      if (city.region) {
+        uniqueStates.add(city.region);
+      }
+    });
+  }
+  
+  // Check that every state has content
+  const stateSlugs = Array.from(uniqueStates).map(state => {
+    const slugify = require('slugify');
+    return slugify(state, { lower: true, strict: true, trim: true });
+  });
+  
+  const stateContentSlugs = new Set(stateHubsContent.map(h => h.slug));
+  const missingStateContent = stateSlugs.filter(slug => !stateContentSlugs.has(slug));
+  
+  if (missingStateContent.length > 0) {
+    console.error(`❌ ERROR: Missing state hub content for: ${missingStateContent.join(', ')}`);
+    hasErrors = true;
+  } else {
+    console.log(`✅ All ${stateSlugs.length} state hubs have content\n`);
+  }
+}
+
+if (!countryHubsContent || !Array.isArray(countryHubsContent)) {
+  console.error('❌ ERROR: data/country-hubs-content.json not found or invalid');
+  hasErrors = true;
+} else {
+  // Check that every country has content
+  const countrySlugs = new Set(countries.map(c => c.countrySlug));
+  const countryContentSlugs = new Set(countryHubsContent.map(h => h.slug));
+  const missingCountryContent = Array.from(countrySlugs).filter(slug => !countryContentSlugs.has(slug));
+  
+  if (missingCountryContent.length > 0) {
+    console.error(`❌ ERROR: Missing country hub content for: ${missingCountryContent.join(', ')}`);
+    hasErrors = true;
+  } else {
+    console.log(`✅ All ${countrySlugs.size} country hubs have content\n`);
+  }
+}
+
+// 5. Print totals and expected sitemap count
+console.log('5️⃣ Summary and sitemap count...');
 const usCityCount = Array.isArray(usCities) ? usCities.length : 0;
 const globalCityCount = Array.isArray(globalCities) ? globalCities.length : 0;
 const countryCount = Array.isArray(countries) ? countries.length : 0;

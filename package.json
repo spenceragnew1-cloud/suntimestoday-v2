@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "validate": "node scripts/validate-routes.js",
+    "generate-hub-content": "node scripts/generate-hub-content.js",
     "generate-sitemap": "node scripts/generate-sitemap.js",
     "update-last-updated": "node scripts/update-last-updated.js"
   },
