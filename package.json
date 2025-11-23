@@ -7,6 +7,7 @@
     "build": "npm run update-last-updated && npm run generate-sitemap && next build",
     "start": "next start",
     "lint": "eslint",
+    "validate": "node scripts/validate-routes.js",
     "generate-sitemap": "node scripts/generate-sitemap.js",
     "update-last-updated": "node scripts/update-last-updated.js"
   },
