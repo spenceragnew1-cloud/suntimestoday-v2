@@ -5,9 +5,11 @@ import { getTimezoneForCity } from "@/lib/timezone";
 import { createSlug } from "@/lib/slugify";
 import citiesData from "@/data/cities.json";
 import { formatInTimeZone } from "date-fns-tz";
-import { format, parse, startOfMonth, endOfMonth, eachDayOfInterval, addMonths, subMonths } from "date-fns";
+import { format, parse, startOfMonth, endOfMonth, eachDayOfInterval, addMonths, subMonths, isSameDay } from "date-fns";
 import Link from "next/link";
 import { MonthSvgChart } from "@/components/MonthSvgChart";
+import { CitySearchAutocomplete } from "@/components/CitySearchAutocomplete";
+import { MonthNavigation } from "@/components/MonthNavigation";
 
 interface USCity {
   name: string;
@@ -311,6 +313,9 @@ export default async function MonthPage({ params }: PageProps) {
   // State slug
   const stateSlug = createSlug(city.region);
   
+  // Get today's date in the city's timezone for highlighting
+  const todayInTimezone = formatInTimeZone(new Date(), timezone, "yyyy-MM-dd");
+  
   // Create FAQ JSON-LD
   const faqJsonLd = {
     "@context": "https://schema.org",
@@ -388,9 +393,19 @@ export default async function MonthPage({ params }: PageProps) {
             <span className="text-gray-700">{monthName}</span>
           </nav>
           
-          <h1 className="text-4xl font-bold mb-6 text-gray-900">
+          <h1 className="text-4xl font-bold mb-2 text-gray-900">
             Sunrise and Sunset Times in {city.name}, {city.region} in {monthName}
           </h1>
+          
+          {/* Metadata line */}
+          <p className="text-sm text-gray-600 mb-6">
+            {formatInTimeZone(new Date(), timezone, "zzz")} • {city.lat >= 0 ? `${city.lat.toFixed(4)}°N` : `${Math.abs(city.lat).toFixed(4)}°S`}, {city.lng >= 0 ? `${city.lng.toFixed(4)}°E` : `${Math.abs(city.lng).toFixed(4)}°W`}
+          </p>
+          
+          {/* Search another city */}
+          <div className="mb-8">
+            <CitySearchAutocomplete />
+          </div>
           
           {/* Intro paragraph */}
           <div className="bg-white rounded-lg shadow-md p-8 mb-8">
@@ -404,59 +419,52 @@ export default async function MonthPage({ params }: PageProps) {
             <h2 className="text-2xl font-semibold mb-4 text-gray-800">
               Key {monthName} Statistics
             </h2>
-            <ul className="space-y-2 text-gray-700">
-              <li className="flex items-start">
-                <span className="mr-2">•</span>
-                <span>Earliest sunrise: <strong>{format(earliestSunrise.date, "MMMM d")}</strong> at <strong>{earliestSunrise.sunrise}</strong></span>
-              </li>
-              <li className="flex items-start">
-                <span className="mr-2">•</span>
-                <span>Latest sunrise: <strong>{format(latestSunrise.date, "MMMM d")}</strong> at <strong>{latestSunrise.sunrise}</strong></span>
-              </li>
-              <li className="flex items-start">
-                <span className="mr-2">•</span>
-                <span>Earliest sunset: <strong>{format(earliestSunset.date, "MMMM d")}</strong> at <strong>{earliestSunset.sunset}</strong></span>
-              </li>
-              <li className="flex items-start">
-                <span className="mr-2">•</span>
-                <span>Latest sunset: <strong>{format(latestSunset.date, "MMMM d")}</strong> at <strong>{latestSunset.sunset}</strong></span>
-              </li>
-              <li className="flex items-start">
-                <span className="mr-2">•</span>
-                <span>Day length change: <strong>{dayLengthChangeText}</strong> from start to end of month</span>
-              </li>
+            <ul className="space-y-2 text-gray-700 list-disc list-inside">
+              <li>Earliest sunrise: <strong>{format(earliestSunrise.date, "MMMM d")}</strong> at <strong>{earliestSunrise.sunrise}</strong></li>
+              <li>Latest sunrise: <strong>{format(latestSunrise.date, "MMMM d")}</strong> at <strong>{latestSunrise.sunrise}</strong></li>
+              <li>Earliest sunset: <strong>{format(earliestSunset.date, "MMMM d")}</strong> at <strong>{earliestSunset.sunset}</strong></li>
+              <li>Latest sunset: <strong>{format(latestSunset.date, "MMMM d")}</strong> at <strong>{latestSunset.sunset}</strong></li>
+              <li>Day length change: <strong>{dayLengthChangeText}</strong> from start to end of month</li>
             </ul>
           </div>
           
           {/* Monthly Sun Trend Charts */}
-          <div className="bg-white rounded-lg shadow-md p-8 mb-8">
-            <h2 className="text-2xl font-semibold mb-6 text-gray-800">
-              Monthly Sun Trend Charts
-            </h2>
-            <div className="mt-8 space-y-8">
-              <MonthSvgChart
-                title="Sunrise Trend"
-                values={sunriseMinutesArray}
-                color="#ff9900"
-                monthName={monthName}
-                cityName={city.name}
-              />
-              <MonthSvgChart
-                title="Sunset Trend"
-                values={sunsetMinutesArray}
-                color="#3366ff"
-                monthName={monthName}
-                cityName={city.name}
-              />
-              <MonthSvgChart
-                title="Day Length Trend"
-                values={dayLengthMinutesArray}
-                color="#22aa55"
-                monthName={monthName}
-                cityName={city.name}
-              />
+          {(sunriseMinutesArray.length > 0 || sunsetMinutesArray.length > 0 || dayLengthMinutesArray.length > 0) && (
+            <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+              <h2 className="text-2xl font-semibold mb-6 text-gray-800">
+                Monthly Sun Trend Charts
+              </h2>
+              <div className="mt-8 space-y-8">
+                {sunriseMinutesArray.length > 0 && (
+                  <MonthSvgChart
+                    title="Sunrise Trend"
+                    values={sunriseMinutesArray}
+                    color="#ff9900"
+                    monthName={monthName}
+                    cityName={city.name}
+                  />
+                )}
+                {sunsetMinutesArray.length > 0 && (
+                  <MonthSvgChart
+                    title="Sunset Trend"
+                    values={sunsetMinutesArray}
+                    color="#3366ff"
+                    monthName={monthName}
+                    cityName={city.name}
+                  />
+                )}
+                {dayLengthMinutesArray.length > 0 && (
+                  <MonthSvgChart
+                    title="Day Length Trend"
+                    values={dayLengthMinutesArray}
+                    color="#22aa55"
+                    monthName={monthName}
+                    cityName={city.name}
+                  />
+                )}
+              </div>
             </div>
-          </div>
+          )}
           
           {/* Daily table */}
           <div className="bg-white rounded-lg shadow-md p-8 mb-8 overflow-x-auto">
@@ -475,55 +483,43 @@ export default async function MonthPage({ params }: PageProps) {
                 </tr>
               </thead>
               <tbody>
-                {dailyData.map((day, index) => (
-                  <tr key={index} className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-                    <td className="border border-gray-300 px-4 py-2 text-gray-900">{format(day.date, "MMM d")}</td>
+                {dailyData.map((day, index) => {
+                  const dayDateStr = formatInTimeZone(day.date, timezone, "yyyy-MM-dd");
+                  const isToday = dayDateStr === todayInTimezone;
+                  return (
+                    <tr 
+                      key={index} 
+                      className={`${index % 2 === 0 ? "bg-white" : "bg-gray-50"} ${isToday ? "bg-blue-50 border-2 border-blue-400" : ""}`}
+                    >
+                      <td className={`border border-gray-300 px-4 py-2 ${isToday ? "font-semibold text-blue-900" : "text-gray-900"}`}>
+                        {format(day.date, "MMM d")}
+                        {isToday && <span className="ml-2 text-xs text-blue-600">(Today)</span>}
+                      </td>
                     <td className="border border-gray-300 px-4 py-2 text-gray-700">{day.sunrise}</td>
                     <td className="border border-gray-300 px-4 py-2 text-gray-700">{day.sunset}</td>
                     <td className="border border-gray-300 px-4 py-2 text-gray-700">
                       {Math.floor(day.dayLength / 60)}h {day.dayLength % 60}m
                     </td>
                     <td className="border border-gray-300 px-4 py-2 text-gray-700 text-sm">{day.morningGoldenHour}</td>
-                    <td className="border border-gray-300 px-4 py-2 text-gray-700 text-sm">{day.eveningGoldenHour}</td>
+                    <td className={`border border-gray-300 px-4 py-2 text-sm ${isToday ? "text-blue-900 font-medium" : "text-gray-700"}`}>{day.eveningGoldenHour}</td>
                   </tr>
-                ))}
+                  );
+                })}
               </tbody>
             </table>
           </div>
           
           {/* Month navigation */}
-          <div className="bg-white rounded-lg shadow-md p-8 mb-8">
-            <div className="flex items-center justify-between mb-6">
-              <Link
-                href={`/sunrise-sunset/${slug}/${prevMonth}`}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                ← {MONTH_NAMES[prevMonthDate.getMonth()]}
-              </Link>
-              <h2 className="text-xl font-semibold text-gray-800">Browse Other Months</h2>
-              <Link
-                href={`/sunrise-sunset/${slug}/${nextMonth}`}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                {MONTH_NAMES[nextMonthDate.getMonth()]} →
-              </Link>
-            </div>
-            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
-              {MONTHS.map((m, idx) => (
-                <Link
-                  key={m}
-                  href={`/sunrise-sunset/${slug}/${m}`}
-                  className={`px-3 py-2 text-center rounded-lg transition-colors ${
-                    m === month
-                      ? "bg-blue-600 text-white font-semibold"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                  }`}
-                >
-                  {MONTH_NAMES[idx].slice(0, 3)}
-                </Link>
-              ))}
-            </div>
-          </div>
+          <MonthNavigation
+            slug={slug}
+            currentMonth={month}
+            prevMonth={prevMonth}
+            nextMonth={nextMonth}
+            prevMonthName={MONTH_NAMES[prevMonthDate.getMonth()]}
+            nextMonthName={MONTH_NAMES[nextMonthDate.getMonth()]}
+            months={MONTHS}
+            monthNames={MONTH_NAMES}
+          />
           
           {/* Internal links */}
           <div className="bg-white rounded-lg shadow-md p-8 mb-8">
