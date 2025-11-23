@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run update-last-updated && npm run generate-sitemap && next build",
+    "build": "npm run update-last-updated && npm run generate-sitemap && node scripts/build-quiet.js",
     "start": "next start",
     "lint": "eslint",
     "validate": "node scripts/validate-routes.js",
