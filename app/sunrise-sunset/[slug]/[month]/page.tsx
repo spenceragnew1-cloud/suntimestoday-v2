@@ -495,12 +495,12 @@ export default async function MonthPage({ params }: PageProps) {
                         {format(day.date, "MMM d")}
                         {isToday && <span className="ml-2 text-xs text-blue-600">(Today)</span>}
                       </td>
-                    <td className="border border-gray-300 px-4 py-2 text-gray-700">{day.sunrise}</td>
-                    <td className="border border-gray-300 px-4 py-2 text-gray-700">{day.sunset}</td>
-                    <td className="border border-gray-300 px-4 py-2 text-gray-700">
+                    <td className={`border border-gray-300 px-4 py-2 ${isToday ? "text-blue-900 font-medium" : "text-gray-700"}`}>{day.sunrise}</td>
+                    <td className={`border border-gray-300 px-4 py-2 ${isToday ? "text-blue-900 font-medium" : "text-gray-700"}`}>{day.sunset}</td>
+                    <td className={`border border-gray-300 px-4 py-2 ${isToday ? "text-blue-900 font-medium" : "text-gray-700"}`}>
                       {Math.floor(day.dayLength / 60)}h {day.dayLength % 60}m
                     </td>
-                    <td className="border border-gray-300 px-4 py-2 text-gray-700 text-sm">{day.morningGoldenHour}</td>
+                    <td className={`border border-gray-300 px-4 py-2 text-sm ${isToday ? "text-blue-900 font-medium" : "text-gray-700"}`}>{day.morningGoldenHour}</td>
                     <td className={`border border-gray-300 px-4 py-2 text-sm ${isToday ? "text-blue-900 font-medium" : "text-gray-700"}`}>{day.eveningGoldenHour}</td>
                   </tr>
                   );
