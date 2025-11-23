@@ -6,6 +6,8 @@ import { getTimezoneForCity } from "@/lib/timezone";
 import { calculateDistance } from "@/lib/distance";
 import { createSlug } from "@/lib/slugify";
 import { NearMeButton } from "@/components/NearMeButton";
+import NearbyCities from "@/components/NearbyCities";
+import { getNearbyCities, CityLike, NearbyResult } from "@/lib/geo";
 import citiesData from "@/data/cities.json";
 import globalCitiesData from "@/data/global-cities.json";
 import countriesData from "@/data/countries.json";
@@ -127,6 +129,10 @@ export default async function CityPage({ params }: PageProps) {
     notFound();
   }
 
+  // Determine if this is a US or global city
+  const isUSCity = usCities.some((c) => c.slug === slug);
+  const isGlobalCity = !isUSCity;
+
   const today = new Date();
   const sunTimes = getSunTimes(city.lat, city.lng, today);
   const timezone = getTimezoneForCity(city.region, city.country);
@@ -172,6 +178,109 @@ export default async function CityPage({ params }: PageProps) {
         now
       );
       daylightRemaining = `Sunset has passed. Next sunrise in ${Math.floor(minutesUntil / 60)}h ${minutesUntil % 60}m`;
+    }
+  }
+
+  // Build nearby cities pools
+  // For target city, use appropriate field based on US vs global
+  const targetCity: CityLike = isUSCity
+    ? {
+        name: city.name,
+        slug: city.slug,
+        lat: city.lat,
+        lng: city.lng,
+        region: city.region,
+        country: city.country,
+      }
+    : {
+        city: city.name, // For global cities, use name as city field
+        slug: city.slug,
+        lat: city.lat,
+        lng: city.lng,
+        admin1: city.region, // region is admin1 for normalized global cities
+        country: city.country,
+      };
+
+  // Build same-region pool
+  let sameRegionPool: CityLike[] = [];
+  let sameRegionResults: NearbyResult[] = [];
+  let sameRegionTitle = "";
+  
+  if (isUSCity) {
+    // US cities: same state
+    sameRegionPool = usCities
+      .filter((c) => c.region === city.region)
+      .map((c) => ({
+        name: c.name,
+        slug: c.slug,
+        lat: c.lat,
+        lng: c.lng,
+        region: c.region,
+        country: c.country,
+      }));
+    
+    sameRegionResults = getNearbyCities({
+      target: targetCity,
+      pool: sameRegionPool,
+      limit: 8,
+      maxDistanceKm: 300,
+      excludeSlug: slug,
+    });
+    
+    sameRegionTitle = `Nearby Cities in ${city.region}`;
+  } else {
+    // Global cities: same country
+    // Use original global cities data to preserve admin1 field
+    sameRegionPool = globalCities
+      .filter((c) => c.country === city.country)
+      .map((c) => ({
+        city: c.city,
+        slug: c.slug,
+        lat: Number(c.lat),
+        lng: Number(c.lng),
+        admin1: c.admin1,
+        country: c.country,
+      }));
+    
+    sameRegionResults = getNearbyCities({
+      target: targetCity,
+      pool: sameRegionPool,
+      limit: 8,
+      maxDistanceKm: 500,
+      excludeSlug: slug,
+    });
+    
+    sameRegionTitle = `Nearby Cities in ${city.country}`;
+  }
+
+  // Build international pool (global cities only)
+  let internationalResults: NearbyResult[] = [];
+  if (isGlobalCity) {
+    const internationalPool = globalCities
+      .filter((c) => c.country !== city.country)
+      .map((c) => ({
+        city: c.city,
+        slug: c.slug,
+        lat: Number(c.lat),
+        lng: Number(c.lng),
+        admin1: c.admin1,
+        country: c.country,
+      }));
+    
+    internationalResults = getNearbyCities({
+      target: targetCity,
+      pool: internationalPool,
+      limit: 5,
+      maxDistanceKm: 800,
+      excludeSlug: slug,
+    });
+
+    // Only show international if:
+    // - at least 3 results within 800km OR
+    // - target city is within 200km of another-country city
+    const hasCloseNeighbor = internationalResults.some((r) => r.distanceKm <= 200);
+    if (internationalResults.length < 3 && !hasCloseNeighbor) {
+      internationalResults = [];
     }
   }
 
@@ -337,6 +446,71 @@ export default async function CityPage({ params }: PageProps) {
               {daylightRemaining}
             </p>
           </div>
+
+          {/* Nearby Cities Sections */}
+          {sameRegionResults.length > 0 && (
+            <>
+              <NearbyCities
+                title={sameRegionTitle}
+                cities={sameRegionResults}
+              />
+              {/* SEO paragraph for same-region cities */}
+              {sameRegionResults.length > 0 && (
+                <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+                  <p className="text-gray-700 leading-relaxed">
+                    {isUSCity ? (
+                      <>
+                        Looking for sunrise and sunset times near {city.name}? Check nearby cities like{" "}
+                        {sameRegionResults.slice(0, 3).map((c, i) => (
+                          <span key={c.slug}>
+                            {c.name || c.city}
+                            {i < Math.min(2, sameRegionResults.length - 1) ? ", " : ""}
+                            {i === Math.min(2, sameRegionResults.length - 1) && sameRegionResults.length > 3 ? ", and " : ""}
+                          </span>
+                        ))}
+                        {sameRegionResults.length > 3 && ` and ${sameRegionResults.length - 3} more`} for today&apos;s daylight and golden hour times.
+                      </>
+                    ) : (
+                      <>
+                        If you&apos;re near {city.name}, you can also explore sun times in nearby {city.country} cities like{" "}
+                        {sameRegionResults.slice(0, 3).map((c, i) => (
+                          <span key={c.slug}>
+                            {c.name || c.city}
+                            {i < Math.min(2, sameRegionResults.length - 1) ? ", " : ""}
+                            {i === Math.min(2, sameRegionResults.length - 1) && sameRegionResults.length > 3 ? ", and " : ""}
+                          </span>
+                        ))}
+                        {sameRegionResults.length > 3 && ` and ${sameRegionResults.length - 3} more`}.
+                      </>
+                    )}
+                  </p>
+                </div>
+              )}
+            </>
+          )}
+
+          {isGlobalCity && internationalResults.length > 0 && (
+            <>
+              <NearbyCities
+                title="Nearby International Cities"
+                subtitle="Explore sunrise and sunset times in nearby cities across borders"
+                cities={internationalResults}
+              />
+              {/* SEO paragraph for international cities */}
+              <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+                <p className="text-gray-700 leading-relaxed">
+                  Traveling across borders? Nearby international cities like{" "}
+                  {internationalResults.slice(0, 3).map((c, i) => (
+                    <span key={c.slug}>
+                      {c.name || c.city}, {c.country}
+                      {i < Math.min(2, internationalResults.length - 1) ? "; " : ""}
+                    </span>
+                  ))}
+                  {" "}may have slightly different daylight patterns due to timezone and latitude differences.
+                </p>
+              </div>
+            </>
+          )}
 
           <div className="bg-white rounded-lg shadow-md p-8 mb-8">
             <h2 className="text-2xl font-semibold mb-4 text-gray-800">
