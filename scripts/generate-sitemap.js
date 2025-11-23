@@ -147,6 +147,9 @@ countries.forEach(country => {
 });
 
 // Monthly pages for US cities only
+// NOTE: We include all 4,008 monthly URLs in the sitemap even though only ~300 are prebuilt at deploy.
+// The rest are generated on-demand via ISR when first requested, then cached and revalidated daily.
+// This keeps build logs small while maintaining full SEO coverage.
 const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
 usCities.forEach(city => {
   if (city.slug) {

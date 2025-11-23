@@ -33,22 +33,53 @@ interface PageProps {
   params: Promise<{ slug: string; month: string }>;
 }
 
-export const dynamicParams = false;
-export const dynamic = 'force-static';
+// Let Next generate pages not returned in generateStaticParams (on-demand)
+export const dynamicParams = true;
+
+// Rebuild each month page periodically after first request (ISR with 24-hour revalidation)
+// Using ISR instead of full static generation to reduce build log size (only ~300 pages prebuilt)
+export const revalidate = 60 * 60 * 24; // 24 hours
 
 /**
- * Generate static params for all US cities × all months
+ * Generate static params for only top US cities × all months
+ * 
+ * NOTE: We only prebuild ~300 monthly pages (top 25 cities × 12 months) instead of all 4,008
+ * to avoid hitting Vercel's 4MB build log limit. All other monthly pages are generated
+ * on-demand via ISR when first requested, then cached and revalidated daily.
+ * This keeps build logs small while maintaining full SEO coverage (all URLs in sitemap).
  */
+const TOP_US_CITY_SLUGS = [
+  "new-york-ny",
+  "los-angeles-ca",
+  "chicago-il",
+  "houston-tx",
+  "phoenix-az",
+  "philadelphia-pa",
+  "san-antonio-tx",
+  "san-diego-ca",
+  "dallas-tx",
+  "san-jose-ca",
+  "austin-tx",
+  "jacksonville-fl",
+  "fort-worth-tx",
+  "columbus-oh",
+  "charlotte-nc",
+  "san-francisco-ca",
+  "indianapolis-in",
+  "seattle-wa",
+  "denver-co",
+  "boston-ma",
+  "el-paso-tx",
+  "nashville-tn",
+  "detroit-mi",
+  "portland-or",
+  "las-vegas-nv",
+];
+
 export async function generateStaticParams() {
-  const params: { slug: string; month: string }[] = [];
-  
-  usCities.forEach((city) => {
-    MONTHS.forEach((month) => {
-      params.push({ slug: city.slug, month });
-    });
-  });
-  
-  return params;
+  return TOP_US_CITY_SLUGS.flatMap((slug) =>
+    MONTHS.map((month) => ({ slug, month }))
+  );
 }
 
 /**
