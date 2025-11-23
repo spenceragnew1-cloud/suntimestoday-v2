@@ -7,6 +7,7 @@ import citiesData from "@/data/cities.json";
 import { formatInTimeZone } from "date-fns-tz";
 import { format, parse, startOfMonth, endOfMonth, eachDayOfInterval, addMonths, subMonths } from "date-fns";
 import Link from "next/link";
+import { MonthSvgChart } from "@/components/MonthSvgChart";
 
 interface USCity {
   name: string;
@@ -222,9 +223,32 @@ export default async function MonthPage({ params }: PageProps) {
   
   // Calculate sun times for each day
   const timezone = getTimezoneForCity(city.region);
+  const sunriseMinutesArray: number[] = [];
+  const sunsetMinutesArray: number[] = [];
+  const dayLengthMinutesArray: number[] = [];
+  
   const dailyData = daysInMonth.map((date) => {
     const sunTimes = getSunTimes(city.lat, city.lng, date);
     const isValidDate = (d: Date): boolean => !isNaN(d.getTime());
+    
+    // Calculate minutes for charts (using timezone-adjusted time strings)
+    if (isValidDate(sunTimes.sunrise)) {
+      const sunriseTimeStr = formatInTimeZone(sunTimes.sunrise, timezone, "HH:mm");
+      const [hour, minute] = sunriseTimeStr.split(":").map(Number);
+      sunriseMinutesArray.push(hour * 60 + minute);
+    } else {
+      sunriseMinutesArray.push(0); // Fallback for invalid dates
+    }
+    
+    if (isValidDate(sunTimes.sunset)) {
+      const sunsetTimeStr = formatInTimeZone(sunTimes.sunset, timezone, "HH:mm");
+      const [hour, minute] = sunsetTimeStr.split(":").map(Number);
+      sunsetMinutesArray.push(hour * 60 + minute);
+    } else {
+      sunsetMinutesArray.push(0); // Fallback for invalid dates
+    }
+    
+    dayLengthMinutesArray.push(sunTimes.daylightDuration);
     
     return {
       date,
@@ -402,6 +426,36 @@ export default async function MonthPage({ params }: PageProps) {
                 <span>Day length change: <strong>{dayLengthChangeText}</strong> from start to end of month</span>
               </li>
             </ul>
+          </div>
+          
+          {/* Monthly Sun Trend Charts */}
+          <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+            <h2 className="text-2xl font-semibold mb-6 text-gray-800">
+              Monthly Sun Trend Charts
+            </h2>
+            <div className="mt-8 space-y-8">
+              <MonthSvgChart
+                title="Sunrise Trend"
+                values={sunriseMinutesArray}
+                color="#ff9900"
+                monthName={monthName}
+                cityName={city.name}
+              />
+              <MonthSvgChart
+                title="Sunset Trend"
+                values={sunsetMinutesArray}
+                color="#3366ff"
+                monthName={monthName}
+                cityName={city.name}
+              />
+              <MonthSvgChart
+                title="Day Length Trend"
+                values={dayLengthMinutesArray}
+                color="#22aa55"
+                monthName={monthName}
+                cityName={city.name}
+              />
+            </div>
           </div>
           
           {/* Daily table */}
