@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const slugify = require('slugify');
 
+const isProdBuild = process.env.VERCEL || process.env.NODE_ENV === 'production';
+
 function createSlug(text) {
   return slugify(text, {
     lower: true,
@@ -48,6 +50,8 @@ countries.sort((a, b) => a.country.localeCompare(b.country));
 const outputPath = path.join(__dirname, '../data/countries.json');
 fs.writeFileSync(outputPath, JSON.stringify(countries, null, 2), 'utf8');
 
-console.log(`✅ Generated countries.json with ${countries.length} countries`);
-console.log(`   Total cities: ${globalCities.length}`);
+if (!isProdBuild) {
+  console.log(`✅ Generated countries.json with ${countries.length} countries`);
+  console.log(`   Total cities: ${globalCities.length}`);
+}
 

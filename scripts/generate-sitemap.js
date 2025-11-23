@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const slugify = require('slugify');
 
+const isProdBuild = process.env.VERCEL || process.env.NODE_ENV === 'production';
+
 const baseUrl = 'https://suntimestoday.com';
 const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
 
@@ -81,7 +83,9 @@ urls.push({
 // US city pages from cities.json
 usCities.forEach(city => {
   if (!city.slug) {
-    console.warn(`⚠️  Warning: US city missing slug: ${JSON.stringify(city)}`);
+    if (!isProdBuild) {
+      console.warn(`⚠️  Warning: US city missing slug: ${JSON.stringify(city)}`);
+    }
     return;
   }
   urls.push({
@@ -95,7 +99,9 @@ usCities.forEach(city => {
 // Global city pages from global-cities.json
 globalCities.forEach(city => {
   if (!city.slug) {
-    console.warn(`⚠️  Warning: Global city missing slug: ${JSON.stringify(city)}`);
+    if (!isProdBuild) {
+      console.warn(`⚠️  Warning: Global city missing slug: ${JSON.stringify(city)}`);
+    }
     return;
   }
   urls.push({
@@ -127,7 +133,9 @@ stateMap.forEach((stateSlug, stateName) => {
 // Country hub pages
 countries.forEach(country => {
   if (!country.countrySlug) {
-    console.warn(`⚠️  Warning: Country missing countrySlug: ${JSON.stringify(country)}`);
+    if (!isProdBuild) {
+      console.warn(`⚠️  Warning: Country missing countrySlug: ${JSON.stringify(country)}`);
+    }
     return;
   }
   urls.push({
@@ -207,17 +215,6 @@ if (totalUrls !== EXPECTED_TOTAL_URLS) {
   errors.push(`Total sitemap URLs mismatch: expected ${EXPECTED_TOTAL_URLS}, got ${totalUrls}`);
 }
 
-// Print summary
-console.log(`✅ Generated sitemap.xml with ${totalUrls} URLs`);
-console.log(`   - Homepage: 1`);
-console.log(`   - Near Me page: 1`);
-console.log(`   - US city pages: ${usCityCount}`);
-console.log(`   - Global city pages: ${globalCityCount}`);
-console.log(`   - Total city pages: ${totalCityCount}`);
-console.log(`   - State pages: ${stateCount}`);
-console.log(`   - Country pages: ${countryCount}`);
-console.log(`   - Monthly pages (US only): ${monthlyPageCount}`);
-
 // Throw errors if counts don't match
 if (errors.length > 0) {
   console.error('\n❌ Validation errors:');
@@ -225,4 +222,5 @@ if (errors.length > 0) {
   throw new Error('Sitemap generation failed validation checks');
 }
 
-console.log('\n✅ All counts match expected values!');
+// Final summary (always show - 1 line only)
+console.log(`✅ Sitemap: ${totalUrls} URLs`);

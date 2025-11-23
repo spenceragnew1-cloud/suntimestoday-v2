@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const slugify = require('slugify');
 
+const isProdBuild = process.env.VERCEL || process.env.NODE_ENV === 'production';
+
 // Simple hash function for deterministic seeding
 function hashString(str) {
   let hash = 0;
@@ -230,8 +232,8 @@ fs.writeFileSync(
   'utf8'
 );
 
-console.log(`✅ Generated content for ${stateHubsContent.length} state hubs`);
-console.log(`✅ Generated content for ${countryHubsContent.length} country hubs`);
-console.log(`   Average word count (states): ${Math.round(stateHubsContent.reduce((sum, c) => sum + c.wordCount, 0) / stateHubsContent.length)}`);
-console.log(`   Average word count (countries): ${Math.round(countryHubsContent.reduce((sum, c) => sum + c.wordCount, 0) / countryHubsContent.length)}`);
+// Final summary (gated - only show in dev)
+if (!isProdBuild) {
+  console.log(`✅ Hub content: ${stateHubsContent.length} states, ${countryHubsContent.length} countries`);
+}
 

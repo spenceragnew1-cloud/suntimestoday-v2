@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
+const isProdBuild = process.env.VERCEL || process.env.NODE_ENV === 'production';
+
 // Simple slugify function (matches lib/slugify.ts behavior)
 function createSlug(text) {
   return text
@@ -23,7 +25,9 @@ function loadJsonFile(filename) {
   return JSON.parse(content);
 }
 
-console.log('🔍 Validating routes and SEO data...\n');
+if (!isProdBuild) {
+  console.log('🔍 Validating routes and SEO data...\n');
+}
 
 // Load all data files
 const usCities = loadJsonFile('cities.json');
@@ -46,13 +50,17 @@ if (!countries) {
   process.exit(1);
 }
 
-console.log('✅ All required data files loaded\n');
+if (!isProdBuild) {
+  console.log('✅ All required data files loaded\n');
+}
 
 // Track errors
 let hasErrors = false;
 
 // 1. Check for duplicate slugs across all datasets
-console.log('1️⃣ Checking for duplicate slugs...');
+if (!isProdBuild) {
+  console.log('1️⃣ Checking for duplicate slugs...');
+}
 const slugMap = new Map();
 const duplicates = [];
 
@@ -96,11 +104,15 @@ if (duplicates.length > 0) {
   });
   hasErrors = true;
 } else {
-  console.log(`✅ No duplicate slugs found (${slugMap.size} unique slugs)\n`);
+  if (!isProdBuild) {
+    console.log(`✅ No duplicate slugs found (${slugMap.size} unique slugs)\n`);
+  }
 }
 
 // 2. Validate global cities have valid countrySlug references
-console.log('2️⃣ Validating global cities → countries...');
+if (!isProdBuild) {
+  console.log('2️⃣ Validating global cities → countries...');
+}
 if (!Array.isArray(countries)) {
   console.error('❌ ERROR: countries.json is not an array');
   hasErrors = true;
@@ -144,12 +156,16 @@ if (!Array.isArray(countries)) {
     }
     hasErrors = true;
   } else {
-    console.log(`✅ All ${globalCities.length} global cities have valid country references\n`);
+    if (!isProdBuild) {
+      console.log(`✅ All ${globalCities.length} global cities have valid country references\n`);
+    }
   }
 }
 
 // 3. Validate US cities have valid state slugs
-console.log('3️⃣ Validating US cities → states...');
+if (!isProdBuild) {
+  console.log('3️⃣ Validating US cities → states...');
+}
 if (!Array.isArray(usCities)) {
   console.error('❌ ERROR: cities.json is not an array');
   hasErrors = true;
@@ -191,13 +207,17 @@ if (!Array.isArray(usCities)) {
     }
     hasErrors = true;
   } else {
-    const uniqueStates = new Set(usCities.map(c => c.region)).size;
-    console.log(`✅ All ${usCities.length} US cities have valid state references (${uniqueStates} unique states)\n`);
+    if (!isProdBuild) {
+      const uniqueStates = new Set(usCities.map(c => c.region)).size;
+      console.log(`✅ All ${usCities.length} US cities have valid state references (${uniqueStates} unique states)\n`);
+    }
   }
 }
 
 // 4. Validate hub content files
-console.log('4️⃣ Validating hub content files...');
+if (!isProdBuild) {
+  console.log('4️⃣ Validating hub content files...');
+}
 const stateHubsContent = loadJsonFile('state-hubs-content.json');
 const countryHubsContent = loadJsonFile('country-hubs-content.json');
 
@@ -228,7 +248,9 @@ if (!stateHubsContent || !Array.isArray(stateHubsContent)) {
     console.error(`❌ ERROR: Missing state hub content for: ${missingStateContent.join(', ')}`);
     hasErrors = true;
   } else {
-    console.log(`✅ All ${stateSlugs.length} state hubs have content\n`);
+    if (!isProdBuild) {
+      console.log(`✅ All ${stateSlugs.length} state hubs have content\n`);
+    }
   }
 }
 
@@ -245,12 +267,16 @@ if (!countryHubsContent || !Array.isArray(countryHubsContent)) {
     console.error(`❌ ERROR: Missing country hub content for: ${missingCountryContent.join(', ')}`);
     hasErrors = true;
   } else {
-    console.log(`✅ All ${countrySlugs.size} country hubs have content\n`);
+    if (!isProdBuild) {
+      console.log(`✅ All ${countrySlugs.size} country hubs have content\n`);
+    }
   }
 }
 
 // 5. Validate monthly routes
-console.log('5️⃣ Validating monthly routes...');
+if (!isProdBuild) {
+  console.log('5️⃣ Validating monthly routes...');
+}
 const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
 const usCityCountForValidation = Array.isArray(usCities) ? usCities.length : 0;
 const expectedMonthlyPages = usCityCountForValidation * 12;
@@ -270,8 +296,10 @@ if (Array.isArray(usCities)) {
     console.error(`❌ ERROR: Found ${globalWithMonths.length} global cities that should not have monthly routes`);
     hasErrors = true;
   } else {
-    console.log(`✅ Monthly routes correctly limited to US cities only`);
-    console.log(`   Expected monthly pages: ${expectedMonthlyPages} (${usCityCountForValidation} US cities × 12 months)\n`);
+    if (!isProdBuild) {
+      console.log(`✅ Monthly routes correctly limited to US cities only`);
+      console.log(`   Expected monthly pages: ${expectedMonthlyPages} (${usCityCountForValidation} US cities × 12 months)\n`);
+    }
   }
 } else {
   console.error('❌ ERROR: Cannot validate monthly routes - usCities is not an array');
@@ -279,7 +307,9 @@ if (Array.isArray(usCities)) {
 }
 
 // 6. Print totals and expected sitemap count
-console.log('6️⃣ Summary and sitemap count...');
+if (!isProdBuild) {
+  console.log('6️⃣ Summary and sitemap count...');
+}
 const usCityCount = Array.isArray(usCities) ? usCities.length : 0;
 const globalCityCount = Array.isArray(globalCities) ? globalCities.length : 0;
 const countryCount = Array.isArray(countries) ? countries.length : 0;
@@ -305,20 +335,23 @@ const stateCount = uniqueStates.size;
 // - Monthly pages: usCityCount * 12
 const expectedSitemapCount = 1 + 1 + usCityCount + globalCityCount + stateCount + countryCount + expectedMonthlyPages;
 
-console.log(`   US Cities: ${usCityCount}`);
-console.log(`   Global Cities: ${globalCityCount}`);
-console.log(`   Total Cities: ${usCityCount + globalCityCount}`);
-console.log(`   States: ${stateCount}`);
-console.log(`   Countries: ${countryCount}`);
-console.log(`   Monthly Pages (US only): ${expectedMonthlyPages}`);
-console.log(`   Expected Sitemap URLs: ${expectedSitemapCount}\n`);
+if (!isProdBuild) {
+  console.log(`   US Cities: ${usCityCount}`);
+  console.log(`   Global Cities: ${globalCityCount}`);
+  console.log(`   Total Cities: ${usCityCount + globalCityCount}`);
+  console.log(`   States: ${stateCount}`);
+  console.log(`   Countries: ${countryCount}`);
+  console.log(`   Monthly Pages (US only): ${expectedMonthlyPages}`);
+  console.log(`   Expected Sitemap URLs: ${expectedSitemapCount}\n`);
+}
 
 // Final result
 if (hasErrors) {
   console.error('❌ VALIDATION FAILED - Please fix the errors above');
   process.exit(1);
 } else {
-  console.log('✅ All validations passed!');
+  // Final summary (always show - 1 line only)
+  console.log(`✅ Validation passed: ${usCityCount + globalCityCount} cities, ${stateCount} states, ${countryCount} countries`);
   process.exit(0);
 }
 

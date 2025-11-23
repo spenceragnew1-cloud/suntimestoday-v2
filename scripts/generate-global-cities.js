@@ -5,6 +5,8 @@ const fs = require('fs');
 const path = require('path');
 const slugify = require('slugify');
 
+const isProdBuild = process.env.VERCEL || process.env.NODE_ENV === 'production';
+
 function createSlug(city, country) {
   const countryCode = getCountryCode(country);
   const citySlug = slugify(city, { lower: true, strict: true, trim: true });
@@ -541,5 +543,7 @@ const citiesWithSlugs = globalCities.map(city => ({
 const outputPath = path.join(__dirname, '../data/global-cities.json');
 fs.writeFileSync(outputPath, JSON.stringify(citiesWithSlugs, null, 2), 'utf8');
 
-console.log(`✅ Generated global-cities.json with ${citiesWithSlugs.length} cities`);
+if (!isProdBuild) {
+  console.log(`✅ Generated global-cities.json with ${citiesWithSlugs.length} cities`);
+}
 
