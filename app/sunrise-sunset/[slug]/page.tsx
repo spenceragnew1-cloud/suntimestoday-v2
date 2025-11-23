@@ -447,6 +447,42 @@ export default async function CityPage({ params }: PageProps) {
             </p>
           </div>
 
+          {/* Browse by Month section (US cities only) */}
+          {isUSCity && (
+            <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+              <h2 className="text-2xl font-semibold mb-4 text-gray-800">
+                Browse by Month
+              </h2>
+              <p className="text-gray-600 mb-4 text-sm">
+                View detailed sunrise and sunset times for each month of the year in {city.name}, {city.region}.
+              </p>
+              <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
+                {[
+                  { slug: 'january', name: 'Jan' },
+                  { slug: 'february', name: 'Feb' },
+                  { slug: 'march', name: 'Mar' },
+                  { slug: 'april', name: 'Apr' },
+                  { slug: 'may', name: 'May' },
+                  { slug: 'june', name: 'Jun' },
+                  { slug: 'july', name: 'Jul' },
+                  { slug: 'august', name: 'Aug' },
+                  { slug: 'september', name: 'Sep' },
+                  { slug: 'october', name: 'Oct' },
+                  { slug: 'november', name: 'Nov' },
+                  { slug: 'december', name: 'Dec' },
+                ].map((month) => (
+                  <Link
+                    key={month.slug}
+                    href={`/sunrise-sunset/${slug}/${month.slug}`}
+                    className="px-3 py-2 text-center bg-gray-100 text-gray-700 rounded-lg hover:bg-blue-600 hover:text-white transition-colors font-medium"
+                  >
+                    {month.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Nearby Cities Sections */}
           {sameRegionResults.length > 0 && (
             <>

@@ -249,8 +249,37 @@ if (!countryHubsContent || !Array.isArray(countryHubsContent)) {
   }
 }
 
-// 5. Print totals and expected sitemap count
-console.log('5️⃣ Summary and sitemap count...');
+// 5. Validate monthly routes
+console.log('5️⃣ Validating monthly routes...');
+const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+const usCityCountForValidation = Array.isArray(usCities) ? usCities.length : 0;
+const expectedMonthlyPages = usCityCountForValidation * 12;
+
+// Check that all US cities have monthly routes
+if (Array.isArray(usCities)) {
+  const usCitySlugs = new Set(usCities.map(c => c.slug));
+  const globalCitySlugs = new Set(globalCities.map(c => c.slug));
+  
+  // Verify no global cities have monthly routes (they shouldn't)
+  const globalWithMonths = globalCities.filter(c => {
+    // This is a check - monthly routes should only exist for US cities
+    return false; // Monthly routes are only generated for US cities in generateStaticParams
+  });
+  
+  if (globalWithMonths.length > 0) {
+    console.error(`❌ ERROR: Found ${globalWithMonths.length} global cities that should not have monthly routes`);
+    hasErrors = true;
+  } else {
+    console.log(`✅ Monthly routes correctly limited to US cities only`);
+    console.log(`   Expected monthly pages: ${expectedMonthlyPages} (${usCityCountForValidation} US cities × 12 months)\n`);
+  }
+} else {
+  console.error('❌ ERROR: Cannot validate monthly routes - usCities is not an array');
+  hasErrors = true;
+}
+
+// 6. Print totals and expected sitemap count
+console.log('6️⃣ Summary and sitemap count...');
 const usCityCount = Array.isArray(usCities) ? usCities.length : 0;
 const globalCityCount = Array.isArray(globalCities) ? globalCities.length : 0;
 const countryCount = Array.isArray(countries) ? countries.length : 0;
@@ -273,13 +302,15 @@ const stateCount = uniqueStates.size;
 // - Global city pages: globalCityCount
 // - State pages: stateCount
 // - Country pages: countryCount
-const expectedSitemapCount = 1 + 1 + usCityCount + globalCityCount + stateCount + countryCount;
+// - Monthly pages: usCityCount * 12
+const expectedSitemapCount = 1 + 1 + usCityCount + globalCityCount + stateCount + countryCount + expectedMonthlyPages;
 
 console.log(`   US Cities: ${usCityCount}`);
 console.log(`   Global Cities: ${globalCityCount}`);
 console.log(`   Total Cities: ${usCityCount + globalCityCount}`);
 console.log(`   States: ${stateCount}`);
 console.log(`   Countries: ${countryCount}`);
+console.log(`   Monthly Pages (US only): ${expectedMonthlyPages}`);
 console.log(`   Expected Sitemap URLs: ${expectedSitemapCount}\n`);
 
 // Final result

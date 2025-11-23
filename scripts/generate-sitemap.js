@@ -138,6 +138,21 @@ countries.forEach(country => {
   });
 });
 
+// Monthly pages for US cities only
+const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+usCities.forEach(city => {
+  if (city.slug) {
+    months.forEach(month => {
+      urls.push({
+        loc: `${baseUrl}/sunrise-sunset/${city.slug}/${month}`,
+        lastmod: today,
+        changefreq: 'monthly',
+        priority: '0.6'
+      });
+    });
+  }
+});
+
 // Generate XML
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -159,12 +174,14 @@ const globalCityCount = globalCities.length;
 const totalCityCount = usCityCount + globalCityCount;
 const stateCount = stateMap.size;
 const countryCount = countries.length;
+const monthlyPageCount = usCityCount * 12; // US cities × 12 months
 
 // Expected counts
 const EXPECTED_TOTAL_CITIES = 703;
 const EXPECTED_STATES = 45;
 const EXPECTED_COUNTRIES = 45;
-const EXPECTED_TOTAL_URLS = 795; // 1 (homepage) + 1 (near-me) + 703 (cities) + 45 (states) + 45 (countries)
+const EXPECTED_MONTHLY_PAGES = 334 * 12; // 4008
+const EXPECTED_TOTAL_URLS = 795 + EXPECTED_MONTHLY_PAGES; // Previous total + monthly pages
 
 // Verify counts
 const errors = [];
@@ -181,6 +198,10 @@ if (countryCount !== EXPECTED_COUNTRIES) {
   errors.push(`Country count mismatch: expected ${EXPECTED_COUNTRIES}, got ${countryCount}`);
 }
 
+if (monthlyPageCount !== EXPECTED_MONTHLY_PAGES) {
+  errors.push(`Monthly pages mismatch: expected ${EXPECTED_MONTHLY_PAGES}, got ${monthlyPageCount}`);
+}
+
 const totalUrls = urls.length;
 if (totalUrls !== EXPECTED_TOTAL_URLS) {
   errors.push(`Total sitemap URLs mismatch: expected ${EXPECTED_TOTAL_URLS}, got ${totalUrls}`);
@@ -195,6 +216,7 @@ console.log(`   - Global city pages: ${globalCityCount}`);
 console.log(`   - Total city pages: ${totalCityCount}`);
 console.log(`   - State pages: ${stateCount}`);
 console.log(`   - Country pages: ${countryCount}`);
+console.log(`   - Monthly pages (US only): ${monthlyPageCount}`);
 
 // Throw errors if counts don't match
 if (errors.length > 0) {
