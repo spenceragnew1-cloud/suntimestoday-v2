@@ -13,44 +13,50 @@ function createSlug(text) {
   });
 }
 
-// Read countries data
-const countriesPath = path.join(__dirname, '../data/countries.json');
-let countries = [];
-if (fs.existsSync(countriesPath)) {
-  const countriesData = fs.readFileSync(countriesPath, 'utf8').replace(/^\uFEFF/, '');
-  countries = JSON.parse(countriesData);
-}
-
-// Read cities data
-const citiesPath = path.join(__dirname, '../data/cities.json');
-let cities = [];
-if (fs.existsSync(citiesPath)) {
-  let citiesData;
+// Helper to load JSON files
+function loadJsonFile(filePath) {
+  if (!fs.existsSync(filePath)) {
+    return null;
+  }
+  const buffer = fs.readFileSync(filePath);
+  let content;
   // Check for UTF-16 BOM (FF FE)
-  const buffer = fs.readFileSync(citiesPath);
   if (buffer[0] === 0xFF && buffer[1] === 0xFE) {
-    // UTF-16 LE encoding
-    citiesData = buffer.toString('utf16le');
+    content = buffer.toString('utf16le');
   } else {
-    // Try UTF-8
-    citiesData = buffer.toString('utf8').replace(/^\uFEFF/, '');
+    content = buffer.toString('utf8').replace(/^\uFEFF/, '');
   }
-  citiesData = citiesData.trim();
-  // Try to parse, with better error handling
+  content = content.trim();
   try {
-    cities = JSON.parse(citiesData);
+    return JSON.parse(content);
   } catch (e) {
-    console.error('Error parsing cities.json:', e.message);
-    cities = [];
+    console.error(`Error parsing ${filePath}:`, e.message);
+    return null;
   }
 }
 
-// Read questions data (if it exists)
-const questionsPath = path.join(__dirname, '../data/questions.json');
-let questions = [];
-if (fs.existsSync(questionsPath)) {
-  const questionsData = fs.readFileSync(questionsPath, 'utf8').replace(/^\uFEFF/, ''); // Remove BOM if present
-  questions = JSON.parse(questionsData);
+const dataDir = path.join(__dirname, '../data');
+
+// Load all data files
+const usCitiesPath = path.join(dataDir, 'cities.json');
+const globalCitiesPath = path.join(dataDir, 'global-cities.json');
+const countriesPath = path.join(dataDir, 'countries.json');
+
+const usCities = loadJsonFile(usCitiesPath);
+const globalCities = loadJsonFile(globalCitiesPath);
+const countries = loadJsonFile(countriesPath);
+
+// Validate required files
+if (!usCities || !Array.isArray(usCities)) {
+  throw new Error('Failed to load or parse data/cities.json');
+}
+
+if (!globalCities || !Array.isArray(globalCities)) {
+  throw new Error('Failed to load or parse data/global-cities.json');
+}
+
+if (!countries || !Array.isArray(countries)) {
+  throw new Error('Failed to load or parse data/countries.json');
 }
 
 // Build sitemap URLs
@@ -72,55 +78,65 @@ urls.push({
   priority: '0.8'
 });
 
-// City pages from cities.json
-if (cities && Array.isArray(cities)) {
-  cities.forEach(city => {
-    if (city.slug) {
-      urls.push({
-        loc: `${baseUrl}/sunrise-sunset/${city.slug}`,
-        lastmod: today,
-        changefreq: 'daily',
-        priority: '0.8'
-      });
-    }
+// US city pages from cities.json
+usCities.forEach(city => {
+  if (!city.slug) {
+    console.warn(`⚠️  Warning: US city missing slug: ${JSON.stringify(city)}`);
+    return;
+  }
+  urls.push({
+    loc: `${baseUrl}/sunrise-sunset/${city.slug}`,
+    lastmod: today,
+    changefreq: 'daily',
+    priority: '0.8'
   });
-}
+});
 
-// State hub pages
-if (cities && Array.isArray(cities)) {
-  const stateMap = new Map(); // state name -> state slug
-  
-  cities.forEach(city => {
-    if (city.region && !stateMap.has(city.region)) {
-      stateMap.set(city.region, createSlug(city.region));
-    }
+// Global city pages from global-cities.json
+globalCities.forEach(city => {
+  if (!city.slug) {
+    console.warn(`⚠️  Warning: Global city missing slug: ${JSON.stringify(city)}`);
+    return;
+  }
+  urls.push({
+    loc: `${baseUrl}/sunrise-sunset/${city.slug}`,
+    lastmod: today,
+    changefreq: 'daily',
+    priority: '0.8'
   });
+});
 
-  stateMap.forEach((stateSlug, stateName) => {
-    urls.push({
-      loc: `${baseUrl}/sunrise-sunset/${stateSlug}`,
-      lastmod: today,
-      changefreq: 'daily',
-      priority: '0.7'
-    });
+// State hub pages (derived from US cities)
+const stateMap = new Map(); // state name -> state slug
+
+usCities.forEach(city => {
+  if (city.region && !stateMap.has(city.region)) {
+    stateMap.set(city.region, createSlug(city.region));
+  }
+});
+
+stateMap.forEach((stateSlug, stateName) => {
+  urls.push({
+    loc: `${baseUrl}/sunrise-sunset/${stateSlug}`,
+    lastmod: today,
+    changefreq: 'daily',
+    priority: '0.7'
   });
-}
+});
 
 // Country hub pages
-if (countries && Array.isArray(countries)) {
-  countries.forEach(country => {
-    if (country.countrySlug) {
-      urls.push({
-        loc: `${baseUrl}/sunrise-sunset/${country.countrySlug}`,
-        lastmod: today,
-        changefreq: 'daily',
-        priority: '0.7'
-      });
-    }
+countries.forEach(country => {
+  if (!country.countrySlug) {
+    console.warn(`⚠️  Warning: Country missing countrySlug: ${JSON.stringify(country)}`);
+    return;
+  }
+  urls.push({
+    loc: `${baseUrl}/sunrise-sunset/${country.countrySlug}`,
+    lastmod: today,
+    changefreq: 'daily',
+    priority: '0.7'
   });
-}
-
-// Note: Q&A pages removed - this is a suntimestoday project, not Q&A site
+});
 
 // Generate XML
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -137,13 +153,54 @@ ${urls.map(url => `  <url>
 const sitemapPath = path.join(__dirname, '../public/sitemap.xml');
 fs.writeFileSync(sitemapPath, xml, 'utf8');
 
-const stateCount = new Set(cities.map(c => c.region)).size;
+// Calculate and verify counts
+const usCityCount = usCities.length;
+const globalCityCount = globalCities.length;
+const totalCityCount = usCityCount + globalCityCount;
+const stateCount = stateMap.size;
 const countryCount = countries.length;
 
-console.log(`✅ Generated sitemap.xml with ${urls.length} URLs`);
+// Expected counts
+const EXPECTED_TOTAL_CITIES = 703;
+const EXPECTED_STATES = 45;
+const EXPECTED_COUNTRIES = 45;
+const EXPECTED_TOTAL_URLS = 795; // 1 (homepage) + 1 (near-me) + 703 (cities) + 45 (states) + 45 (countries)
+
+// Verify counts
+const errors = [];
+
+if (totalCityCount !== EXPECTED_TOTAL_CITIES) {
+  errors.push(`Total cities mismatch: expected ${EXPECTED_TOTAL_CITIES}, got ${totalCityCount}`);
+}
+
+if (stateCount !== EXPECTED_STATES) {
+  errors.push(`State count mismatch: expected ${EXPECTED_STATES}, got ${stateCount}`);
+}
+
+if (countryCount !== EXPECTED_COUNTRIES) {
+  errors.push(`Country count mismatch: expected ${EXPECTED_COUNTRIES}, got ${countryCount}`);
+}
+
+const totalUrls = urls.length;
+if (totalUrls !== EXPECTED_TOTAL_URLS) {
+  errors.push(`Total sitemap URLs mismatch: expected ${EXPECTED_TOTAL_URLS}, got ${totalUrls}`);
+}
+
+// Print summary
+console.log(`✅ Generated sitemap.xml with ${totalUrls} URLs`);
 console.log(`   - Homepage: 1`);
 console.log(`   - Near Me page: 1`);
-console.log(`   - City pages: ${cities.length}`);
+console.log(`   - US city pages: ${usCityCount}`);
+console.log(`   - Global city pages: ${globalCityCount}`);
+console.log(`   - Total city pages: ${totalCityCount}`);
 console.log(`   - State pages: ${stateCount}`);
 console.log(`   - Country pages: ${countryCount}`);
 
+// Throw errors if counts don't match
+if (errors.length > 0) {
+  console.error('\n❌ Validation errors:');
+  errors.forEach(error => console.error(`   - ${error}`));
+  throw new Error('Sitemap generation failed validation checks');
+}
+
+console.log('\n✅ All counts match expected values!');
