@@ -13,6 +13,14 @@ function createSlug(text) {
   });
 }
 
+// Read countries data
+const countriesPath = path.join(__dirname, '../data/countries.json');
+let countries = [];
+if (fs.existsSync(countriesPath)) {
+  const countriesData = fs.readFileSync(countriesPath, 'utf8').replace(/^\uFEFF/, '');
+  countries = JSON.parse(countriesData);
+}
+
 // Read cities data
 const citiesPath = path.join(__dirname, '../data/cities.json');
 let cities = [];
@@ -98,6 +106,20 @@ if (cities && Array.isArray(cities)) {
   });
 }
 
+// Country hub pages
+if (countries && Array.isArray(countries)) {
+  countries.forEach(country => {
+    if (country.countrySlug) {
+      urls.push({
+        loc: `${baseUrl}/sunrise-sunset/${country.countrySlug}`,
+        lastmod: today,
+        changefreq: 'daily',
+        priority: '0.7'
+      });
+    }
+  });
+}
+
 // Note: Q&A pages removed - this is a suntimestoday project, not Q&A site
 
 // Generate XML
@@ -116,10 +138,12 @@ const sitemapPath = path.join(__dirname, '../public/sitemap.xml');
 fs.writeFileSync(sitemapPath, xml, 'utf8');
 
 const stateCount = new Set(cities.map(c => c.region)).size;
+const countryCount = countries.length;
 
 console.log(`✅ Generated sitemap.xml with ${urls.length} URLs`);
 console.log(`   - Homepage: 1`);
 console.log(`   - Near Me page: 1`);
 console.log(`   - City pages: ${cities.length}`);
 console.log(`   - State pages: ${stateCount}`);
+console.log(`   - Country pages: ${countryCount}`);
 

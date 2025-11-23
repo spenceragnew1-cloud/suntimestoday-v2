@@ -8,6 +8,7 @@ import { createSlug } from "@/lib/slugify";
 import { NearMeButton } from "@/components/NearMeButton";
 import citiesData from "@/data/cities.json";
 import globalCitiesData from "@/data/global-cities.json";
+import countriesData from "@/data/countries.json";
 import { formatInTimeZone } from "date-fns-tz";
 import { differenceInMinutes } from "date-fns";
 import Link from "next/link";
@@ -41,6 +42,7 @@ interface City {
 
 const usCities: USCity[] = citiesData as USCity[];
 const globalCities: GlobalCity[] = globalCitiesData as GlobalCity[];
+const countries = countriesData as any[];
 
 // Normalize global cities to match US city structure
 const normalizedGlobalCities: City[] = globalCities.map((gc) => ({
@@ -54,6 +56,12 @@ const normalizedGlobalCities: City[] = globalCities.map((gc) => ({
 
 // Combine all cities
 const cities: City[] = [...usCities, ...normalizedGlobalCities];
+
+// Helper to get country slug for a country name
+function getCountrySlug(countryName: string): string | null {
+  const country = countries.find((c) => c.country === countryName);
+  return country ? country.countrySlug : null;
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -284,13 +292,32 @@ export default async function CityPage({ params }: PageProps) {
       />
       <div className="min-h-screen bg-gray-50 py-12 px-4">
         <main className="max-w-4xl mx-auto">
-          <div className="mb-4">
-            <Link
-              href={`/sunrise-sunset/${createSlug(city.region)}`}
-              className="text-blue-600 hover:text-blue-800 text-sm underline"
-            >
-              More sunrise and sunset times in {city.region}
-            </Link>
+          <div className="mb-4 space-y-2">
+            {/* State link for US cities */}
+            {city.country === "United States" && (
+              <div>
+                <Link
+                  href={`/sunrise-sunset/${createSlug(city.region)}`}
+                  className="text-blue-600 hover:text-blue-800 text-sm underline"
+                >
+                  More sunrise and sunset times in {city.region}
+                </Link>
+              </div>
+            )}
+            {/* Country link for global cities */}
+            {city.country !== "United States" && (() => {
+              const countrySlug = getCountrySlug(city.country);
+              return countrySlug ? (
+                <div>
+                  <Link
+                    href={`/sunrise-sunset/${countrySlug}`}
+                    className="text-blue-600 hover:text-blue-800 text-sm underline"
+                  >
+                    More sunrise & sunset times in {city.country}
+                  </Link>
+                </div>
+              ) : null;
+            })()}
           </div>
           <h1 className="text-4xl font-bold mb-8 text-gray-900">
             Sunrise and Sunset Times in {city.name}, {city.region}

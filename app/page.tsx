@@ -7,6 +7,7 @@ import { getTimezoneForCity } from "@/lib/timezone";
 import Link from "next/link";
 import citiesData from "@/data/cities.json";
 import globalCitiesData from "@/data/global-cities.json";
+import countriesData from "@/data/countries.json";
 
 interface City {
   name: string;
@@ -19,6 +20,7 @@ interface City {
 
 const usCities: City[] = citiesData as City[];
 const globalCities = globalCitiesData as any[];
+const countries = countriesData as any[];
 const totalCities = usCities.length + globalCities.length;
 
 export default function Home() {
@@ -128,6 +130,26 @@ export default function Home() {
               ))}
             </div>
           </details>
+        </section>
+
+        {/* Browse by Country Section */}
+        <section className="bg-white rounded-lg shadow-md p-8 mb-12">
+          <h2 className="text-3xl font-semibold mb-6 text-gray-800">
+            Browse by Country
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {countries.map((country: any) => (
+              <Link
+                key={country.countrySlug}
+                href={`/sunrise-sunset/${country.countrySlug}`}
+                className="block p-3 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-sm transition-all duration-200 text-center"
+                aria-label={`Sunrise and sunset times in ${country.country}`}
+              >
+                <div className="font-medium text-gray-900">{country.country}</div>
+                <div className="text-sm text-gray-600 mt-1">{country.cities.length} cities</div>
+              </Link>
+            ))}
+          </div>
         </section>
 
         {/* How It Works Section */}
