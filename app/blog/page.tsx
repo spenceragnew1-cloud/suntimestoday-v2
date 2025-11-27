@@ -14,6 +14,12 @@ export const metadata: Metadata = {
 export default function BlogIndex() {
   const articles = [
     {
+      title: "What Is Golden Hour? Best Times, Tips & Sunlight Explained",
+      excerpt: "Learn what golden hour is, when it happens, and how to use it for better photos, outdoor plans, and daily routines—plus how to find golden hour times for your city.",
+      slug: "golden-hour",
+      date: "2024",
+    },
+    {
       title: "Why the Shortest Day of the Year Matters: Winter Solstice & Daylight Changes Explained",
       excerpt: "Learn about the winter solstice, why December 21st has the least daylight, and how days get longer after the shortest day. Explore sunrise and sunset patterns in your city.",
       slug: "shortest-day-of-the-year",
