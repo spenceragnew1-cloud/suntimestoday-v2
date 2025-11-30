@@ -14,6 +14,12 @@ export const metadata: Metadata = {
 export default function BlogIndex() {
   const articles = [
     {
+      title: "What Time Is Dusk Today?",
+      excerpt: "Find out what time dusk is today based on your location. Learn the difference between dusk, civil dusk, and nautical dusk — plus golden hour details.",
+      slug: "what-time-is-dusk-today",
+      date: "2024",
+    },
+    {
       title: "What Is Golden Hour? Best Times, Tips & Sunlight Explained",
       excerpt: "Learn what golden hour is, when it happens, and how to use it for better photos, outdoor plans, and daily routines—plus how to find golden hour times for your city.",
       slug: "golden-hour",

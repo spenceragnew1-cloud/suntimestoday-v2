@@ -186,6 +186,13 @@ urls.push({
   priority: '0.7'
 });
 
+urls.push({
+  loc: `${baseUrl}/blog/what-time-is-dusk-today`,
+  lastmod: today,
+  changefreq: 'yearly',
+  priority: '0.7'
+});
+
 // Generate XML
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -214,7 +221,7 @@ const EXPECTED_TOTAL_CITIES = 703;
 const EXPECTED_STATES = 45;
 const EXPECTED_COUNTRIES = 45;
 const EXPECTED_MONTHLY_PAGES = 334 * 12; // 4008
-const EXPECTED_BLOG_PAGES = 3; // /blog, /blog/golden-hour, and /blog/shortest-day-of-the-year
+const EXPECTED_BLOG_PAGES = 4; // /blog, /blog/golden-hour, /blog/shortest-day-of-the-year, and /blog/what-time-is-dusk-today
 const EXPECTED_TOTAL_URLS = 795 + EXPECTED_MONTHLY_PAGES + EXPECTED_BLOG_PAGES; // Previous total + monthly pages + blog pages
 
 // Verify counts
