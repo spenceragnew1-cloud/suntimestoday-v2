@@ -242,7 +242,7 @@ export default function WhatTimeIsDuskTodayBlogPost() {
               <li>
                 <strong>Look up your city&apos;s sunset time.</strong>
                 <br />
-                <span className="ml-6">Use <Link href="/sunrise-sunset-near-me" className="text-blue-600 hover:text-blue-800 underline">SunTimesToday&apos;s location finder</Link> or search for your specific city.</span>
+                <span className="ml-6">Use <Link href="/sunrise-sunset/near-me" className="text-blue-600 hover:text-blue-800 underline">SunTimesToday&apos;s location finder</Link> or search for your specific city.</span>
               </li>
               <li>
                 <strong>Add 20-30 minutes to sunset time.</strong>
@@ -268,7 +268,7 @@ export default function WhatTimeIsDuskTodayBlogPost() {
                 Get accurate dusk times for your location, updated daily.
               </p>
               <Link
-                href="/sunrise-sunset-near-me"
+                href="/sunrise-sunset/near-me"
                 className="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors shadow-md"
               >
                 View Dusk Time in Your City

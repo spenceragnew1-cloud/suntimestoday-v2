@@ -223,7 +223,7 @@ export default function WhatTimeIsDawnTomorrowBlogPost() {
               <li>
                 <strong>Search for your city on SunTimesToday.</strong>
                 <br />
-                <span className="ml-6">Visit <Link href="/sunrise-sunset" className="text-blue-600 hover:text-blue-800 underline">our sunrise-sunset page</Link> and search for your city name. You can also use the location finder to get times for your exact area.</span>
+                <span className="ml-6">Visit <Link href="/sunrise-sunset/near-me" className="text-blue-600 hover:text-blue-800 underline">our sunrise-sunset page</Link> and search for your city name. You can also use the location finder to get times for your exact area.</span>
               </li>
               <li>
                 <strong>Check the dawn times listed.</strong>
@@ -249,7 +249,7 @@ export default function WhatTimeIsDawnTomorrowBlogPost() {
                 Ready to find out what time dawn is tomorrow in your area? Use our tool to get accurate, location-specific dawn times. Simply search for your city and get exact dawn times for tomorrow, plus sunrise, sunset, and dusk times for your location.
               </p>
               <Link
-                href="/sunrise-sunset"
+                href="/sunrise-sunset/near-me"
                 className="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors shadow-md"
               >
                 Search for Your City
@@ -396,7 +396,7 @@ export default function WhatTimeIsDawnTomorrowBlogPost() {
             </p>
 
             <p>
-              Remember: dawn time changes every day and varies by location. For the most accurate information, check <Link href="/sunrise-sunset" className="text-blue-600 hover:text-blue-800 underline">SunTimesToday</Link> for your city&apos;s current dawn times. Simply search for your city at <Link href="/sunrise-sunset" className="text-blue-600 hover:text-blue-800 underline">our sunrise-sunset page</Link> to get exact dawn times for tomorrow and beyond.
+              Remember: dawn time changes every day and varies by location. For the most accurate information, check <Link href="/sunrise-sunset/near-me" className="text-blue-600 hover:text-blue-800 underline">SunTimesToday</Link> for your city&apos;s current dawn times. Simply search for your city at <Link href="/sunrise-sunset/near-me" className="text-blue-600 hover:text-blue-800 underline">our sunrise-sunset page</Link> to get exact dawn times for tomorrow and beyond.
             </p>
 
             <p>
