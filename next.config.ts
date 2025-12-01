@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "export",
+  // Note: For static hosting (e.g. Hostinger + CDN), these headers may also need to be set at the hosting/CDN level.
   async headers() {
     return [
       {
