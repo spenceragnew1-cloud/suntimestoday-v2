@@ -383,7 +383,7 @@ export default function WhatTimeIsDuskTodayBlogPost() {
                   Is dusk the same as twilight?
                 </h3>
                 <p>
-                  Yes, dusk is part of twilight. Dusk specifically refers to evening twilight—the period after sunset when there&apos;s still light in the sky. Morning twilight before sunrise is called dawn. Both are periods when the sun is below the horizon but still provides some illumination.
+                  Yes, dusk is part of twilight. Dusk specifically refers to evening twilight—the period after sunset when there&apos;s still light in the sky. Morning twilight before sunrise is called <Link href="/blog/what-time-is-dawn-tomorrow" className="text-blue-600 hover:text-blue-800 underline">dawn</Link>. Both are periods when the sun is below the horizon but still provides some illumination.
                 </p>
               </div>
 
@@ -409,6 +409,10 @@ export default function WhatTimeIsDuskTodayBlogPost() {
 
             <p>
               Remember: dusk time changes every day and varies by location. For the most accurate information, check <Link href="/" className="text-blue-600 hover:text-blue-800 underline">SunTimesToday</Link> for your city&apos;s current dusk times.
+            </p>
+
+            <p>
+              Want to learn more about morning times? Check out our guide on <Link href="/blog/what-time-is-dawn-tomorrow" className="text-blue-600 hover:text-blue-800 underline">what time is dawn tomorrow</Link>.
             </p>
 
             <div className="bg-gray-100 rounded-lg p-6 my-8">

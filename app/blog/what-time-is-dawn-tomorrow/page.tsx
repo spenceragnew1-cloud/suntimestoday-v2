@@ -97,7 +97,7 @@ export default function WhatTimeIsDawnTomorrowBlogPost() {
             </p>
 
             <p>
-              Many people use the word &quot;dawn&quot; to mean the moment when it starts getting light, but astronomers define dawn more precisely. There are three types of dawn, each marking a different stage of morning twilight.
+              Many people use the word &quot;dawn&quot; to mean the moment when it starts getting light, but astronomers define dawn more precisely. There are three types of dawn, each marking a different stage of morning twilight. Just as <Link href="/blog/what-time-is-dusk-today" className="text-blue-600 hover:text-blue-800 underline">dusk</Link> marks evening twilight after sunset, dawn marks morning twilight before sunrise.
             </p>
 
             <hr className="my-8 border-gray-300" />
@@ -206,7 +206,7 @@ export default function WhatTimeIsDawnTomorrowBlogPost() {
             </p>
 
             <p>
-              At astronomical dawn, the sky is still mostly dark, but the faintest stars begin to fade. This is when astronomers know that true darkness is ending and morning is approaching.
+              At astronomical dawn, the sky is still mostly dark, but the faintest stars begin to fade. This is when astronomers know that true darkness is ending and morning is approaching. This is the opposite of <Link href="/blog/what-time-is-dusk-today" className="text-blue-600 hover:text-blue-800 underline">astronomical dusk</Link>, which marks when evening darkness fully sets in.
             </p>
 
             <hr className="my-8 border-gray-300" />
