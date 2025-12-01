@@ -14,6 +14,12 @@ export const metadata: Metadata = {
 export default function BlogIndex() {
   const articles = [
     {
+      title: "What Time Is Sunset Today Near Me?",
+      excerpt: "Wondering what time sunset is today near you? Learn how to quickly check today's sunset time for your exact location, plan golden hour, and understand why sunset changes every day.",
+      slug: "what-time-is-sunset-today-near-me",
+      date: "2024",
+    },
+    {
       title: "What Time Is Dawn Tomorrow?",
       excerpt: "Find out what time dawn is tomorrow in your area. See dawn time tables, how dawn is defined, and how dawn differs from sunrise.",
       slug: "what-time-is-dawn-tomorrow",
